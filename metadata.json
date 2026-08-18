@@ -1,0 +1,6 @@
+{
+  "name": "Atlas Standards",
+  "description": "Atlas Standards is a premium merchandise sourcing, product development, apparel manufacturing and supply chain company.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
