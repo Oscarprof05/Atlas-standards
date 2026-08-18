@@ -1,10 +1,4 @@
-import express from 'express';
-import path from 'path';
-import { createServer as createViteServer } from 'vite';
-import dotenv from 'dotenv';
 import { GoogleGenAI, GenerateVideosOperation } from '@google/genai';
-
-dotenv.config();
 
 let aiClient: GoogleGenAI | null = null;
 function getAi(): GoogleGenAI {
@@ -15,28 +9,42 @@ function getAi(): GoogleGenAI {
   return aiClient;
 }
 
-export const app = express();
-const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
+export default async function handler(req: any, res: any) {
+  // CORS Headers
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
 
-app.use(express.json({ limit: '50mb' }));
-app.use(express.urlencoded({ extended: true, limit: '50mb' }));
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
 
-async function startServer() {
+  const url = req.url || '';
 
-  // API Routes First
-  app.get('/api/health', (req, res) => {
-    res.json({ status: 'ok', service: 'Atlas Standards Backend', timestamp: new Date().toISOString() });
-  });
+  // 1. Health check
+  if (url.includes('/api/health')) {
+    return res.status(200).json({
+      status: 'ok',
+      service: 'Atlas Standards Serverless Backend',
+      timestamp: new Date().toISOString(),
+    });
+  }
 
-  // POST /api/generate-video: Start Veo Video Generation
-  app.post('/api/generate-video', async (req, res) => {
+  // 2. POST /api/generate-video
+  if (url.includes('/api/generate-video')) {
+    if (req.method !== 'POST') {
+      return res.status(405).json({ error: 'Method not allowed' });
+    }
     try {
-      const { prompt, imageBytes, mimeType = 'image/png', aspectRatio = '16:9' } = req.body;
+      const { prompt, imageBytes, mimeType = 'image/png', aspectRatio = '16:9' } = req.body || {};
       const apiKey = process.env.GEMINI_API_KEY;
 
       if (!apiKey) {
-        // Provide mock operation name when API key is pending configuration
-        return res.json({
+        return res.status(200).json({
           operationName: `mock-op-${Date.now()}`,
           isMock: true,
           message: 'Video generation scheduled in preview mode.',
@@ -64,43 +72,46 @@ async function startServer() {
       }
 
       const operation = await ai.models.generateVideos(payload);
-      res.json({ operationName: operation.name });
+      return res.status(200).json({ operationName: operation.name });
     } catch (error: any) {
       console.error('Error starting video generation:', error);
-      res.status(500).json({ error: error.message || 'Failed to start video generation' });
+      return res.status(500).json({ error: error.message || 'Failed to start video generation' });
     }
-  });
+  }
 
-  // POST /api/video-status: Poll Veo Operation Status
-  app.post('/api/video-status', async (req, res) => {
+  // 3. POST /api/video-status
+  if (url.includes('/api/video-status')) {
+    if (req.method !== 'POST') {
+      return res.status(405).json({ error: 'Method not allowed' });
+    }
     try {
-      const { operationName } = req.body;
+      const { operationName } = req.body || {};
       if (!operationName) {
         return res.status(400).json({ error: 'operationName is required' });
       }
 
       if (operationName.startsWith('mock-op-')) {
-        return res.json({ done: true, isMock: true });
+        return res.status(200).json({ done: true, isMock: true });
       }
 
       const apiKey = process.env.GEMINI_API_KEY;
       if (!apiKey) {
-        return res.json({ done: true, isMock: true });
+        return res.status(200).json({ done: true, isMock: true });
       }
 
       const ai = getAi();
       const op = new GenerateVideosOperation();
       op.name = operationName;
       const updated = await ai.operations.getVideosOperation({ operation: op });
-      res.json({ done: updated.done, error: updated.error });
+      return res.status(200).json({ done: updated.done, error: updated.error });
     } catch (error: any) {
       console.error('Error polling video operation:', error);
-      res.status(500).json({ error: error.message || 'Failed to poll video operation' });
+      return res.status(500).json({ error: error.message || 'Failed to poll video operation' });
     }
-  });
+  }
 
-  // Video Download / Streaming Handler (supports GET and POST)
-  const handleVideoDownload = async (req: express.Request, res: express.Response) => {
+  // 4. GET / POST /api/video-download
+  if (url.includes('/api/video-download')) {
     try {
       const operationName = (req.body?.operationName || req.query?.operationName) as string;
       if (!operationName) {
@@ -127,47 +138,13 @@ async function startServer() {
       });
 
       res.setHeader('Content-Type', 'video/mp4');
-      if (videoRes.body) {
-        videoRes.body.pipeTo(
-          new WritableStream({
-            write(chunk) {
-              res.write(chunk);
-            },
-            close() {
-              res.end();
-            },
-          })
-        );
-      } else {
-        res.end();
-      }
+      const arrayBuffer = await videoRes.arrayBuffer();
+      return res.status(200).send(Buffer.from(arrayBuffer));
     } catch (error: any) {
       console.error('Error downloading video:', error);
-      res.status(500).json({ error: error.message || 'Failed to stream video' });
+      return res.status(500).json({ error: error.message || 'Failed to stream video' });
     }
-  };
-
-  app.post('/api/video-download', handleVideoDownload);
-  app.get('/api/video-download', handleVideoDownload);
-
-  // Vite middleware for development
-  if (process.env.NODE_ENV !== 'production') {
-    const vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: 'spa',
-    });
-    app.use(vite.middlewares);
-  } else {
-    const distPath = path.join(process.cwd(), 'dist');
-    app.use(express.static(distPath));
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
-    });
   }
 
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Atlas Standards Server running on http://0.0.0.0:${PORT}`);
-  });
+  return res.status(404).json({ error: 'Endpoint not found' });
 }
-
-startServer();
