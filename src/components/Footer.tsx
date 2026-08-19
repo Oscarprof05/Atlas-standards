@@ -4,13 +4,21 @@ import { ArrowUp, Mail, Phone, Instagram, Linkedin } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if ((window as any).__lenis) {
+      (window as any).__lenis.scrollTo(0);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+    if ((window as any).__lenis) {
+      (window as any).__lenis.scrollTo(`#${id}`);
+    } else {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -64,15 +72,17 @@ export const Footer: React.FC = () => {
             <h4 className="font-cinzel text-xs tracking-[0.25em] uppercase text-white font-medium">
               CONNECT
             </h4>
-            <div className="space-y-2 text-xs text-neutral-400 font-light">
-              <div className="flex items-center justify-center sm:justify-start gap-2">
-                <Instagram className="w-3 h-3 text-neutral-500" />
-                <span>Instagram → [LINK TO BE ADDED]</span>
-              </div>
-              <div className="flex items-center justify-center sm:justify-start gap-2">
-                <Linkedin className="w-3 h-3 text-neutral-500" />
-                <span>LinkedIn → [LINK TO BE ADDED]</span>
-              </div>
+            <div className="space-y-2.5 text-xs text-neutral-400 font-light">
+              <a
+                href="https://www.linkedin.com/company/atlas-standards/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center sm:justify-start gap-2 text-neutral-400 hover:text-white transition-colors group"
+              >
+                <Linkedin className="w-3.5 h-3.5 text-neutral-500 group-hover:text-white transition-colors" />
+                <span>LinkedIn</span>
+                <span className="text-[10px] text-neutral-600 group-hover:text-neutral-300 transition-colors">↗</span>
+              </a>
             </div>
           </div>
 

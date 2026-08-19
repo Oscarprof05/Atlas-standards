@@ -71,9 +71,13 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const handleLinkClick = (href: string) => {
     setMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if ((window as any).__lenis) {
+      (window as any).__lenis.scrollTo(href);
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 

@@ -19,7 +19,7 @@ export const RequirementsSection: React.FC<RequirementsSectionProps> = ({ onStar
       description:
         'For emerging and established brands, we help with sourcing, product development, sampling, manufacturing coordination and product finishing. Whether you’re developing a new product or looking for a more reliable production partner, Atlas helps bring structure to the process.',
       cta: 'BUILD WITH ATLAS',
-      image: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1200&auto=format&fit=crop',
+      image: '/products/heavyweight-tees.jpg',
     },
     {
       id: 'institutions-organizations',
@@ -29,7 +29,7 @@ export const RequirementsSection: React.FC<RequirementsSectionProps> = ({ onStar
       description:
         'We work with colleges, student organizations, events, corporate teams, clubs, NGOs and other institutions on merchandise across different quantities and budgets. From straightforward event merchandise to more customized products, we help identify the right balance between product, quantity, customization and cost.',
       cta: 'PLAN YOUR MERCHANDISE',
-      image: 'https://images.unsplash.com/photo-1607344645866-009c320c5ab8?q=80&w=1200&auto=format&fit=crop',
+      image: '/products/institutional-merchandise.jpg',
     },
   ];
 

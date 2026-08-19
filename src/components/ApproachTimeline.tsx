@@ -15,7 +15,7 @@ export const ApproachTimeline: React.FC = () => {
       stage: 'Requirement & Scope',
       description:
         'We understand what you’re trying to build, your requirements, quantity and timeline.',
-      image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=1200&auto=format&fit=crop',
+      image: '/products/product-development.jpg',
     },
     {
       num: '02',
@@ -24,7 +24,7 @@ export const ApproachTimeline: React.FC = () => {
       stage: 'Materials & Approach',
       description:
         'Where needed, we help determine the product, materials, customization and production approach.',
-      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200&auto=format&fit=crop',
+      image: '/products/fabric-textiles.jpg',
     },
     {
       num: '03',
@@ -33,7 +33,7 @@ export const ApproachTimeline: React.FC = () => {
       stage: 'Review & Refine',
       description:
         'For projects requiring development, the product is reviewed and refined before production.',
-      image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1200&auto=format&fit=crop',
+      image: '/products/knitwear-sweaters.jpg',
     },
     {
       num: '04',
@@ -42,7 +42,7 @@ export const ApproachTimeline: React.FC = () => {
       stage: 'Manufacturing Partner',
       description:
         'The approved requirement moves into production through the appropriate manufacturing partner.',
-      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop',
+      image: '/products/varsity-outerwear.jpg',
     },
     {
       num: '05',
@@ -51,7 +51,7 @@ export const ApproachTimeline: React.FC = () => {
       stage: 'Verification & Handover',
       description:
         'The finished product is checked against the agreed requirement and prepared for delivery.',
-      image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop',
+      image: '/products/institutional-merchandise.jpg',
     },
   ];
 

@@ -15,6 +15,7 @@ import { NetworkMap } from './components/NetworkMap';
 import { WhyAtlas } from './components/WhyAtlas';
 import { PartnersSection } from './components/PartnersSection';
 import { ContactSection } from './components/ContactSection';
+import { PhilosophySection } from './components/PhilosophySection';
 import { Footer } from './components/Footer';
 import { AudioAmbience } from './components/AudioAmbience';
 import { LookbookVideoStudio } from './components/LookbookVideoStudio';
@@ -35,6 +36,7 @@ export default function App() {
     });
 
     lenis.on('scroll', ScrollTrigger.update);
+    (window as any).__lenis = lenis;
 
     function raf(time: number) {
       lenis.raf(time);
@@ -43,21 +45,30 @@ export default function App() {
     requestAnimationFrame(raf);
 
     return () => {
+      delete (window as any).__lenis;
       lenis.destroy();
     };
   }, []);
 
   const handleStartProject = () => {
-    const contactElem = document.getElementById('contact');
-    if (contactElem) {
-      contactElem.scrollIntoView({ behavior: 'smooth' });
+    if ((window as any).__lenis) {
+      (window as any).__lenis.scrollTo('#contact');
+    } else {
+      const contactElem = document.getElementById('contact');
+      if (contactElem) {
+        contactElem.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
   const handleExplore = () => {
-    const problemElem = document.getElementById('problem');
-    if (problemElem) {
-      problemElem.scrollIntoView({ behavior: 'smooth' });
+    if ((window as any).__lenis) {
+      (window as any).__lenis.scrollTo('#problem');
+    } else {
+      const problemElem = document.getElementById('problem');
+      if (problemElem) {
+        problemElem.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -117,6 +128,9 @@ export default function App() {
 
         {/* SECTION 08 — MANUFACTURING PARTNERS PORTAL */}
         <PartnersSection />
+
+        {/* ⭐ FINAL TRUST / PHILOSOPHY STATEMENT */}
+        <PhilosophySection />
 
         {/* SECTION 09 — INITIATE PROJECT (CONTACT FORM) */}
         <ContactSection />

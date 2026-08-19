@@ -40,17 +40,17 @@ export const LookbookVideoStudio: React.FC<LookbookVideoStudioProps> = ({
   const presetLookbooks = [
     {
       title: 'Structured Loopback Hoodie',
-      url: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=800&auto=format&fit=crop',
+      url: '/products/hoodies-sweatshirts.jpg',
       prompt: 'Cinematic slow-motion shot of a structured cotton loopback hoodie in low-key studio lighting with soft reflections, showing fabric drape and clean hood construction',
     },
     {
       title: 'Minimalist Boxy T-Shirt',
-      url: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=800&auto=format&fit=crop',
+      url: '/products/heavyweight-tees.jpg',
       prompt: 'Camera pan across a clean minimalist boxy-fit black t-shirt, highlighting clean collar ribbing and smooth cotton drape',
     },
     {
       title: 'Outerwear Overshirt & Jacket',
-      url: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?q=80&w=800&auto=format&fit=crop',
+      url: '/products/varsity-outerwear.jpg',
       prompt: 'Cinematic macro camera orbit around a structured outerwear overshirt with clean hardware and durable seam construction',
     },
   ];

@@ -67,86 +67,268 @@ export const NetworkMap: React.FC<{ onStartProject: () => void }> = ({ onStartPr
 
         {/* Interactive Hub Selector & Map Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left: Minimal Vector Map */}
+          {/* Left: Minimal Architectural Vector Map */}
           <div className="lg:col-span-6">
-            <div className="relative w-full aspect-[4/4] bg-neutral-950 border border-neutral-900 rounded-sm p-6 flex items-center justify-center overflow-hidden">
-              <div className="absolute inset-0 bg-subtle-grid opacity-25" />
+            <div className="relative w-full aspect-square bg-neutral-950/90 border border-neutral-800 rounded-sm p-6 sm:p-8 flex items-center justify-center overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
+              {/* Subtle background coordinate grid */}
+              <div className="absolute inset-0 bg-subtle-grid opacity-20 pointer-events-none" />
+              
+              {/* Latitude / Longitude luxury markings */}
+              <div className="absolute top-4 left-4 font-mono text-[8px] text-neutral-600 tracking-widest uppercase">
+                LAT 11°–13°N // LON 77°–80°E
+              </div>
+              <div className="absolute top-4 right-4 font-mono text-[8px] text-neutral-600 tracking-widest uppercase">
+                SOUTH INDIA CORRIDOR
+              </div>
 
               <svg
-                viewBox="0 0 100 100"
-                className="w-full h-full max-h-[420px] select-none"
+                viewBox="0 0 400 400"
+                className="w-full h-full max-h-[380px] select-none"
               >
+                <defs>
+                  {/* Glow filter */}
+                  <filter id="mapGlow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="3" result="blur" />
+                    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                  </filter>
+                  <linearGradient id="routeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
+                    <stop offset="50%" stopColor="#888888" stopOpacity="0.4" />
+                    <stop offset="100%" stopColor="#ffffff" stopOpacity="0.8" />
+                  </linearGradient>
+                </defs>
+
+                {/* Technical Grid lines */}
+                <line x1="60" y1="100" x2="340" y2="100" stroke="#222" strokeWidth="0.5" strokeDasharray="3 3" />
+                <line x1="60" y1="200" x2="340" y2="200" stroke="#222" strokeWidth="0.5" strokeDasharray="3 3" />
+                <line x1="60" y1="300" x2="340" y2="300" stroke="#222" strokeWidth="0.5" strokeDasharray="3 3" />
+                <line x1="120" y1="50" x2="120" y2="350" stroke="#222" strokeWidth="0.5" strokeDasharray="3 3" />
+                <line x1="200" y1="50" x2="200" y2="350" stroke="#222" strokeWidth="0.5" strokeDasharray="3 3" />
+                <line x1="280" y1="50" x2="280" y2="350" stroke="#222" strokeWidth="0.5" strokeDasharray="3 3" />
+
+                {/* South India Peninsula Landmass Contour */}
                 <path
-                  d="M 28 35 L 45 42 L 58 40 L 72 48 L 68 60 L 56 75 L 46 90 L 36 80 L 28 62 L 24 45 Z"
-                  fill="none"
-                  stroke="rgba(255,255,255,0.1)"
-                  strokeWidth="0.75"
-                  strokeDasharray="2 2"
+                  d="M 90 70 
+                     C 115 120, 110 170, 115 220 
+                     C 120 260, 140 310, 195 365 
+                     C 210 350, 245 285, 275 230 
+                     C 295 190, 310 145, 305 70"
+                  fill="rgba(255,255,255,0.015)"
+                  stroke="rgba(255,255,255,0.18)"
+                  strokeWidth="1.2"
+                  strokeDasharray="4 3"
                 />
 
+                {/* Inner Regional Topography contours */}
                 <path
-                  d="M 42 78 L 46 70"
+                  d="M 130 110 
+                     C 140 170, 135 220, 150 265 
+                     C 165 300, 185 330, 195 345 
+                     C 215 310, 245 260, 265 210 
+                     C 280 170, 285 130, 280 100"
                   fill="none"
-                  stroke="rgba(255,255,255,0.3)"
-                  strokeWidth="0.75"
-                />
-                <path
-                  d="M 46 70 L 54 72"
-                  fill="none"
-                  stroke="rgba(255,255,255,0.3)"
-                  strokeWidth="0.75"
-                />
-                <path
-                  d="M 42 78 L 54 72"
-                  fill="none"
-                  stroke="rgba(255,255,255,0.2)"
-                  strokeWidth="0.5"
-                  strokeDasharray="1 2"
+                  stroke="rgba(255,255,255,0.06)"
+                  strokeWidth="0.7"
                 />
 
-                {mapCoordinates[activeHub.id] && (
-                  <circle
-                    cx={mapCoordinates[activeHub.id].x}
-                    cy={mapCoordinates[activeHub.id].y}
-                    r="5"
-                    fill="none"
-                    stroke="rgba(255,255,255,0.5)"
-                    strokeWidth="0.5"
-                    className="animate-ping origin-center"
+                {/* Animated Route Lines between Sourcing Nodes */}
+                {/* 1. Bengaluru (175, 130) to Chennai (285, 150) */}
+                <path
+                  d="M 175 130 Q 230 135 285 150"
+                  fill="none"
+                  stroke="rgba(255,255,255,0.25)"
+                  strokeWidth="1"
+                  strokeDasharray="4 4"
+                />
+                {/* Animated moving pulse */}
+                <circle r="2.5" fill="#ffffff" filter="url(#mapGlow)">
+                  <animateMotion
+                    path="M 175 130 Q 230 135 285 150"
+                    dur="3.2s"
+                    repeatCount="indefinite"
                   />
-                )}
+                </circle>
 
-                {hubs.map((hub) => {
-                  const coords = mapCoordinates[hub.id];
-                  if (!coords) return null;
-                  const isActive = hub.id === activeHubId;
-                  return (
-                    <g
-                      key={hub.id}
-                      className="cursor-pointer transition-all duration-300"
-                      onClick={() => setActiveHubId(hub.id)}
-                    >
-                      <circle
-                        cx={coords.x}
-                        cy={coords.y}
-                        r={isActive ? 3.5 : 2.2}
-                        fill={isActive ? '#FFFFFF' : '#666666'}
-                        className="transition-all duration-300 hover:fill-white"
-                      />
-                      <text
-                        x={coords.x + 4}
-                        y={coords.y + 1}
-                        fill={isActive ? '#FFFFFF' : '#888888'}
-                        fontSize="3.4"
-                        fontFamily="Cinzel"
-                        letterSpacing="0.05em"
-                        className="select-none font-medium"
-                      >
-                        {hub.city}
-                      </text>
-                    </g>
-                  );
-                })}
+                {/* 2. Bengaluru (175, 130) to Tiruppur (145, 255) */}
+                <path
+                  d="M 175 130 Q 155 190 145 255"
+                  fill="none"
+                  stroke="rgba(255,255,255,0.25)"
+                  strokeWidth="1"
+                  strokeDasharray="4 4"
+                />
+                {/* Animated moving pulse */}
+                <circle r="2.5" fill="#ffffff" filter="url(#mapGlow)">
+                  <animateMotion
+                    path="M 175 130 Q 155 190 145 255"
+                    dur="2.8s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+
+                {/* 3. Tiruppur (145, 255) to Chennai (285, 150) */}
+                <path
+                  d="M 145 255 Q 220 215 285 150"
+                  fill="none"
+                  stroke="rgba(255,255,255,0.3)"
+                  strokeWidth="1.2"
+                />
+                {/* Animated moving pulse */}
+                <circle r="3" fill="#ffffff" filter="url(#mapGlow)">
+                  <animateMotion
+                    path="M 145 255 Q 220 215 285 150"
+                    dur="3.6s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+
+                {/* CITY NODES & LABELS */}
+
+                {/* TIRUPPUR NODE (145, 255) */}
+                <g
+                  className="cursor-pointer group"
+                  onClick={() => setActiveHubId('tiruppur')}
+                >
+                  {activeHubId === 'tiruppur' && (
+                    <>
+                      <circle cx="145" cy="255" r="16" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="0.8" className="animate-ping origin-center" />
+                      <circle cx="145" cy="255" r="10" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1" />
+                    </>
+                  )}
+                  <circle
+                    cx="145"
+                    cy="255"
+                    r={activeHubId === 'tiruppur' ? 5.5 : 4}
+                    fill={activeHubId === 'tiruppur' ? '#ffffff' : '#888888'}
+                    stroke="#000"
+                    strokeWidth="1.5"
+                    className="transition-all duration-300"
+                  />
+                  {/* Leader line & Tag */}
+                  <line x1="145" y1="255" x2="110" y2="280" stroke={activeHubId === 'tiruppur' ? '#ffffff' : '#555555'} strokeWidth="0.8" />
+                  <line x1="110" y1="280" x2="65" y2="280" stroke={activeHubId === 'tiruppur' ? '#ffffff' : '#555555'} strokeWidth="0.8" />
+                  
+                  <text
+                    x="65"
+                    y="274"
+                    fill={activeHubId === 'tiruppur' ? '#ffffff' : '#999999'}
+                    fontSize="11"
+                    fontFamily="Cinzel, serif"
+                    letterSpacing="0.1em"
+                    className="font-bold uppercase select-none transition-colors duration-300"
+                  >
+                    TIRUPPUR
+                  </text>
+                  <text
+                    x="65"
+                    y="292"
+                    fill="#666666"
+                    fontSize="7.5"
+                    fontFamily="Syncopate, sans-serif"
+                    letterSpacing="0.15em"
+                    className="uppercase select-none"
+                  >
+                    TEXTILE & KNITWEAR HUB
+                  </text>
+                </g>
+
+                {/* BENGALURU NODE (175, 130) */}
+                <g
+                  className="cursor-pointer group"
+                  onClick={() => setActiveHubId('bengaluru')}
+                >
+                  {activeHubId === 'bengaluru' && (
+                    <>
+                      <circle cx="175" cy="130" r="16" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="0.8" className="animate-ping origin-center" />
+                      <circle cx="175" cy="130" r="10" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1" />
+                    </>
+                  )}
+                  <circle
+                    cx="175"
+                    cy="130"
+                    r={activeHubId === 'bengaluru' ? 5.5 : 4}
+                    fill={activeHubId === 'bengaluru' ? '#ffffff' : '#888888'}
+                    stroke="#000"
+                    strokeWidth="1.5"
+                    className="transition-all duration-300"
+                  />
+                  {/* Leader line & Tag */}
+                  <line x1="175" y1="130" x2="135" y2="90" stroke={activeHubId === 'bengaluru' ? '#ffffff' : '#555555'} strokeWidth="0.8" />
+                  <line x1="135" y1="90" x2="70" y2="90" stroke={activeHubId === 'bengaluru' ? '#ffffff' : '#555555'} strokeWidth="0.8" />
+
+                  <text
+                    x="70"
+                    y="84"
+                    fill={activeHubId === 'bengaluru' ? '#ffffff' : '#999999'}
+                    fontSize="11"
+                    fontFamily="Cinzel, serif"
+                    letterSpacing="0.1em"
+                    className="font-bold uppercase select-none transition-colors duration-300"
+                  >
+                    BENGALURU
+                  </text>
+                  <text
+                    x="70"
+                    y="102"
+                    fill="#666666"
+                    fontSize="7.5"
+                    fontFamily="Syncopate, sans-serif"
+                    letterSpacing="0.15em"
+                    className="uppercase select-none"
+                  >
+                    TECH & DESIGN CLUSTER
+                  </text>
+                </g>
+
+                {/* CHENNAI NODE (285, 150) */}
+                <g
+                  className="cursor-pointer group"
+                  onClick={() => setActiveHubId('chennai')}
+                >
+                  {activeHubId === 'chennai' && (
+                    <>
+                      <circle cx="285" cy="150" r="16" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="0.8" className="animate-ping origin-center" />
+                      <circle cx="285" cy="150" r="10" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1" />
+                    </>
+                  )}
+                  <circle
+                    cx="285"
+                    cy="150"
+                    r={activeHubId === 'chennai' ? 5.5 : 4}
+                    fill={activeHubId === 'chennai' ? '#ffffff' : '#888888'}
+                    stroke="#000"
+                    strokeWidth="1.5"
+                    className="transition-all duration-300"
+                  />
+                  {/* Leader line & Tag */}
+                  <line x1="285" y1="150" x2="320" y2="120" stroke={activeHubId === 'chennai' ? '#ffffff' : '#555555'} strokeWidth="0.8" />
+                  <line x1="320" y1="120" x2="375" y2="120" stroke={activeHubId === 'chennai' ? '#ffffff' : '#555555'} strokeWidth="0.8" />
+
+                  <text
+                    x="375"
+                    y="114"
+                    textAnchor="end"
+                    fill={activeHubId === 'chennai' ? '#ffffff' : '#999999'}
+                    fontSize="11"
+                    fontFamily="Cinzel, serif"
+                    letterSpacing="0.1em"
+                    className="font-bold uppercase select-none transition-colors duration-300"
+                  >
+                    CHENNAI
+                  </text>
+                  <text
+                    x="375"
+                    y="132"
+                    textAnchor="end"
+                    fill="#666666"
+                    fontSize="7.5"
+                    fontFamily="Syncopate, sans-serif"
+                    letterSpacing="0.15em"
+                    className="uppercase select-none"
+                  >
+                    PORT & EXPORT CORRIDOR
+                  </text>
+                </g>
               </svg>
 
               <div className="absolute bottom-4 left-6 right-6 flex items-center justify-between text-[9px] font-syncopate text-neutral-500 tracking-[0.2em] uppercase">
