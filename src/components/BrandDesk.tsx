@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { CheckCircle2, Sliders, Layers, Sparkles, Scale, DollarSign, Clock } from 'lucide-react';
+import { CheckCircle2, Scale, Layers, Sliders, Sparkles, DollarSign, Clock } from 'lucide-react';
 
 export const BrandDesk: React.FC = () => {
   const [activeTab, setActiveTab] = useState<string>('GSM');
@@ -9,98 +9,98 @@ export const BrandDesk: React.FC = () => {
     {
       id: 'GSM',
       name: 'GSM & Weight',
-      short: 'Fabric Density',
+      short: 'Fabric Weight',
       icon: Scale,
-      tagline: 'Understanding Grams per Square Meter',
+      tagline: 'Understanding Fabric Weight & Thickness',
       summary:
-        'GSM dictates the structural stiffness, opacity, drape, and seasonal weight of your apparel. Higher GSM is not always better — it must match the intended silhouette.',
+        'GSM (Grams per Square Meter) measures the weight and density of the fabric. Choosing the right GSM depends on the desired drape, structure, climate, and intended use of the garment.',
       specs: [
-        { label: '180–220 GSM', desc: 'Standard everyday weight with soft fluid drape, suitable for lightweight layering.' },
-        { label: '260–300 GSM', desc: 'Mid-heavyweight standard. Provides clean structured drape with zero transparency.' },
-        { label: '320–380 GSM', desc: 'Heavy single jersey. Clean boxy drape that holds silhouette shape away from the body.' },
-        { label: '450–520 GSM', desc: 'Heavyweight French Terry loopback. Structured hoodies and substantial sweatpants.' },
+        { label: 'Light-to-Mid Weight', desc: 'Comfortable everyday fabrics suitable for regular wear and standard drape.' },
+        { label: 'Mid-to-Heavy Weight', desc: 'Substantial fabric with balanced structure, zero transparency, and clean drape.' },
+        { label: 'Heavyweight', desc: 'Dense fabric holding a defined shape away from the body for structured silhouettes.' },
+        { label: 'Fleece & Loopback', desc: 'Heavyweight knits with looped or brushed interiors for hoodies and sweatshirts.' },
       ],
-      proTip: 'For boxy tees, 280–320 GSM combed cotton prevents collar warping and holds clean shoulder lines.',
+      proTip: 'Heavier is not always better — the right weight depends on the silhouette and purpose you are creating.',
     },
     {
       id: 'Fabric',
       name: 'Yarn & Combing',
-      short: 'Textile Composition',
+      short: 'Fabric Quality',
       icon: Layers,
-      tagline: 'Yarn Count, Combing & Fiber Staple',
+      tagline: 'Fiber Quality & Feel',
       summary:
-        'The difference between a garment that pills quickly and one that holds up for years lies in fiber staple length and spinning technique.',
+        'The touch, durability, and wash performance of a garment begin with the yarn. Combed cotton removes shorter fibers and impurities, resulting in a cleaner, softer, and more durable surface.',
       specs: [
-        { label: 'Carded Cotton', desc: 'Short fibers, fuzzy surface, prone to pilling and shrinkage. We avoid using low-grade carded yarns.' },
-        { label: 'Combed Ring-Spun', desc: 'Fibers are combed to remove short fibers and impurities, resulting in a smoother, stronger yarn.' },
-        { label: 'Siro-Spun / Compact', desc: 'Two strands spun together under tension to minimize surface hairiness and create a clean print surface.' },
-        { label: 'Loopback vs. Fleece', desc: 'Loopback terry provides breathable interior comfort; brushed fleece adds warmer interior softness.' },
+        { label: 'Carded Cotton', desc: 'Standard fiber quality with more surface hairiness, commonly used in basic garments.' },
+        { label: 'Combed Cotton', desc: 'Combed to remove short fibers, creating a smoother hand-feel and better longevity.' },
+        { label: 'Cotton Blends', desc: 'Blended with polyester or elastane for specific stretch, durability, or performance needs.' },
+        { label: 'Interior Finishes', desc: 'Loopback terry for breathable interior texture or brushed fleece for softer warmth.' },
       ],
-      proTip: 'Combed 24s/1 and 30s/1 yarns offer an optimal balance of softness and dimensional stability.',
+      proTip: 'Using quality combed cotton improves print clarity and helps garments hold up across multiple washes.',
     },
     {
       id: 'Fit',
       name: 'Fit & Patterning',
-      short: 'Silhouette Engineering',
+      short: 'Silhouette & Proportions',
       icon: Sliders,
-      tagline: 'Drop Shoulder, Boxy, and Regular Blocks',
+      tagline: 'Proportions & Silhouette Calibration',
       summary:
-        'Pattern engineering is about proportion: shoulder drop, sleeve pitch, chest width, and collar height calibrated to the body.',
+        'Garment fit is determined by proportions: chest width, shoulder drop, sleeve length, body length, and collar fit. We help align your patterns with your intended look.',
       specs: [
-        { label: 'Boxy / Dropped Shoulder', desc: 'Wider chest width and dropped shoulder line paired with balanced body length.' },
-        { label: 'Contemporary Regular Block', desc: 'Standard shoulder placement with clean sleeve pitch and balanced drape.' },
-        { label: 'High-Density Collar Ribbing', desc: 'Rib collar with elastane recovery that prevents sagging after multiple washes.' },
-        { label: 'Seam Reinforcements', desc: 'Shoulder-to-shoulder neck taping and twin-needle hems for structural durability.' },
+        { label: 'Regular Fit', desc: 'Balanced proportions following standard body measurements.' },
+        { label: 'Boxy & Relaxed', desc: 'Wider body proportions with dropped shoulders and balanced length.' },
+        { label: 'Collar Construction', desc: 'Ribbed collar width and tension designed to prevent sagging.' },
+        { label: 'Reinforced Seams', desc: 'Neck taping and durable stitch finishes for structural longevity.' },
       ],
-      proTip: 'Reviewing digital 2D pattern tech sheets first ensures proportions are accurate before any fabric is cut.',
+      proTip: 'Starting with a clear reference garment or tech sheet helps ensure sizing and fit are accurate.',
     },
     {
       id: 'Sampling',
       name: 'Sampling Protocols',
       short: 'Review & Approvals',
       icon: Sparkles,
-      tagline: 'Digital-First Approvals & Physical Sampling',
+      tagline: 'Digital Approvals & Physical Samples',
       summary:
-        'Digital approvals are our default workflow for speed, clarity, and cost efficiency. Physical pre-production samples are created on request and are chargeable.',
+        'Digital reviews and approvals serve as our default workflow for speed, clarity, and cost efficiency. Physical pre-production samples are created on the actual manufacturing line and are available upon request.',
       specs: [
-        { label: 'Digital Review (Default)', desc: 'Detailed CAD tech sheets, vector print placement proofs, and color specifications reviewed digitally first.' },
-        { label: 'Pantone Lab Dips', desc: 'Spectral dye formulations evaluated under standard lighting conditions for precise color matching.' },
-        { label: 'Physical Sample (Chargeable)', desc: 'Pre-production physical sample produced on the actual mass line, available upon client request.' },
-        { label: 'Bulk Production Handover', desc: 'Production proceeds only after client sign-off on digital specifications or physical sample.' },
+        { label: 'Digital Review (Default)', desc: 'Detailed specification sheets, artwork placements, and color references approved digitally.' },
+        { label: 'Color Matching', desc: 'Pantone-referenced color matching to align with your brand standards.' },
+        { label: 'Physical Samples (Chargeable)', desc: 'Pre-production physical samples created on the factory line upon client request.' },
+        { label: 'Production Sign-off', desc: 'Bulk production commences only after full sign-off on specifications.' },
       ],
-      proTip: 'Digital reviews save 10–14 days in initial lead time; physical samples are recommended when testing entirely new proprietary silhouettes.',
+      proTip: 'Digital reviews keep development moving quickly; physical samples give hands-on validation for new styles.',
     },
     {
       id: 'Costing',
       name: 'Cost Factors',
-      short: 'Unit Economics',
+      short: 'Production Costs',
       icon: DollarSign,
-      tagline: 'Understanding Apparel Production Costs',
+      tagline: 'Understanding Production Economics',
       summary:
-        'Apparel manufacturing costs depend on yarn weight (GSM), fabric consumption, dye complexity, embellishment passes, and order quantity.',
+        'Apparel manufacturing costs depend on fabric type and weight, pattern complexity, printing and embroidery requirements, trim choices, and batch quantity.',
       specs: [
-        { label: 'Fabric & Dyeing', desc: 'Fabric raw material and dyeing typically account for the largest share of unit cost.' },
-        { label: 'Cutting & Stitching', desc: 'Sewing labor, seam reinforcement, specialized machines (e.g. flatlock vs standard overlock).' },
-        { label: 'Embellishments & Prints', desc: 'Number of print colors, screen setups, embroidery stitch counts, or specialty inks.' },
-        { label: 'Trims & Packaging', desc: 'Neck labels, wash care tags, hangtags, and optional custom packaging.' },
+        { label: 'Fabric & Dyeing', desc: 'Fabric weight, composition, and custom dyeing account for the core of the unit cost.' },
+        { label: 'Cut & Sew Labor', desc: 'Sewing complexity, specialized seams, and garment construction requirements.' },
+        { label: 'Branding & Prints', desc: 'Number of print colors, embroidery size, stitch counts, and finish techniques.' },
+        { label: 'Trims & Packaging', desc: 'Custom neck labels, wash tags, hangtags, and presentation packaging.' },
       ],
-      proTip: 'Standardizing fabric colorways across multiple garment styles helps reach better batch economics.',
+      proTip: 'Consolidating fabrics or colors across multiple styles can optimize overall batch production costs.',
     },
     {
       id: 'MOQ',
       name: 'Batch Quantities',
-      short: 'Minimums & Scaling',
+      short: 'Minimum Orders',
       icon: Clock,
-      tagline: 'Accessible Starting Minimums',
+      tagline: 'Production Batch Quantities',
       summary:
-        'Minimum order quantity generally starts from 50 pieces, but certain products, premium constructions, specialized garments, custom developments or prototype-based manufacturing may require higher minimum quantities, typically 150 pieces or more, depending on the manufacturing process.',
+        'Projects generally begin from around 50 units. Certain products, materials or manufacturing methods may require higher minimum quantities depending on production feasibility.',
       specs: [
-        { label: 'Standard Catalog Apparel', desc: 'Starting from 50 pieces per style across standard size distributions.' },
-        { label: 'Custom Fabrications & Dye Lots', desc: 'Typically 150+ pieces depending on minimal batch dyeing vat volumes and knitting setup.' },
-        { label: 'Specialized Construction / Outerwear', desc: '150 to 300 pieces depending on complex patterning and custom trim tooling.' },
-        { label: 'Institutional & Enterprise Batches', desc: 'From 500 to 10,000+ units with volume efficiencies.' },
+        { label: 'Standard Apparel Orders', desc: 'Core styles generally start from around 50 units across standard size assortments.' },
+        { label: 'Custom Fabrications', desc: 'Specialized fabric blends or custom dye runs may require higher minimums.' },
+        { label: 'Specialized Construction', desc: 'Complex jackets or specialized outerwear may need higher batch thresholds.' },
+        { label: 'Institutional Volumes', desc: 'Scalable production capacity for organizations, events, and large teams.' },
       ],
-      proTip: 'MOQ is project-dependent: starting from 50 units gives flexibility to launch, while complex bespoke fabrications scale naturally around 150+ pieces.',
+      proTip: 'We always evaluate your specific requirement to determine the most practical starting quantity.',
     },
   ];
 
@@ -115,18 +115,18 @@ export const BrandDesk: React.FC = () => {
         {/* Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-16 sm:mb-20">
           <span className="font-syncopate text-[10px] sm:text-xs tracking-[0.35em] text-neutral-500 uppercase">
-            BRAND DESK • SOURCING INTELLIGENCE
+            BRAND DESK • SOURCING GUIDANCE
           </span>
           <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-medium tracking-[0.06em] uppercase text-white mt-4 leading-tight">
             KNOW WHAT YOU'RE BUILDING
-            <span className="block font-light text-neutral-400">BEFORE SPENDING CAPITAL.</span>
+            <span className="block font-light text-neutral-400">BEFORE YOU BEGIN.</span>
           </h2>
           <p className="mt-4 text-xs sm:text-sm md:text-base text-neutral-400 font-light max-w-2xl mx-auto leading-relaxed">
-            Practical knowledge directly from fabric mills, pattern makers, and apparel technicians. Select a parameter below to understand the variables.
+            Practical guidance on apparel variables, fabrics, fit, and production economics to help you make informed decisions.
           </p>
         </div>
 
-        {/* Floating Parameter Buttons */}
+        {/* Parameter Buttons */}
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 max-w-4xl mx-auto mb-12">
           {topics.map((t) => {
             const isActive = t.id === activeTab;
@@ -167,7 +167,7 @@ export const BrandDesk: React.FC = () => {
                 </h3>
               </div>
               <span className="font-syncopate text-[10px] tracking-[0.2em] text-neutral-500">
-                GUIDE 0{topics.findIndex((t) => t.id === currentTopic.id) + 1}
+                TOPIC 0{topics.findIndex((t) => t.id === currentTopic.id) + 1}
               </span>
             </div>
 
@@ -190,14 +190,14 @@ export const BrandDesk: React.FC = () => {
               ))}
             </div>
 
-            {/* Pro Tip Box */}
+            {/* Note Box */}
             <div className="p-5 bg-neutral-900/40 border border-neutral-800 rounded-sm flex items-start gap-4">
               <div className="p-2 bg-neutral-800 rounded-full text-white">
                 <Sparkles className="w-4 h-4" />
               </div>
               <div>
                 <p className="font-syncopate text-[9px] tracking-[0.2em] text-neutral-400 uppercase">
-                  SOURCING NOTE
+                  PRACTICAL NOTE
                 </p>
                 <p className="text-xs sm:text-sm text-neutral-200 font-light mt-1">
                   {currentTopic.proTip}

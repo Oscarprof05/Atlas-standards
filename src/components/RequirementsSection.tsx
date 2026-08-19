@@ -18,7 +18,7 @@ export const RequirementsSection: React.FC<RequirementsSectionProps> = ({ onStar
       description:
         'Your brand identity is defined by the feel of the fabric, the drape of the silhouette, and the durability of the construction. We guide emerging and scaling labels through yarn formulation, tech pack creation, and production with accessible starting quantities.',
       metrics: [
-        { label: 'Initial Production Batches', value: 'From 50 Units*' },
+        { label: 'Initial Production Batches', value: 'From ~50 Units*' },
         { label: 'Digital Fit & Tech Review', value: 'Included' },
         { label: 'Physical Sampling (On Request)', value: 'Chargeable' },
       ],
@@ -42,11 +42,11 @@ export const RequirementsSection: React.FC<RequirementsSectionProps> = ({ onStar
       label: 'CUSTOM APPAREL // NON-STANDARD REQUIREMENTS',
       title: 'SPECIFIC FABRICATIONS.\nCUSTOM PATTERNS & EMBELLISHMENTS.',
       description:
-        'Need a specific yarn blend, custom Pantone lab dip, heavy outerwear construction, or non-standard trim? Minimum quantities generally start from 50 pieces, but specialized custom developments, proprietary fabrications, or prototype-based manufacturing may require 150 pieces or more depending on factory processes.',
+        'Need a specific yarn blend, custom color dye lot, heavy outerwear construction, or specialized trim? Minimum quantities generally start from around 50 pieces, but specialized custom developments or proprietary fabrications may require higher minimum quantities depending on manufacturing feasibility.',
       metrics: [
-        { label: 'Pantone Dye Matching', value: 'Lab Dip D65' },
-        { label: 'Pattern Engineering', value: 'CAD Vector Blocks' },
-        { label: 'Embellishment Options', value: 'Screen, Puff, Embroidery' },
+        { label: 'Color Matching', value: 'Pantone Reference' },
+        { label: 'Pattern Engineering', value: 'Custom Fit Blocks' },
+        { label: 'Embellishment Options', value: 'Print, Puff, Embroidery' },
       ],
       image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=1200&auto=format&fit=crop',
     },
@@ -159,6 +159,13 @@ export const RequirementsSection: React.FC<RequirementsSectionProps> = ({ onStar
               </div>
             );
           })}
+        </div>
+
+        {/* MOQ Policy Note */}
+        <div className="mt-20 p-4 bg-neutral-950/60 border border-neutral-900 rounded-sm text-center max-w-3xl mx-auto">
+          <p className="text-xs text-neutral-400 font-light leading-relaxed">
+            *Projects generally begin from around 50 units. Certain products, materials or manufacturing methods may require higher minimum quantities depending on production feasibility.
+          </p>
         </div>
       </div>
     </section>

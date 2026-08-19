@@ -1,123 +1,131 @@
 import React, { useState, useRef } from 'react';
 import { motion, useInView } from 'motion/react';
 import { ProductItem, CustomizationTech } from '../types';
-import { ArrowRight, ChevronLeft, ChevronRight, Sparkles, Layers, Sliders, Scissors, Cpu, Box } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export const WhatWeDoSection: React.FC<{ onStartProject: () => void }> = ({ onStartProject }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.15 });
   const scrollTrackRef = useRef<HTMLDivElement>(null);
-  const [activeCategory, setActiveCategory] = useState('All');
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
 
   const products: ProductItem[] = [
     {
-      id: 'oversized-heavyweight-tee',
-      category: 'T-Shirts',
-      name: 'Architectural Heavyweight Tee',
-      gsm: '300–340 GSM',
-      composition: '100% Ring-Spun Combed Organic Cotton',
-      silhouette: 'Structured boxy block, dropped shoulder, 1.25" rib collar',
-      description: 'Engineered for structural permanence and high-density drape. Zero neck sag with twin-needle reinforced collar binding and reactive dye fixation.',
-      features: ['Compact Siro-Spun 28/2 Yarn', 'Silicone Emulsion Softener', 'Twin-Needle Blind Stitch Hem', 'Pre-Shrunk Dimensional Tolerance < 1.5%'],
+      id: 't-shirts',
+      category: 'Merchandise & Apparel',
+      name: 'T-Shirts',
+      gsm: 'Core & Custom Weights',
+      composition: '100% Combed Cotton & Custom Blends',
+      silhouette: 'Regular, Boxy, Dropped Shoulder & Custom Blocks',
+      description: 'Everyday and heavyweight t-shirts tailored for brands, startups, and institutions. Clean collar construction, balanced fit, and long-lasting shape retention.',
+      features: ['Combed Cotton Yarns', 'Reinforced Collar Binding', 'Preshrunk Quality Standards', 'Multiple Silhouette Options'],
       image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1200&auto=format&fit=crop',
-      macroDetail: '32s/2 Double Jersey weave with ultra-smooth optical plane for microscopic print adhesion.',
+      macroDetail: 'Even fabric surface optimized for durable print adhesion and comfortable daily wear.',
     },
     {
-      id: 'hoodie-french-terry',
-      category: 'Hoodies',
-      name: '500 GSM Dual-Loopback Architectural Hoodie',
-      gsm: '500–540 GSM',
-      composition: '100% Combed Cotton Heavyweight Loopback Terry',
-      silhouette: 'Structural double-layer crossover hood, seamless kangaroo pocket, no drawstrings',
-      description: 'Monolithic silhouette with brushed loopback interior and rigid crossover hood that stands upright without collapsing.',
-      features: ['Double-Layer 520 GSM Crossover Hood', '500 GSM 2x2 Spandex Tension Ribbing', 'Industrial 4-Needle Flatlock Seam', 'Garment Pigment Stabilization'],
+      id: 'hoodies',
+      category: 'Merchandise & Apparel',
+      name: 'Hoodies & Sweatshirts',
+      gsm: 'Loopback & Fleece',
+      composition: 'Cotton Loopback Terry & Brushed Fleece',
+      silhouette: 'Structured Hood, Crossover Collar, Clean Ribbing',
+      description: 'Substantial hoodies and crewnecks designed with clean drape and structured hoods. Built for brand collections, creator lines, and team apparel.',
+      features: ['Breathable Loopback & Warm Fleece Options', 'Heavy Duty Ribbed Cuffs & Hem', 'Reinforced Pocket & Seam Stitching', 'Customizable Fit & Proportions'],
       image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1200&auto=format&fit=crop',
-      macroDetail: 'Diagonal high-density loopback structure maximizing structural volume and thermal balance.',
+      macroDetail: 'Dense knit structure providing structural volume, warmth, and wash durability.',
     },
     {
-      id: 'luxury-varsity-jacket',
-      category: 'Outerwear',
-      name: 'Heritage 650 GSM Melton Wool Overshirt',
-      gsm: '650 GSM Felted Wool Blend',
-      composition: '80% Recycled Melton Wool / 20% Technical Polyamide',
-      silhouette: 'Architectural clean block with custom matte black gunmetal hardware',
-      description: 'Heavyweight outerwear engineered with water-repellent dense felted weave, concealed storm placket, and brushed gunmetal snap closures.',
-      features: ['24oz Dense Felted Melton Wool', 'Quilted Diamond Satin Interior', 'Custom Machined Matte Gunmetal Snaps', 'Reinforced Pocket Welts'],
-      image: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?q=80&w=1200&auto=format&fit=crop',
-      macroDetail: 'Tightly felted wool structure treated with lanolin water-resistant emulsion.',
-    },
-    {
-      id: 'performance-half-zip',
-      category: 'Technical',
-      name: 'Bonded Seam Laser-Perforated Technical Shell',
-      gsm: '280 GSM',
-      composition: '78% Recycled Technical Poly / 22% Elastane Double-Knit',
-      silhouette: 'Ergonomic raglan cut, ultrasonic bonded seam construction, matte zipper garage',
-      description: 'Engineered for high-mobility industrial applications. Features 4-way mechanical stretch, laser-perforated aeration, and matte antimicrobial finish.',
-      features: ['YKK Waterproof Matte Aquaguard Zipper', 'Ultrasonic Thermo-Welded Seams', 'Laser-Cut Underarm Aeration', 'Moisture-Wicking Capillary Finish'],
-      image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=1200&auto=format&fit=crop',
-      macroDetail: 'Hydrophilic micro-capillary channel structure transferring moisture within milliseconds.',
-    },
-    {
-      id: 'quarter-zip-sweater',
-      category: 'Knitwear',
-      name: '12-Gauge Basolan Extra-Fine Merino Knit',
-      gsm: '12-Gauge Full-Fashioned',
-      composition: '100% Extra-Fine Australian Merino Wool (19.5 Micron)',
-      silhouette: 'Precision tailored silhouette with full-fashioned linked shoulder',
-      description: 'Refined industrial executive knitwear. Naturally thermoregulating with shrink-resistant Basolan treatment and polished steel hardware.',
-      features: ['Full-Fashioned Linking Technique', 'Swiss Polished Metal Zipper Mechanism', 'Zero Synthetic Additives', 'Shrink-Resistant Basolan Treatment'],
+      id: 'polos',
+      category: 'Merchandise & Apparel',
+      name: 'Polos & Collared Shirts',
+      gsm: 'Pique & Interlock Knits',
+      composition: 'Cotton Pique, Matty & Interlock Knits',
+      silhouette: 'Structured Collar, Clean Placket, Tailored Fit',
+      description: 'Refined collared apparel for institutional teams, corporate identity, and elevated lifestyle collections.',
+      features: ['Anti-Curl Knitted Collars', 'Reinforced Button Plackets', 'Breathable Pique Texture', 'Durable Color Fastness'],
       image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop',
-      macroDetail: 'Two-ply high-twist worsted yarn yielding maximum anti-pill structural integrity.',
+      macroDetail: 'Structured knit weave offering balanced breathability and formal presentation.',
+    },
+    {
+      id: 'outerwear',
+      category: 'Merchandise & Apparel',
+      name: 'Jackets & Outerwear',
+      gsm: 'Wovens, Canvas & Fleece Blends',
+      composition: 'Twill, Canvas, Nylon & Blended Wovens',
+      silhouette: 'Structured Clean Block with Custom Hardware',
+      description: 'Jackets, overshirts, and windbreakers developed with dependable weather protection, clean lining, and quality hardware.',
+      features: ['Durable Outer Fabrics', 'Clean Interior Lining', 'Quality Zippers & Metal Snaps', 'Custom Pocket Configurations'],
+      image: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?q=80&w=1200&auto=format&fit=crop',
+      macroDetail: 'Sturdy weave construction designed for outer layer protection and enduring wear.',
+    },
+    {
+      id: 'custom-apparel',
+      category: 'Product Development',
+      name: 'Custom Apparel & Headwear',
+      gsm: 'Project Dependent',
+      composition: 'Custom Sourced Fabrics & Specialized Materials',
+      silhouette: 'Bespoke Patterns Developed from Concept',
+      description: 'Caps, tote bags, and specialty apparel developed to your exact requirements. We help turn references and sketches into manufactured reality.',
+      features: ['Custom Pattern Drafting', 'Specialized Material Sourcing', 'Comprehensive Branding Application', 'End-to-End Development Guidance'],
+      image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=1200&auto=format&fit=crop',
+      macroDetail: 'Tailored material sourcing and construction adapted to your exact product specifications.',
     },
   ];
 
   const customizationTechniques: CustomizationTech[] = [
     {
-      id: 'screen-print',
-      name: 'High-Mesh Screen & Discharge Printing',
-      type: 'Printing',
-      durability: '50+ Industrial Washes',
-      minOrder: 'From 50 Units',
-      description: 'Discharge inks bleach the cotton fiber dye and replace it with pigment, leaving zero ink feel (zero hand-feel) and breathable prints.',
-      bestFor: 'Dark garments, oversized front/back graphics, vintage washed textures.',
+      id: 'screen-printing',
+      name: 'Screen Printing',
+      type: 'Print Technique',
+      durability: 'Long-Lasting Wash Fastness',
+      minOrder: 'From ~50 Units*',
+      description: 'Clean pigment and water-based prints for sharp graphic clarity, smooth hand-feel, and reliable color reproduction.',
+      bestFor: 'T-shirts, hoodies, bold front/back artwork, multi-color branding.',
     },
     {
       id: 'high-density-puff',
-      name: '3D High-Density & Micro-Puff',
-      type: 'Dimensional',
-      durability: '35+ Washes',
-      minOrder: 'From 50 Units (150+ for custom molds)',
-      description: 'Heat-activated expandable plastisol creating razor-sharp raised geometric typography and tactile brand emblems.',
-      bestFor: 'Heavyweight hoodies, chest branding, architectural typography.',
+      name: 'High-Density & Puff Prints',
+      type: 'Dimensional Print',
+      durability: 'Durable Wash Life',
+      minOrder: 'From ~50 Units*',
+      description: 'Raised dimensional ink that creates tactile 3D typography, subtle embossed lettering, and distinctive brand marks.',
+      bestFor: 'Hoodies, chest typography, bold graphic accents.',
     },
     {
-      id: 'chenille-embroidery',
-      name: 'Chenille & Direct-to-Garment Embroidery',
-      type: 'Embroidery',
-      durability: 'Lifetime Garment',
-      minOrder: 'From 50 Units',
-      description: 'Plush looped yarn embroidery paired with micro-density satin lockstitching for archival varsity aesthetic.',
-      bestFor: 'Jackets, collegiate crests, heavyweight fleece outerwear.',
+      id: 'embroidery',
+      name: 'Embroidery & Appliqué',
+      type: 'Stitched Branding',
+      durability: 'Permanent Lifetime',
+      minOrder: 'From ~50 Units*',
+      description: 'Precision thread embroidery with clean stitch density for logos, crests, text, and patch placements.',
+      bestFor: 'Polos, jackets, caps, subtle chest branding, heavy fleece.',
     },
     {
-      id: 'laser-cut-bonded',
-      name: 'Ultrasonic Bonding & Laser Welds',
-      type: 'Technical',
-      durability: 'High-Performance',
-      minOrder: 'From 150 Units (Specialized setup)',
-      description: 'Seamless thermo-fused seam construction and laser-perforated ventilation zones with zero needle puncture holes.',
-      bestFor: 'Performance wear, technical jackets, activewear collections.',
-    },
-    {
-      id: 'custom-hardware',
-      name: 'Custom Matte Hardware & Silicone Tags',
-      type: 'Hardware',
+      id: 'custom-trims',
+      name: 'Labels, Tags & Trims',
+      type: 'Customization',
       durability: 'Permanent',
-      minOrder: 'From 150–300 Units (Tooling dependent)',
-      description: 'Custom molded zinc alloy aglets, debossed snap buttons, matte silicone high-frequency badges, and custom jacquard wash care labels.',
-      bestFor: 'Complete end-to-end proprietary brand identity.',
+      minOrder: 'From ~50 Units*',
+      description: 'Woven neck labels, printed wash care tags, hangtags, metal aglets, and custom branded detail attachments.',
+      bestFor: 'Complete brand presentation and retail-ready finish.',
+    },
+    {
+      id: 'washes-dyes',
+      name: 'Specialty Washes & Dyes',
+      type: 'Fabric Treatment',
+      durability: 'Color Fast',
+      minOrder: 'Feasibility Dependent',
+      description: 'Pantone-matched dyeing, vintage washes, and fabric softening treatments suited to specific collection requirements.',
+      bestFor: 'Custom colorways, vintage aesthetic, soft hand-feel garments.',
+    },
+    {
+      id: 'packaging',
+      name: 'Custom Packaging',
+      type: 'Finishing',
+      durability: 'Protective & Branded',
+      minOrder: 'Upon Request',
+      description: 'Individual protective packing, custom branded polybags, presentation boxes, and size stickers ready for distribution.',
+      bestFor: 'E-commerce deliveries, institutional distribution, VIP kits.',
     },
   ];
 
@@ -170,7 +178,7 @@ export const WhatWeDoSection: React.FC<{ onStartProject: () => void }> = ({ onSt
           </div>
         </motion.div>
 
-        {/* Large Cinematic Heading */}
+        {/* Large Clean Heading */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
@@ -181,12 +189,12 @@ export const WhatWeDoSection: React.FC<{ onStartProject: () => void }> = ({ onSt
             MERCHANDISE & APPAREL
           </h2>
           <p className="mt-4 text-sm sm:text-base text-neutral-400 font-light max-w-2xl leading-relaxed">
-            Crafted like luxury horology. Every garment is engineered from the yarn level up with proprietary patterns, custom dyes, and precision finishing.
+            From core brand essentials to custom product developments. We manage fabric sourcing, pattern calibration, quality construction, and precise finishing.
           </p>
         </motion.div>
       </div>
 
-      {/* Horizontal Apple-Style Product Showcase */}
+      {/* Horizontal Product Showcase */}
       <div className="w-full pl-6 sm:pl-12 overflow-x-auto no-scrollbar py-4" ref={scrollTrackRef}>
         <div className="flex items-stretch gap-8 w-max pr-12">
           {products.map((product, idx) => (
@@ -196,7 +204,7 @@ export const WhatWeDoSection: React.FC<{ onStartProject: () => void }> = ({ onSt
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.8, delay: 0.2 + idx * 0.1 }}
               onClick={() => setSelectedProduct(product)}
-              className="group cursor-pointer w-[320px] sm:w-[420px] md:w-[480px] flex-shrink-0 bg-neutral-950 border border-neutral-900 rounded-sm overflow-hidden transition-all duration-700 hover:border-neutral-700"
+              className="group cursor-pointer w-[320px] sm:w-[400px] md:w-[440px] flex-shrink-0 bg-neutral-950 border border-neutral-900 rounded-sm overflow-hidden transition-all duration-500 hover:border-neutral-700"
             >
               {/* Product Image Stage */}
               <div className="relative w-full aspect-[4/3] bg-neutral-900 overflow-hidden">
@@ -204,26 +212,19 @@ export const WhatWeDoSection: React.FC<{ onStartProject: () => void }> = ({ onSt
                   src={product.image}
                   alt={product.name}
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover grayscale brightness-90 contrast-110 transition-transform duration-1000 ease-out group-hover:scale-105 group-hover:grayscale-0"
+                  className="w-full h-full object-cover grayscale brightness-90 contrast-110 transition-transform duration-700 ease-out group-hover:scale-105 group-hover:grayscale-0"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
-                
-                {/* GSM Pill Badge */}
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="font-syncopate text-[9px] tracking-[0.2em] uppercase px-3 py-1 bg-black/80 backdrop-blur-md border border-neutral-800 text-neutral-300 rounded-full">
-                    {product.gsm}
-                  </span>
-                </div>
 
                 <div className="absolute top-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <span className="font-cinzel text-[10px] tracking-[0.2em] uppercase px-3 py-1 bg-white text-black rounded-full font-semibold">
-                    Inspect Specs
+                    View Details
                   </span>
                 </div>
               </div>
 
               {/* Product Info */}
-              <div className="p-6 sm:p-8 flex flex-col justify-between h-[230px]">
+              <div className="p-6 sm:p-8 flex flex-col justify-between h-[210px]">
                 <div>
                   <span className="font-syncopate text-[9px] tracking-[0.3em] uppercase text-neutral-500">
                     {product.category}
@@ -251,17 +252,17 @@ export const WhatWeDoSection: React.FC<{ onStartProject: () => void }> = ({ onSt
       {/* Product Development Split Layout */}
       <div className="max-w-7xl mx-auto px-6 sm:px-12 mt-32 sm:mt-40">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          {/* Left: Large Typography */}
+          {/* Left: Product Development Info */}
           <div className="lg:col-span-6 space-y-6">
             <span className="font-syncopate text-[10px] tracking-[0.35em] text-neutral-500 uppercase">
-              CUSTOM PRODUCT DEVELOPMENT
+              PRODUCT DEVELOPMENT
             </span>
             <h3 className="font-cinzel text-3xl sm:text-5xl font-light tracking-[0.06em] uppercase text-white leading-tight">
-              PROPRIETARY PATTERNS.
-              <span className="block font-medium text-neutral-400">EXACT METRICS. ZERO COMPROMISE.</span>
+              FROM CONCEPT TO REALITY.
+              <span className="block font-medium text-neutral-400">STRUCTURED & RELIABLE.</span>
             </h3>
             <p className="text-sm sm:text-base text-neutral-400 font-light leading-relaxed">
-              If your desired silhouette doesn't exist in standard catalogs, we develop it from scratch. In-house tech packs, master grading for all sizes, custom Pantone dye lots, and proprietary knit weight formulations.
+              If your desired product requires a custom pattern, specific fabric blend, or unique silhouette, we guide the development process step by step. We translate concepts into clear technical specifications, sample reviews, and production runs.
             </p>
 
             <div className="pt-4 flex flex-col sm:flex-row gap-4">
@@ -269,12 +270,12 @@ export const WhatWeDoSection: React.FC<{ onStartProject: () => void }> = ({ onSt
                 onClick={onStartProject}
                 className="px-7 py-3 rounded-full bg-white text-black font-cinzel text-xs tracking-[0.25em] uppercase font-semibold hover:bg-neutral-200 transition-colors"
               >
-                DEVELOP A CUSTOM SILHOUETTE
+                DISCUSS PRODUCT DEVELOPMENT
               </button>
             </div>
           </div>
 
-          {/* Right: Interactive Enquiry Prompt Card (Replaces Image) */}
+          {/* Right: Enquiry Prompt Card */}
           <div className="lg:col-span-6">
             <div className="relative w-full h-full min-h-[380px] rounded-sm bg-neutral-950/90 border border-neutral-800/90 p-8 sm:p-12 flex flex-col justify-between backdrop-blur-xl group hover:border-neutral-700 transition-all duration-500 shadow-[0_15px_40px_rgba(0,0,0,0.6)]">
               {/* Subtle Ambient Glow */}
@@ -316,17 +317,17 @@ export const WhatWeDoSection: React.FC<{ onStartProject: () => void }> = ({ onSt
           </div>
         </div>
 
-        {/* Customization & Floating Manufacturing Techniques */}
+        {/* Customization & Finishing Section */}
         <div className="mt-32">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="font-syncopate text-[10px] tracking-[0.35em] text-neutral-500 uppercase">
-              MANUFACTURING MASTERY
+              CUSTOMIZATION
             </span>
             <h3 className="font-cinzel text-3xl sm:text-4xl font-medium tracking-[0.08em] uppercase text-white mt-2">
-              SURFACE FINISHES & EMBELLISHMENT
+              PRINTING, EMBROIDERY & FINISHING
             </h3>
             <p className="mt-3 text-xs sm:text-sm text-neutral-400 font-light">
-              Industrial precision applied to every graphic placement, embroidery stitch, and tactile finish.
+              Quality branding and finishing options tailored to your design requirements and batch sizes.
             </p>
           </div>
 
@@ -345,7 +346,7 @@ export const WhatWeDoSection: React.FC<{ onStartProject: () => void }> = ({ onSt
                       {tech.type}
                     </span>
                     <span className="text-[10px] text-neutral-400 border border-neutral-800 px-2.5 py-0.5 rounded-full">
-                      MOQ: {tech.minOrder}
+                      {tech.minOrder}
                     </span>
                   </div>
 
@@ -359,10 +360,17 @@ export const WhatWeDoSection: React.FC<{ onStartProject: () => void }> = ({ onSt
                 </div>
 
                 <div className="pt-6 mt-6 border-t border-neutral-900 text-[11px] text-neutral-500 font-light">
-                  <span className="text-neutral-400 font-normal">Optimal for:</span> {tech.bestFor}
+                  <span className="text-neutral-400 font-normal">Common applications:</span> {tech.bestFor}
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          {/* MOQ Policy Note */}
+          <div className="mt-8 p-4 bg-neutral-950/60 border border-neutral-900 rounded-sm text-center max-w-2xl mx-auto">
+            <p className="text-xs text-neutral-400 font-light">
+              *Projects generally begin from around 50 units. Certain products, materials or manufacturing methods may require higher minimum quantities depending on production feasibility.
+            </p>
           </div>
         </div>
       </div>
@@ -370,7 +378,7 @@ export const WhatWeDoSection: React.FC<{ onStartProject: () => void }> = ({ onSt
       {/* Product Detail Modal */}
       {selectedProduct && (
         <div className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8 animate-fadeIn">
-          <div className="relative w-full max-w-4xl bg-neutral-950 border border-neutral-800 rounded-sm p-6 sm:p-10 max-h-[90vh] overflow-y-auto">
+          <div className="relative w-full max-w-3xl bg-neutral-950 border border-neutral-800 rounded-sm p-6 sm:p-10 max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setSelectedProduct(null)}
               className="absolute top-6 right-6 text-neutral-400 hover:text-white font-syncopate text-xs tracking-widest uppercase p-2"
@@ -390,7 +398,7 @@ export const WhatWeDoSection: React.FC<{ onStartProject: () => void }> = ({ onSt
               <div className="space-y-6">
                 <div>
                   <span className="font-syncopate text-[9px] tracking-[0.3em] uppercase text-neutral-500">
-                    {selectedProduct.category} • {selectedProduct.gsm}
+                    {selectedProduct.category}
                   </span>
                   <h3 className="font-cinzel text-2xl sm:text-3xl font-medium tracking-[0.04em] text-white mt-1">
                     {selectedProduct.name}
@@ -402,7 +410,7 @@ export const WhatWeDoSection: React.FC<{ onStartProject: () => void }> = ({ onSt
 
                 <div className="space-y-3 pt-4 border-t border-neutral-900">
                   <h4 className="font-syncopate text-[10px] tracking-[0.2em] uppercase text-neutral-400">
-                    ENGINEERING SPECIFICATIONS
+                    KEY DETAILS
                   </h4>
                   <ul className="space-y-2">
                     {selectedProduct.features.map((feat) => (
@@ -414,16 +422,7 @@ export const WhatWeDoSection: React.FC<{ onStartProject: () => void }> = ({ onSt
                   </ul>
                 </div>
 
-                <div className="p-4 bg-neutral-900/60 border border-neutral-800/80 rounded-sm">
-                  <p className="font-syncopate text-[9px] tracking-[0.2em] uppercase text-neutral-400 mb-1">
-                    MATERIAL INTEGRITY
-                  </p>
-                  <p className="text-xs text-neutral-300 font-light">
-                    {selectedProduct.macroDetail}
-                  </p>
-                </div>
-
-                <div className="pt-2">
+                <div className="pt-4">
                   <button
                     onClick={() => {
                       setSelectedProduct(null);
@@ -431,7 +430,7 @@ export const WhatWeDoSection: React.FC<{ onStartProject: () => void }> = ({ onSt
                     }}
                     className="w-full py-3.5 bg-white text-black font-cinzel text-xs tracking-[0.25em] uppercase font-bold text-center hover:bg-neutral-200 transition-colors"
                   >
-                    INQUIRE ABOUT THIS SPECIFICATION
+                    DISCUSS THIS CATEGORY
                   </button>
                 </div>
               </div>
