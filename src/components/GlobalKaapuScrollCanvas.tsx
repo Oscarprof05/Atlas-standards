@@ -28,6 +28,12 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    // Immediately compute initial scroll progress on mount to prevent any entrance sliding/jumping
+    const currentScrollY = window.scrollY;
+    const maxScroll = Math.max(document.documentElement.scrollHeight - window.innerHeight, 1);
+    const initialProgress = Math.min(Math.max(currentScrollY / maxScroll, 0), 1);
+    targetScrollProgress.current = initialProgress;
+
     // 1. Scene Setup
     const scene = new THREE.Scene();
     scene.fog = new THREE.FogExp2(0x000000, 0.025);
@@ -97,7 +103,7 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
 
     // 5. Unified Scene Composition Master Group (Moved up slightly by ~10-15px)
     const sceneComposition = new THREE.Group();
-    sceneComposition.position.set(0, 0.09, 0); // Precise vertical framing
+    sceneComposition.position.set(0, 0.08, 0); // Precise vertical framing
     sceneCompositionRef.current = sceneComposition;
     scene.add(sceneComposition);
 
@@ -209,7 +215,10 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
     const initialPitch = 0.52; // ~29.8° vertical perspective tilt
     const initialYaw = 0.50;   // ~28.6° three-quarter viewer rotation
     const initialRoll = -0.32; // ~-18.3° diagonal alignment
-    kaapuMasterGroup.rotation.set(initialPitch, initialYaw, initialRoll);
+
+    // Immediately set rotation on load so it renders in place instantly
+    const initialRotationY = initialYaw + initialProgress * (Math.PI * 8.8);
+    kaapuMasterGroup.rotation.set(initialPitch, initialRotationY, initialRoll);
 
     // 8. SCROLL STORYTELLING & COMPOSITION (Original 100% Scroll-Driven Mechanism)
     const scrollTriggerInstance = ScrollTrigger.create({
@@ -225,7 +234,7 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
     // 9. ANIMATION RENDER LOOP (Original working behavior restored - zero translation/drift)
     const clock = new THREE.Clock();
     let time = 0;
-    let currentSmoothScroll = 0;
+    let currentSmoothScroll = initialProgress;
 
     const animate = () => {
       const delta = Math.min(clock.getDelta(), 0.1);
