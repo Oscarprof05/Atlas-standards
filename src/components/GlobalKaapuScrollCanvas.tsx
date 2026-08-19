@@ -3,8 +3,6 @@ import * as THREE from 'three';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
-
 export const GlobalKaapuScrollCanvas: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -24,7 +22,6 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
   const animationFrameRef = useRef<number | null>(null);
 
   // Dedicated Scroll Progress Reference (Pure Scroll-Driven, 0% Mouse Influence)
-  const baseScrollProgress = useRef(0);
   const targetScrollProgress = useRef(0);
 
   useEffect(() => {
@@ -39,7 +36,7 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
     const width = window.innerWidth;
     const height = window.innerHeight;
 
-    // 2. Studio Camera with Clean 20°/25° Three-Quarter Perspective matching original Atlas Logo
+    // 2. Studio Camera with Clean 20°/25° Three-Quarter Perspective matching Atlas Logo
     const camera = new THREE.PerspectiveCamera(32, width / height, 0.1, 100);
     camera.position.set(0, 0, 5.0);
     cameraRef.current = camera;
@@ -59,7 +56,6 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
     rendererRef.current = renderer;
 
     // 4. Studio Lighting Rig - Precision Brushed Silver Stainless Steel Studio Rig
-    // Dynamic directional lighting with brilliant neutral specular highlights moving across the surface
     const keyLight = new THREE.DirectionalLight(0xffffff, 6.8);
     keyLight.position.set(4.2, 5.5, 4.8);
     scene.add(keyLight);
@@ -84,17 +80,14 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
     pmremGenerator.compileEquirectangularShader();
     const envScene = new THREE.Scene();
     
-    // Key reflective strip (crisp white ribbon across chamfer)
     const envLight1 = new THREE.DirectionalLight(0xffffff, 14);
     envLight1.position.set(2.5, 3.8, 2.8);
     envScene.add(envLight1);
     
-    // Polished silver sheen strip
     const envLight2 = new THREE.DirectionalLight(0xe2e8f0, 9);
     envLight2.position.set(-3.0, -1.6, -1.4);
     envScene.add(envLight2);
     
-    // Pure specular rim highlight
     const envLight3 = new THREE.DirectionalLight(0xffffff, 8);
     envLight3.position.set(0, 5.2, -2.6);
     envScene.add(envLight3);
@@ -102,35 +95,37 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
     const envRenderTarget = pmremGenerator.fromScene(envScene);
     scene.environment = envRenderTarget.texture;
 
-    // 5. Unified Scene Composition Master Group (Travels smoothly together)
+    // 5. Unified Scene Composition Master Group
+    // Raised by +0.12 units (~15-20px) so center aligns gracefully with "THE" in hero headline
     const sceneComposition = new THREE.Group();
+    sceneComposition.position.set(0, 0.12, 0);
     sceneCompositionRef.current = sceneComposition;
     scene.add(sceneComposition);
 
-    // 6. PERMANENT BACKGROUND INFINITY ELEMENT (Silky dual-loop energy ribbon matching the logo)
+    // 6. PERMANENT BACKGROUND INFINITY ELEMENT (Fixed background guide with proportional ~10% scale)
     const infinityGroup = new THREE.Group();
-    infinityGroup.position.set(0, 0, 0); // Perfectly co-centered with the Kaapu
+    infinityGroup.position.set(0, 0, 0);
     infinityGroupRef.current = infinityGroup;
     sceneComposition.add(infinityGroup);
 
     const curvePoints: THREE.Vector3[] = [];
     const numPoints = 320;
-    // Infinity loop scale matching the logo proportions
-    const scaleA = 2.35;
+    // Scaled down by ~10% (2.35 -> 2.12) to match refined Kaappu framing
+    const scaleA = 2.12;
 
     for (let i = 0; i <= numPoints; i++) {
       const t = (i / numPoints) * Math.PI * 2;
       const denom = 1 + Math.sin(t) * Math.sin(t);
       const x = (scaleA * Math.cos(t)) / denom;
       const y = ((scaleA * Math.sin(t) * Math.cos(t)) / denom) * 0.82;
-      const z = -0.15 + Math.sin(t * 2) * 0.08; // Flows organically just behind/through the center plane
+      const z = -0.15 + Math.sin(t * 2) * 0.08;
       curvePoints.push(new THREE.Vector3(x, y, z));
     }
 
     const infinityCurve = new THREE.CatmullRomCurve3(curvePoints, true);
     infinityCurveRef.current = infinityCurve;
 
-    const tubeGeometry = new THREE.TubeGeometry(infinityCurve, 240, 0.013, 16, true);
+    const tubeGeometry = new THREE.TubeGeometry(infinityCurve, 240, 0.012, 16, true);
     const ribbonMaterial = new THREE.MeshStandardMaterial({
       color: new THREE.Color(0xffffff),
       emissive: new THREE.Color(0xcccccc),
@@ -144,7 +139,7 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
     infinityRibbonRef.current = infinityRibbon;
     infinityGroup.add(infinityRibbon);
 
-    // Continuous gentle ambient energy particles along the infinity path
+    // Ambient energy particles along the infinity path
     const particleCount = 500;
     const particleGeo = new THREE.BufferGeometry();
     const particlePositions = new Float32Array(particleCount * 3);
@@ -153,9 +148,9 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
     for (let i = 0; i < particleCount; i++) {
       const t = i / particleCount;
       const pt = infinityCurve.getPoint(t);
-      particlePositions[i * 3] = pt.x + (Math.random() - 0.5) * 0.025;
-      particlePositions[i * 3 + 1] = pt.y + (Math.random() - 0.5) * 0.025;
-      particlePositions[i * 3 + 2] = pt.z + (Math.random() - 0.5) * 0.025;
+      particlePositions[i * 3] = pt.x + (Math.random() - 0.5) * 0.022;
+      particlePositions[i * 3 + 1] = pt.y + (Math.random() - 0.5) * 0.022;
+      particlePositions[i * 3 + 2] = pt.z + (Math.random() - 0.5) * 0.022;
       particleOffsets[i] = t;
     }
 
@@ -164,7 +159,7 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
 
     const particleMaterial = new THREE.PointsMaterial({
       color: 0xffffff,
-      size: 0.025,
+      size: 0.024,
       transparent: true,
       opacity: 0.65,
       blending: THREE.AdditiveBlending,
@@ -174,63 +169,56 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
     infinityParticlesRef.current = infinityParticles;
     infinityGroup.add(infinityParticles);
 
-    // 7. PRECISION-MACHINED TITANIUM KAAPU RING (Refined Dimensions & Balance)
-    // Geometry: Preserved large inner aperture with +14% radial wall thickness and +12% front profile face
+    // 7. PRECISION REFINED TITANIUM KAAPU RING
+    // Refinements:
+    // - Reduced overall scale by ~10% (outer radius: 1.125 -> 1.015, inner radius: 1.025 -> 0.915)
+    // - Preserved exact radial wall thickness (0.100) — no thinning
+    // - Preserved front-face half-height (0.044) for solid luxury feel
+    // - Crisp chamfers (0.011) catching brilliant edge specular sweeps
     const kaapuMasterGroup = new THREE.Group();
-    kaapuMasterGroup.position.set(0, 0, 0); // Shared exact co-center with infinity symbol
+    kaapuMasterGroup.position.set(0, 0, 0); // Strict local center (0,0,0) - zero orbit/drift
     kaapuGroupRef.current = kaapuMasterGroup;
     sceneComposition.add(kaapuMasterGroup);
 
-    // Precision Machined Ring Dimensions:
-    // Outer Radius = 1.125 (stable outer diameter)
-    // Inner Radius = 1.025 (large inner aperture preserved, wall thickness increased from 0.087 to 0.100 -> ~15% increase)
-    // Band Half-Height = 0.044 (front face depth increased by ~13% for solid luxury titanium feel)
-    // Precision Chamfers = 0.012 on inner & outer bevels for crisp specular highlight catching
-    const rIn = 1.025;
-    const rOut = 1.125;
+    const rIn = 0.915;
+    const rOut = 1.015;
     const hHalf = 0.044;
-    const chamfer = 0.012;
+    const chamfer = 0.011;
 
     const profilePoints: THREE.Vector2[] = [
-      new THREE.Vector2(rIn + chamfer, -hHalf),            // Bottom-inner chamfer start
-      new THREE.Vector2(rOut - chamfer, -hHalf),           // Bottom flat outer chamfer start
-      new THREE.Vector2(rOut, -hHalf + chamfer),           // Bottom-outer chamfer corner
-      new THREE.Vector2(rOut, hHalf - chamfer),            // Outer cylindrical face top
-      new THREE.Vector2(rOut - chamfer, hHalf),            // Top-outer chamfer corner
-      new THREE.Vector2(rIn + chamfer, hHalf),             // Top flat inner chamfer start
-      new THREE.Vector2(rIn, hHalf - chamfer),             // Top-inner chamfer corner
-      new THREE.Vector2(rIn, -hHalf + chamfer),            // Inner cylindrical face bottom
-      new THREE.Vector2(rIn + chamfer, -hHalf),            // Close cross-section profile
+      new THREE.Vector2(rIn + chamfer, -hHalf),
+      new THREE.Vector2(rOut - chamfer, -hHalf),
+      new THREE.Vector2(rOut, -hHalf + chamfer),
+      new THREE.Vector2(rOut, hHalf - chamfer),
+      new THREE.Vector2(rOut - chamfer, hHalf),
+      new THREE.Vector2(rIn + chamfer, hHalf),
+      new THREE.Vector2(rIn, hHalf - chamfer),
+      new THREE.Vector2(rIn, -hHalf + chamfer),
+      new THREE.Vector2(rIn + chamfer, -hHalf),
     ];
 
-    // Ultra-smooth 256 radial segments for flawless CNC lathe finish and continuous silver specular sweeps
     const latheGeo = new THREE.LatheGeometry(profilePoints, 256);
     latheGeo.computeVertexNormals();
 
-    // Material: Original Precision Brushed Stainless Steel / Satin Silver (Atlas Typography Silver Match)
-    // Color: #D6DAE0 (pure luxury satin silver), Metalness: 0.92, Roughness: 0.22 (delicate anisotropic-style micro-brush)
+    // Material: Original Precision Brushed Stainless Steel / Satin Silver (#D6DAE0)
     const silverSteelMaterial = new THREE.MeshStandardMaterial({
       color: new THREE.Color(0xd6dae0),
       metalness: 0.92,
       roughness: 0.22,
-      envMapIntensity: 2.8, // Soft white luminous edge reflections
+      envMapIntensity: 2.8,
     });
 
     const kaapuMesh = new THREE.Mesh(latheGeo, silverSteelMaterial);
     kaapuMesh.rotation.x = Math.PI / 2;
     kaapuMasterGroup.add(kaapuMesh);
 
-    // Initial load pose: Exact 28°–32° Dynamic Perspective Tilt matching original Atlas Logo
-    // Slightly rotated toward viewer so both inner and outer chamfered bevels are visible
-    // Balanced naturally with the infinity symbol instead of standing upright
-    const initialPitch = 0.52; // ~29.8° vertical perspective tilt (28°–32° range)
-    const initialYaw = 0.50;   // ~28.6° three-quarter viewer rotation showcasing both bevels
-    const initialRoll = -0.32; // ~-18.3° diagonal alignment balanced with the infinity ribbon
+    // Initial load pose: Exact 28°–32° Dynamic Perspective Tilt
+    const initialPitch = 0.52; // ~29.8° vertical perspective tilt
+    const initialYaw = 0.50;   // ~28.6° three-quarter viewer rotation
+    const initialRoll = -0.32; // ~-18.3° diagonal alignment
     kaapuMasterGroup.rotation.set(initialPitch, initialYaw, initialRoll);
 
-    // 8. SCROLL STORYTELLING & COMPOSITION (100% Scroll-Driven, 0% Mouse Interaction)
-    // Apple Vision Pro / Rolex luxury physical mass interaction:
-    // Heavy, luxurious feel with +20-25% faster rotational travel and velvety fluid scrub (0.4s)
+    // 8. SCROLL STORYTELLING & COMPOSITION (100% Scroll-Driven)
     const scrollTriggerInstance = ScrollTrigger.create({
       trigger: document.body,
       start: 'top top',
@@ -241,7 +229,7 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
       },
     });
 
-    // 9. ANIMATION RENDER LOOP (Zero Mouse Jitter, Gyroscopic Precision Scroll Motion)
+    // 9. ANIMATION RENDER LOOP (Rotates strictly around its own center, translates down with page)
     const clock = new THREE.Clock();
     let time = 0;
     let currentSmoothScroll = 0;
@@ -250,21 +238,27 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
       const delta = Math.min(clock.getDelta(), 0.1);
       time += delta;
 
-      // Heavy luxury damping (0.10 factor): velvety, confident gyro-motion that glides and settles with premium mass
+      // Heavy luxury damping (0.10 factor): velvety, confident inertia-based gyro-motion
       currentSmoothScroll += (targetScrollProgress.current - currentSmoothScroll) * 0.10;
 
-      // +20–25% faster rotation speed on one constant gyroscopic axis (~8.8 * PI total rotation)
-      // Fast scroll = faster rotation, slow scroll = slower rotation, stops when scrolling stops
+      // Rotate strictly around its own center axis
       const rotationY = initialYaw + currentSmoothScroll * (Math.PI * 8.8);
 
       if (kaapuMasterGroup) {
-        // Rock-solid fixed orientation angles: X and Z never change, wobble, or flip
+        // Rock-solid fixed orientation angles: X and Z never wobble or flip
         kaapuMasterGroup.rotation.x = initialPitch;
         kaapuMasterGroup.rotation.y = rotationY;
         kaapuMasterGroup.rotation.z = initialRoll;
+        // Strict center origin (0,0,0) - rotates inside its own center only, no orbit or wobble
+        kaapuMasterGroup.position.set(0, 0, 0);
       }
 
-      // Continuous gentle particle flow along the infinity path in background
+      // Smooth translation down with the page as user scrolls through content
+      if (sceneCompositionRef.current) {
+        sceneCompositionRef.current.position.y = 0.12 - currentSmoothScroll * 1.5;
+      }
+
+      // Continuous gentle particle flow along infinity path in background
       if (infinityParticlesRef.current && infinityCurveRef.current) {
         const positions = infinityParticlesRef.current.geometry.attributes.position.array as Float32Array;
         const flowSpeed = 0.06;
