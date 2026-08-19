@@ -7,6 +7,8 @@ export const ProblemSection: React.FC = () => {
   const isInView = useInView(containerRef, { once: false, amount: 0.15 });
   const [activeMediaIndex, setActiveMediaIndex] = useState(0);
 
+  const [isPaused, setIsPaused] = useState(false);
+
   const problemPoints = [
     {
       code: 'DECISION_01',
@@ -69,14 +71,29 @@ export const ProblemSection: React.FC = () => {
       caption: 'Reviewing physical samples, print placements, embroidery clarity, and stitching details.',
       note: 'Inspecting color, prints & finishing details',
     },
+    {
+      title: 'Yield Optimization & Commercial Clarity',
+      stage: 'BUDGET & ECONOMICS',
+      src: '/products/product-development.jpg',
+      caption: 'Balancing material yields, order volumes, and production processes for transparent commercial feasibility.',
+      note: 'Transparent unit economics & volume planning',
+    },
+    {
+      title: 'Scheduled Delivery & Final Verification',
+      stage: 'PRODUCTION TIMELINE',
+      src: '/products/heavyweight-tees.jpg',
+      caption: 'Coordinating lab dips, prototype reviews, batch production stages, and punctual dispatch handover.',
+      note: 'Milestone tracking & dependable handover',
+    },
   ];
 
   useEffect(() => {
+    if (isPaused) return;
     const interval = setInterval(() => {
       setActiveMediaIndex((prev) => (prev + 1) % storyMedia.length);
-    }, 5000);
+    }, 6000);
     return () => clearInterval(interval);
-  }, [storyMedia.length]);
+  }, [isPaused, storyMedia.length]);
 
   return (
     <section
@@ -114,18 +131,25 @@ export const ProblemSection: React.FC = () => {
         </motion.div>
 
         {/* Core Interactive Comparison & Showcase Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        <div 
+          className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           {/* Left: 6 Decisions */}
           <div className="lg:col-span-7 space-y-4">
             {problemPoints.map((p, idx) => {
-              const isCurrent = activeMediaIndex === idx % storyMedia.length;
+              const isCurrent = activeMediaIndex === idx;
               return (
                 <motion.div
                   key={p.code}
                   initial={{ opacity: 0, x: -20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
                   transition={{ duration: 0.5, delay: idx * 0.08 }}
-                  onClick={() => setActiveMediaIndex(idx % storyMedia.length)}
+                  onClick={() => {
+                    setActiveMediaIndex(idx);
+                    setIsPaused(true);
+                  }}
                   className={`group relative p-5 rounded-sm border transition-all duration-300 cursor-pointer ${
                     isCurrent
                       ? 'bg-neutral-950/90 border-neutral-600 shadow-[0_0_25px_rgba(255,255,255,0.04)]'
