@@ -15,7 +15,7 @@ export const ApproachTimeline: React.FC = () => {
       stage: 'Requirement & Scope',
       description:
         'We understand what you’re trying to build, your requirements, quantity and timeline.',
-      image: '/products/prob-fabric-selection.jpg',
+      image: '/products/product-development.jpg',
     },
     {
       num: '02',
@@ -24,7 +24,7 @@ export const ApproachTimeline: React.FC = () => {
       stage: 'Materials & Approach',
       description:
         'Where needed, we help determine the product, materials, customization and production approach.',
-      image: '/products/fabric-textiles.jpg',
+      image: '/products/prob-fabric-selection.jpg',
     },
     {
       num: '03',
@@ -33,7 +33,7 @@ export const ApproachTimeline: React.FC = () => {
       stage: 'Review & Refine',
       description:
         'For projects requiring development, the product is reviewed and refined before production.',
-      image: '/products/product-development.jpg',
+      image: '/products/knitwear-sweaters.jpg',
     },
     {
       num: '04',
@@ -51,7 +51,7 @@ export const ApproachTimeline: React.FC = () => {
       stage: 'Verification & Handover',
       description:
         'The finished product is checked against the agreed requirement and prepared for delivery.',
-      image: '/products/institutional-merchandise.jpg',
+      image: '/products/heavyweight-tees.jpg',
     },
   ];
 

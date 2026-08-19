@@ -65,7 +65,7 @@ export const ProblemSection: React.FC = () => {
     {
       title: 'Sample Review & Quality Inspection',
       stage: 'FINISHING & CHECKS',
-      src: '/products/product-development.jpg',
+      src: '/products/performance-apparel.jpg',
       caption: 'Reviewing physical samples, print placements, embroidery clarity, and stitching details.',
       note: 'Inspecting color, prints & finishing details',
     },
