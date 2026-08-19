@@ -15,7 +15,7 @@ export const ApproachTimeline: React.FC = () => {
       stage: 'Requirement & Scope',
       description:
         'We understand what you’re trying to build, your requirements, quantity and timeline.',
-      image: '/products/product-development.jpg',
+      image: '/products/prob-fabric-selection.jpg',
     },
     {
       num: '02',
@@ -33,7 +33,7 @@ export const ApproachTimeline: React.FC = () => {
       stage: 'Review & Refine',
       description:
         'For projects requiring development, the product is reviewed and refined before production.',
-      image: '/products/knitwear-sweaters.jpg',
+      image: '/products/product-development.jpg',
     },
     {
       num: '04',
@@ -42,7 +42,7 @@ export const ApproachTimeline: React.FC = () => {
       stage: 'Manufacturing Partner',
       description:
         'The approved requirement moves into production through the appropriate manufacturing partner.',
-      image: '/products/varsity-outerwear.jpg',
+      image: '/products/prob-garment-construction.jpg',
     },
     {
       num: '05',
