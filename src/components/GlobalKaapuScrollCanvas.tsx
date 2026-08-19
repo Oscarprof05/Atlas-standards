@@ -36,7 +36,7 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
     const width = window.innerWidth;
     const height = window.innerHeight;
 
-    // 2. Studio Camera with Clean 20°/25° Three-Quarter Perspective matching Atlas Logo
+    // 2. Studio Camera with Clean 20°/25° Three-Quarter Perspective matching original Atlas Logo
     const camera = new THREE.PerspectiveCamera(32, width / height, 0.1, 100);
     camera.position.set(0, 0, 5.0);
     cameraRef.current = camera;
@@ -95,14 +95,13 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
     const envRenderTarget = pmremGenerator.fromScene(envScene);
     scene.environment = envRenderTarget.texture;
 
-    // 5. Unified Scene Composition Master Group
-    // Raised by +0.12 units (~15-20px) so center aligns gracefully with "THE" in hero headline
+    // 5. Unified Scene Composition Master Group (Moved up slightly by ~10-15px)
     const sceneComposition = new THREE.Group();
-    sceneComposition.position.set(0, 0.12, 0);
+    sceneComposition.position.set(0, 0.09, 0); // Precise vertical framing
     sceneCompositionRef.current = sceneComposition;
     scene.add(sceneComposition);
 
-    // 6. PERMANENT BACKGROUND INFINITY ELEMENT (Fixed background guide with proportional ~10% scale)
+    // 6. PERMANENT BACKGROUND INFINITY ELEMENT (Original fixed background guide)
     const infinityGroup = new THREE.Group();
     infinityGroup.position.set(0, 0, 0);
     infinityGroupRef.current = infinityGroup;
@@ -110,8 +109,7 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
 
     const curvePoints: THREE.Vector3[] = [];
     const numPoints = 320;
-    // Scaled down by ~10% (2.35 -> 2.12) to match refined Kaappu framing
-    const scaleA = 2.12;
+    const scaleA = 2.35; // Original infinity loop scale
 
     for (let i = 0; i <= numPoints; i++) {
       const t = (i / numPoints) * Math.PI * 2;
@@ -125,7 +123,7 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
     const infinityCurve = new THREE.CatmullRomCurve3(curvePoints, true);
     infinityCurveRef.current = infinityCurve;
 
-    const tubeGeometry = new THREE.TubeGeometry(infinityCurve, 240, 0.012, 16, true);
+    const tubeGeometry = new THREE.TubeGeometry(infinityCurve, 240, 0.013, 16, true);
     const ribbonMaterial = new THREE.MeshStandardMaterial({
       color: new THREE.Color(0xffffff),
       emissive: new THREE.Color(0xcccccc),
@@ -148,9 +146,9 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
     for (let i = 0; i < particleCount; i++) {
       const t = i / particleCount;
       const pt = infinityCurve.getPoint(t);
-      particlePositions[i * 3] = pt.x + (Math.random() - 0.5) * 0.022;
-      particlePositions[i * 3 + 1] = pt.y + (Math.random() - 0.5) * 0.022;
-      particlePositions[i * 3 + 2] = pt.z + (Math.random() - 0.5) * 0.022;
+      particlePositions[i * 3] = pt.x + (Math.random() - 0.5) * 0.025;
+      particlePositions[i * 3 + 1] = pt.y + (Math.random() - 0.5) * 0.025;
+      particlePositions[i * 3 + 2] = pt.z + (Math.random() - 0.5) * 0.025;
       particleOffsets[i] = t;
     }
 
@@ -159,7 +157,7 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
 
     const particleMaterial = new THREE.PointsMaterial({
       color: 0xffffff,
-      size: 0.024,
+      size: 0.025,
       transparent: true,
       opacity: 0.65,
       blending: THREE.AdditiveBlending,
@@ -169,19 +167,14 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
     infinityParticlesRef.current = infinityParticles;
     infinityGroup.add(infinityParticles);
 
-    // 7. PRECISION REFINED TITANIUM KAAPU RING
-    // Refinements:
-    // - Reduced overall scale by ~10% (outer radius: 1.125 -> 1.015, inner radius: 1.025 -> 0.915)
-    // - Preserved exact radial wall thickness (0.100) — no thinning
-    // - Preserved front-face half-height (0.044) for solid luxury feel
-    // - Crisp chamfers (0.011) catching brilliant edge specular sweeps
+    // 7. PRECISION REFINED TITANIUM KAAPU RING (~8-10% reduced size, 100% preserved thickness)
     const kaapuMasterGroup = new THREE.Group();
-    kaapuMasterGroup.position.set(0, 0, 0); // Strict local center (0,0,0) - zero orbit/drift
+    kaapuMasterGroup.position.set(0, 0, 0);
     kaapuGroupRef.current = kaapuMasterGroup;
     sceneComposition.add(kaapuMasterGroup);
 
-    const rIn = 0.915;
-    const rOut = 1.015;
+    const rIn = 0.935;
+    const rOut = 1.035;
     const hHalf = 0.044;
     const chamfer = 0.011;
 
@@ -212,13 +205,13 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
     kaapuMesh.rotation.x = Math.PI / 2;
     kaapuMasterGroup.add(kaapuMesh);
 
-    // Initial load pose: Exact 28°–32° Dynamic Perspective Tilt
+    // Initial load pose: Exact 28°–32° Dynamic Perspective Tilt matching original Atlas Logo
     const initialPitch = 0.52; // ~29.8° vertical perspective tilt
     const initialYaw = 0.50;   // ~28.6° three-quarter viewer rotation
     const initialRoll = -0.32; // ~-18.3° diagonal alignment
     kaapuMasterGroup.rotation.set(initialPitch, initialYaw, initialRoll);
 
-    // 8. SCROLL STORYTELLING & COMPOSITION (100% Scroll-Driven)
+    // 8. SCROLL STORYTELLING & COMPOSITION (Original 100% Scroll-Driven Mechanism)
     const scrollTriggerInstance = ScrollTrigger.create({
       trigger: document.body,
       start: 'top top',
@@ -229,7 +222,7 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
       },
     });
 
-    // 9. ANIMATION RENDER LOOP (Rotates strictly around its own center, translates down with page)
+    // 9. ANIMATION RENDER LOOP (Original working behavior restored - zero translation/drift)
     const clock = new THREE.Clock();
     let time = 0;
     let currentSmoothScroll = 0;
@@ -238,10 +231,10 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
       const delta = Math.min(clock.getDelta(), 0.1);
       time += delta;
 
-      // Heavy luxury damping (0.10 factor): velvety, confident inertia-based gyro-motion
+      // Original smooth inertia-based damping (0.10 factor)
       currentSmoothScroll += (targetScrollProgress.current - currentSmoothScroll) * 0.10;
 
-      // Rotate strictly around its own center axis
+      // Original constant gyroscopic axis rotation
       const rotationY = initialYaw + currentSmoothScroll * (Math.PI * 8.8);
 
       if (kaapuMasterGroup) {
@@ -249,13 +242,6 @@ export const GlobalKaapuScrollCanvas: React.FC = () => {
         kaapuMasterGroup.rotation.x = initialPitch;
         kaapuMasterGroup.rotation.y = rotationY;
         kaapuMasterGroup.rotation.z = initialRoll;
-        // Strict center origin (0,0,0) - rotates inside its own center only, no orbit or wobble
-        kaapuMasterGroup.position.set(0, 0, 0);
-      }
-
-      // Smooth translation down with the page as user scrolls through content
-      if (sceneCompositionRef.current) {
-        sceneCompositionRef.current.position.y = 0.12 - currentSmoothScroll * 1.5;
       }
 
       // Continuous gentle particle flow along infinity path in background
