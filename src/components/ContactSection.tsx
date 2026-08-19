@@ -47,23 +47,34 @@ export const ContactSection: React.FC = () => {
       className="relative w-full bg-black/40 text-white py-32 sm:py-44 px-6 sm:px-12 border-t border-neutral-900 overflow-hidden"
     >
       <div className="max-w-4xl mx-auto">
-        {/* Section Heading: 16 START A PROJECT */}
-        <div className="text-center mb-16 space-y-4">
-          <span className="font-syncopate text-[10px] tracking-[0.35em] text-neutral-500 uppercase block">
-            16 — START A PROJECT
+        {/* Section Heading: GET IN TOUCH // DIRECT SOURCING DESK */}
+        <div className="text-center mb-16 sm:mb-20 space-y-6">
+          <span className="font-syncopate text-[9px] sm:text-[10px] tracking-[0.4em] text-neutral-500 uppercase block">
+            GET IN TOUCH // DIRECT SOURCING DESK
           </span>
 
-          <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-medium tracking-[0.06em] uppercase text-white leading-tight">
-            HAVE SOMETHING IN MIND?
+          <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-light tracking-[0.06em] uppercase text-white leading-tight">
+            START WITH WHATEVER
+            <span className="block font-medium text-steel-gradient mt-1">
+              YOU HAVE.
+            </span>
           </h2>
 
-          <p className="text-sm sm:text-base text-neutral-300 font-light max-w-xl mx-auto leading-relaxed">
-            Tell us what you're looking to build. You can send us your requirement, reference, design, quantity, timeline or simply an idea.
-          </p>
+          <div className="pt-2 text-neutral-300 font-light text-sm sm:text-base tracking-wide space-y-1">
+            <p>A thought.</p>
+            <p>A reference.</p>
+            <p>A product you saw.</p>
+            <p>A sketch on your phone.</p>
+          </div>
 
-          <p className="font-cinzel text-xs tracking-[0.2em] uppercase text-white font-medium">
-            START WITH WHAT YOU KNOW.
-          </p>
+          <div className="pt-4 max-w-md mx-auto space-y-1.5">
+            <p className="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">
+              It doesn't have to be perfect to get started.
+            </p>
+            <p className="text-xs sm:text-sm text-neutral-200 font-light leading-relaxed">
+              Tell us about it. We'll take it from there.
+            </p>
+          </div>
         </div>
 
         {/* Direct Contact Channels Box */}
