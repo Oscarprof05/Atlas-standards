@@ -58,7 +58,7 @@ export const ProblemSection: React.FC = () => {
     {
       title: 'Production & Dedicated Assembly',
       stage: 'FACILITY SELECTION',
-      src: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?q=80&w=1200&auto=format&fit=crop',
+      src: 'https://images.unsplash.com/photo-1590736969955-71cc94801759?q=80&w=1200&auto=format&fit=crop',
       caption: 'Directing your project to experienced workshops equipped for your specific product type.',
       note: 'Matching requirements with specialized facilities',
     },

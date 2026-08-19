@@ -33,7 +33,7 @@ export const ApproachTimeline: React.FC = () => {
       stage: 'Review & Refine',
       description:
         'For projects requiring development, the product is reviewed and refined before production.',
-      image: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?q=80&w=1200&auto=format&fit=crop',
+      image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1200&auto=format&fit=crop',
     },
     {
       num: '04',
