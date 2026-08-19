@@ -17,13 +17,12 @@ export const ContactSection: React.FC = () => {
   });
 
   const productOptions = [
-    'T-Shirts & Oversized Tees',
+    'Heavyweight & Oversized T-Shirts',
     'Hoodies & Sweatshirts',
-    'Polos & Collared Shirts',
-    'Sweaters & Knitwear',
-    'Jackets & Outerwear',
-    'Performance Wear & Jerseys',
-    'Institutional / Team Merchandise',
+    'Knitwear & Sweaters',
+    'Varsity Jackets & Outerwear',
+    'Performance & Active Apparel',
+    'Institutional & Event Merchandise',
     'Custom Product Development / Reference',
   ];
 

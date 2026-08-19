@@ -22,53 +22,53 @@ export const WhatWeDoSection: React.FC<WhatWeDoSectionProps> = ({ onStartProject
 
   const collectionItems: CollectionItem[] = [
     {
-      id: 't-shirts',
+      id: 'heavyweight-tees',
       category: 'Merchandise & Apparel',
-      name: 'T-Shirts & Oversized Tees',
-      description: 'From everyday essentials to heavy, structured silhouettes with clean collar construction.',
-      image: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop',
+      name: 'Heavyweight & Oversized T-Shirts',
+      description: 'Durable, structured silhouettes with clean collar construction, drop-shoulders, and premium drape.',
+      image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=1200&auto=format&fit=crop',
     },
     {
-      id: 'hoodies',
+      id: 'hoodies-sweatshirts',
       category: 'Merchandise & Apparel',
       name: 'Hoodies & Sweatshirts',
-      description: 'Loopback and fleece apparel developed for clean drape, structured hoods, and lasting comfort.',
-      image: 'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?q=80&w=1200&auto=format&fit=crop',
+      description: 'Loopback and fleece apparel developed for clean drape, structured double-layered hoods, and lasting comfort.',
+      image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1200&auto=format&fit=crop',
     },
     {
-      id: 'polos',
+      id: 'knitwear-sweaters',
       category: 'Merchandise & Apparel',
-      name: 'Polos & Collared Shirts',
-      description: 'Knitted and structured collared apparel suited for teams, institutions, and lifestyle collections.',
-      image: 'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?q=80&w=1200&auto=format&fit=crop',
-    },
-    {
-      id: 'sweaters',
-      category: 'Merchandise & Apparel',
-      name: 'Sweaters & Knitwear',
+      name: 'Knitwear & Sweaters',
       description: 'Elevated knitted apparel developed across fine and heavy gauges based on project specifications.',
       image: 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=1200&auto=format&fit=crop',
     },
     {
-      id: 'jerseys',
+      id: 'varsity-outerwear',
       category: 'Merchandise & Apparel',
-      name: 'Jerseys & Performance Wear',
-      description: 'Engineered for sports, active communities, and events with breathable, durable fabrics.',
-      image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1200&auto=format&fit=crop',
-    },
-    {
-      id: 'jackets',
-      category: 'Merchandise & Apparel',
-      name: 'Jackets & Varsity Jackets',
-      description: 'Structured outerwear, overshirts, and classic varsity silhouettes with tailored hardware and trims.',
+      name: 'Varsity Jackets & Outerwear',
+      description: 'Structured outerwear, lined varsity silhouettes, and jackets with tailored hardware and custom trims.',
       image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=1200&auto=format&fit=crop',
     },
     {
-      id: 'leather-jackets',
+      id: 'performance-apparel',
       category: 'Merchandise & Apparel',
-      name: 'Leather Jackets & Specialty Outerwear',
-      description: 'Premium outer layers developed through specialized production partners where feasible.',
-      image: 'https://images.unsplash.com/photo-1520975954732-35dd22299614?q=80&w=1200&auto=format&fit=crop',
+      name: 'Performance & Active Apparel',
+      description: 'Engineered activewear, technical jerseys, and training apparel with breathable, durable fabrics.',
+      image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1200&auto=format&fit=crop',
+    },
+    {
+      id: 'institutional-merchandise',
+      category: 'Merchandise & Apparel',
+      name: 'Institutional & Event Merchandise',
+      description: 'Reliable merchandise runs for colleges, corporate teams, student clubs, and large-scale organizations.',
+      image: 'https://images.unsplash.com/photo-1607344645866-009c320c5ab8?q=80&w=1200&auto=format&fit=crop',
+    },
+    {
+      id: 'product-development',
+      category: 'Merchandise & Apparel',
+      name: 'Product Development & Sampling',
+      description: 'Translating references, sketches, or existing garments into production-ready patterns, samples, and finishes.',
+      image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=1200&auto=format&fit=crop',
     },
   ];
 
@@ -167,7 +167,7 @@ export const WhatWeDoSection: React.FC<WhatWeDoSectionProps> = ({ onStartProject
           <p className="mt-2 text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">
             From everyday essentials to more elevated pieces, our range can include:
             <span className="block text-white font-medium mt-1">
-              T-Shirts · Oversized T-Shirts · Polos · Hoodies · Sweatshirts · Sweaters · Jerseys · Jackets · Varsity Jackets · Leather Jackets · Performance Wear
+              Heavyweight T-Shirts · Oversized T-Shirts · Hoodies · Sweatshirts · Knitwear & Sweaters · Varsity Jackets · Outerwear · Performance & Activewear · Institutional & Event Merchandise
             </span>
             <span className="text-neutral-500 text-xs mt-1 block">
               And other products based on the project requirement.
