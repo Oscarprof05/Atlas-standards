@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <rect width="128" height="128" rx="28" fill="#0A0A0A"/>
+  <rect width="126" height="126" x="1" y="1" rx="27" fill="none" stroke="#262626" stroke-width="2"/>
+  <!-- Elegant Atlas Letter A -->
+  <path d="M64 26 L94 98 L81 98 L74 81 L54 81 L47 98 L34 98 Z M58 71 L70 71 L64 54 Z" 
+        fill="url(#atlasGrad)" />
+  <line x1="28" y1="106" x2="100" y2="106" stroke="#94A3B8" stroke-width="1.5" stroke-opacity="0.6"/>
+  <defs>
+    <linearGradient id="atlasGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="45%" stop-color="#E2E8F0"/>
+      <stop offset="75%" stop-color="#94A3B8"/>
+      <stop offset="100%" stop-color="#FFFFFF"/>
+    </linearGradient>
+  </defs>
+</svg>
