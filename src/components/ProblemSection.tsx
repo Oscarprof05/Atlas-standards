@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'motion/react';
-import { ChevronRight, ArrowRight } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 export const ProblemSection: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -11,27 +11,27 @@ export const ProblemSection: React.FC = () => {
     {
       code: 'DECISION_01',
       title: 'The Right Fabric',
-      detail: 'Finding materials that deliver the right weight, drape, hand-feel, and longevity without unnecessary trial and error.',
+      detail: 'Finding materials that deliver the right weight, drape, hand-feel, and longevity without endless trial and error.',
     },
     {
       code: 'DECISION_02',
       title: 'The Right Construction',
-      detail: 'Establishing precise proportions, seam strengths, collar ribbing, and durability so the garment holds its shape.',
+      detail: 'Establishing balanced proportions, durable stitching, and clean collar construction so the garment holds its shape.',
     },
     {
       code: 'DECISION_03',
       title: 'The Right Manufacturer',
-      detail: 'Connecting with specialized facilities suited to your exact category rather than relying on generic workshops.',
+      detail: 'Connecting with specialized facilities suited to your exact product category rather than generic workshops.',
     },
     {
       code: 'DECISION_04',
       title: 'The Right Finish',
-      detail: 'Executing dyeing, washing, screen printing, embroidery, and trims with clean detail and consistent quality.',
+      detail: 'Executing dyeing, washing, printing, embroidery, and trims with clean detail and dependable consistency.',
     },
     {
       code: 'DECISION_05',
       title: 'The Right Budget',
-      detail: 'Balancing quality requirements, batch sizes, and production costs without hidden surprises or compromised standards.',
+      detail: 'Balancing quality expectations, order quantities, and production costs with transparent commercial clarity.',
     },
     {
       code: 'DECISION_06',
@@ -45,21 +45,21 @@ export const ProblemSection: React.FC = () => {
       title: 'Material Evaluation & Swatches',
       stage: 'FABRIC SELECTION',
       src: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200&auto=format&fit=crop',
-      caption: 'Assessing tactile texture, natural drape, and weave structure before entering sampling.',
+      caption: 'Assessing tactile texture, natural drape, and weave structure before entering production.',
       note: 'Evaluating weight, hand-feel & durability',
     },
     {
       title: 'Pattern & Proportion Review',
       stage: 'GARMENT CONSTRUCTION',
       src: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=1200&auto=format&fit=crop',
-      caption: 'Aligning silhouettes, shoulder drops, collar heights, and seam placements with clarity.',
+      caption: 'Aligning silhouettes, shoulder drops, collar ribbing, and seam placements with clarity.',
       note: 'Ensuring balanced fit & structural permanence',
     },
     {
       title: 'Production & Dedicated Assembly',
       stage: 'FACILITY SELECTION',
       src: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?q=80&w=1200&auto=format&fit=crop',
-      caption: 'Directing your requirements to experienced workshops equipped for your specific product type.',
+      caption: 'Directing your project to experienced workshops equipped for your specific product type.',
       note: 'Matching requirements with specialized facilities',
     },
     {
@@ -85,7 +85,7 @@ export const ProblemSection: React.FC = () => {
       className="relative w-full min-h-screen bg-black/40 text-white py-28 sm:py-36 px-6 sm:px-12 border-t border-neutral-900/80 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Section Header */}
+        {/* Section Header with Exact Positioning Copy */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -95,19 +95,22 @@ export const ProblemSection: React.FC = () => {
           <div className="inline-flex items-center gap-3 px-3 py-1 bg-neutral-950 border border-neutral-800 rounded-sm mb-4">
             <span className="w-1.5 h-1.5 rounded-full bg-neutral-400 animate-pulse" />
             <span className="font-syncopate text-[9px] tracking-[0.35em] text-neutral-400 uppercase">
-              THE PROBLEM
+              THE POSITIONING
             </span>
           </div>
 
-          <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-light tracking-[0.08em] uppercase text-white leading-tight">
-            FINDING A PRODUCT IS EASY.
+          <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-light tracking-[0.06em] uppercase text-white leading-tight">
+            GETTING A PRODUCT MADE
             <span className="block font-medium text-steel-gradient mt-1">
-              GETTING IT RIGHT ISN'T.
+              SHOULDN’T FEEL LIKE A SECOND JOB.
             </span>
           </h2>
-          <p className="mt-4 text-xs sm:text-sm text-neutral-400 font-light max-w-2xl leading-relaxed">
-            There are a lot of decisions between an idea and a finished product. Atlas handles the complexity. You tell us what you're trying to achieve, and we work out the route to get there.
+          <p className="mt-4 text-xs sm:text-sm md:text-base text-neutral-300 font-light max-w-2xl leading-relaxed">
+            Finding the right product, supplier and production route can become complicated quickly. Atlas brings those moving parts together — helping you move from requirement to product with greater clarity and confidence.
           </p>
+          <div className="mt-4 inline-block font-syncopate text-[10px] sm:text-xs tracking-[0.3em] uppercase text-neutral-400 border-l-2 border-white pl-3 py-0.5">
+            ONE REQUIREMENT. ONE PARTNER TO WORK THROUGH IT WITH.
+          </div>
         </motion.div>
 
         {/* Core Interactive Comparison & Showcase Grid */}

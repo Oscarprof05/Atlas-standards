@@ -39,19 +39,19 @@ export const LookbookVideoStudio: React.FC<LookbookVideoStudioProps> = ({
 
   const presetLookbooks = [
     {
-      title: '500 GSM Dual-Loopback Architectural Hoodie',
+      title: 'Structured Loopback Hoodie',
       url: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=800&auto=format&fit=crop',
-      prompt: 'Cinematic slow-motion shot of a 500 GSM heavyweight organic cotton loopback hoodie in low-key studio lighting with brushed steel reflections, showing dense fabric weight and structural hood drape',
+      prompt: 'Cinematic slow-motion shot of a structured cotton loopback hoodie in low-key studio lighting with soft reflections, showing fabric drape and clean hood construction',
     },
     {
-      title: '320 GSM Compact Combed Heavy Tee',
+      title: 'Minimalist Boxy T-Shirt',
       url: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=800&auto=format&fit=crop',
-      prompt: 'High-speed camera pan across a clean minimalist boxy-fit black t-shirt, highlighting the 1.25-inch twin-needle collar ribbing and smooth double-jersey weave plane',
+      prompt: 'Camera pan across a clean minimalist boxy-fit black t-shirt, highlighting clean collar ribbing and smooth cotton drape',
     },
     {
-      title: '650 GSM Melton Wool Architectural Overshirt',
+      title: 'Outerwear Overshirt & Jacket',
       url: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?q=80&w=800&auto=format&fit=crop',
-      prompt: 'Cinematic macro camera orbit around a luxury dense felted wool overshirt with custom matte black gunmetal hardware and precision twin-needle seam construction',
+      prompt: 'Cinematic macro camera orbit around a structured outerwear overshirt with clean hardware and durable seam construction',
     },
   ];
 

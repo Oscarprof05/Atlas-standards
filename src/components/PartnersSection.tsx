@@ -1,32 +1,39 @@
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
 import { Send, CheckCircle2 } from 'lucide-react';
 
 export const PartnersSection: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
   const [partnerForm, setPartnerForm] = useState({
-    facilityName: '',
+    companyName: '',
+    contactPerson: '',
     location: '',
-    coreSpecialty: '',
-    contactEmail: '',
+    whatDoYouManufacture: '',
+    keyCapabilities: '',
+    typicalMoqCapacity: '',
+    portfolioUrl: '',
+    contactDetails: '',
   });
 
   const criteria = [
     {
-      title: 'CRAFTSMANSHIP & ATTENTION TO DETAIL',
-      desc: 'Consistent stitching, clean finishing, and taking pride in building quality garments.',
+      title: 'CAPABILITY',
+      desc: 'What products and processes do you handle well?',
     },
     {
-      title: 'RELIABLE TIMELINES & SCHEDULES',
-      desc: 'Realistic production commitments, clear milestone adherence, and dependable dispatch.',
+      title: 'CONSISTENCY',
+      desc: 'How reliably can you reproduce quality?',
     },
     {
-      title: 'RESPONSIBLE WORKING CONDITIONS',
-      desc: 'Safe working environments, fair compensation, and ethical manufacturing practices.',
+      title: 'COMMUNICATION',
+      desc: 'How clearly and professionally does your team work?',
     },
     {
-      title: 'CLEAR & HONEST COMMUNICATION',
-      desc: 'Direct updates on sample progress, material availability, and production status.',
+      title: 'CAPACITY',
+      desc: 'What scale can you comfortably support?',
+    },
+    {
+      title: 'RELIABILITY',
+      desc: 'How dependable are your timelines and commitments?',
     },
   ];
 
@@ -42,26 +49,32 @@ export const PartnersSection: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          {/* Left Column: Heading & Criteria */}
+          {/* Left Column: Heading & Criteria (14 Manufacturer Partners) */}
           <div className="lg:col-span-6 space-y-8">
             <div>
               <span className="font-syncopate text-[10px] sm:text-xs tracking-[0.35em] text-neutral-500 uppercase">
-                MANUFACTURING PARTNERS
+                14 — MANUFACTURING PARTNERS
               </span>
               <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-medium tracking-[0.08em] uppercase text-white mt-4 leading-tight">
-                GOOD MANUFACTURERS
-                <span className="block font-light text-neutral-400">SHOULD BE BUSIER.</span>
+                GOOD PRODUCTION
+                <span className="block font-light text-neutral-400">DESERVES GOOD PARTNERS.</span>
               </h2>
-              <p className="mt-4 text-sm sm:text-base text-neutral-400 font-light leading-relaxed">
-                We work with dedicated factories and workshops that take pride in craftsmanship. We connect your specialized production capacity with clear, structured orders from brands, startups, and institutions.
+              <p className="mt-4 text-sm sm:text-base text-neutral-300 font-light leading-relaxed">
+                Atlas is continuously building relationships with capable manufacturers and production partners.
+              </p>
+              <p className="mt-2 text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">
+                We're interested in understanding what you make, how you work and where your capabilities fit.
               </p>
             </div>
 
             <div className="space-y-6 pt-4">
-              {criteria.map((c, idx) => (
+              <span className="font-syncopate text-[9px] tracking-[0.25em] text-neutral-500 uppercase block">
+                WHAT MATTERS TO US
+              </span>
+              {criteria.map((c) => (
                 <div key={c.title} className="border-l border-neutral-800 pl-6 space-y-1">
                   <h3 className="font-cinzel text-sm sm:text-base font-semibold text-white tracking-[0.05em]">
-                    0{idx + 1} • {c.title}
+                    {c.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">
                     {c.desc}
@@ -69,16 +82,22 @@ export const PartnersSection: React.FC = () => {
                 </div>
               ))}
             </div>
+
+            <div className="pt-6 border-t border-neutral-900">
+              <p className="font-cinzel text-xs sm:text-sm text-white tracking-wide uppercase font-medium">
+                IF YOUR CAPABILITY FITS THE KIND OF WORK WE HANDLE, LET'S TALK.
+              </p>
+            </div>
           </div>
 
-          {/* Right Column: Factory Application Form */}
+          {/* Right Column: Manufacturer Partner Form (15) */}
           <div className="lg:col-span-6">
             <div className="bg-black border border-neutral-800 rounded-sm p-8 sm:p-10">
               <span className="font-syncopate text-[9px] tracking-[0.3em] uppercase text-neutral-400">
-                MANUFACTURING INQUIRY
+                15 — PARTNER APPLICATION
               </span>
               <h3 className="font-cinzel text-2xl font-medium tracking-[0.04em] text-white mt-1 mb-6">
-                Connect with Atlas Standards
+                Become an Atlas Partner
               </h3>
 
               {submitted ? (
@@ -86,21 +105,21 @@ export const PartnersSection: React.FC = () => {
                   <CheckCircle2 className="w-12 h-12 text-white mx-auto" />
                   <h4 className="font-cinzel text-xl text-white">Details Received</h4>
                   <p className="text-xs text-neutral-400 font-light max-w-sm mx-auto leading-relaxed">
-                    Thank you for reaching out. We will review your production capabilities and connect with you directly.
+                    Thank you for sharing your information. We will review your production capabilities and be in touch if there is an alignment with upcoming projects.
                   </p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
                     <label className="block font-syncopate text-[9px] tracking-[0.2em] uppercase text-neutral-400 mb-1">
-                      Facility / Company Name
+                      Company / Factory Name
                     </label>
                     <input
                       type="text"
                       required
-                      value={partnerForm.facilityName}
-                      onChange={(e) => setPartnerForm({ ...partnerForm, facilityName: e.target.value })}
-                      placeholder="e.g. Sourcing / Manufacturing Unit"
+                      value={partnerForm.companyName}
+                      onChange={(e) => setPartnerForm({ ...partnerForm, companyName: e.target.value })}
+                      placeholder="Company or unit name"
                       className="w-full px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-sm text-sm text-white focus:outline-none focus:border-white transition-colors"
                     />
                   </div>
@@ -108,28 +127,28 @@ export const PartnersSection: React.FC = () => {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label className="block font-syncopate text-[9px] tracking-[0.2em] uppercase text-neutral-400 mb-1">
-                        Location / City
+                        Contact Person
                       </label>
                       <input
                         type="text"
                         required
-                        value={partnerForm.location}
-                        onChange={(e) => setPartnerForm({ ...partnerForm, location: e.target.value })}
-                        placeholder="e.g. Tiruppur / Bengaluru / Chennai"
+                        value={partnerForm.contactPerson}
+                        onChange={(e) => setPartnerForm({ ...partnerForm, contactPerson: e.target.value })}
+                        placeholder="Your name"
                         className="w-full px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-sm text-sm text-white focus:outline-none focus:border-white transition-colors"
                       />
                     </div>
 
                     <div>
                       <label className="block font-syncopate text-[9px] tracking-[0.2em] uppercase text-neutral-400 mb-1">
-                        Core Category
+                        Location
                       </label>
                       <input
                         type="text"
                         required
-                        value={partnerForm.coreSpecialty}
-                        onChange={(e) => setPartnerForm({ ...partnerForm, coreSpecialty: e.target.value })}
-                        placeholder="e.g. Knits / Fleece / Wovens / Printing"
+                        value={partnerForm.location}
+                        onChange={(e) => setPartnerForm({ ...partnerForm, location: e.target.value })}
+                        placeholder="City, State"
                         className="w-full px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-sm text-sm text-white focus:outline-none focus:border-white transition-colors"
                       />
                     </div>
@@ -137,14 +156,69 @@ export const PartnersSection: React.FC = () => {
 
                   <div>
                     <label className="block font-syncopate text-[9px] tracking-[0.2em] uppercase text-neutral-400 mb-1">
-                      Official Contact Email
+                      What do you manufacture?
                     </label>
                     <input
-                      type="email"
+                      type="text"
                       required
-                      value={partnerForm.contactEmail}
-                      onChange={(e) => setPartnerForm({ ...partnerForm, contactEmail: e.target.value })}
-                      placeholder="contact@facility.com"
+                      value={partnerForm.whatDoYouManufacture}
+                      onChange={(e) => setPartnerForm({ ...partnerForm, whatDoYouManufacture: e.target.value })}
+                      placeholder="e.g. Knits, Hoodies, Wovens, Outerwear, Printing"
+                      className="w-full px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-sm text-sm text-white focus:outline-none focus:border-white transition-colors"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block font-syncopate text-[9px] tracking-[0.2em] uppercase text-neutral-400 mb-1">
+                      Key Capabilities
+                    </label>
+                    <input
+                      type="text"
+                      value={partnerForm.keyCapabilities}
+                      onChange={(e) => setPartnerForm({ ...partnerForm, keyCapabilities: e.target.value })}
+                      placeholder="e.g. Cut & sew, screen printing, embroidery, sampling"
+                      className="w-full px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-sm text-sm text-white focus:outline-none focus:border-white transition-colors"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <label className="block font-syncopate text-[9px] tracking-[0.2em] uppercase text-neutral-400 mb-1">
+                        Typical MOQ / Capacity
+                      </label>
+                      <input
+                        type="text"
+                        value={partnerForm.typicalMoqCapacity}
+                        onChange={(e) => setPartnerForm({ ...partnerForm, typicalMoqCapacity: e.target.value })}
+                        placeholder="e.g. 100 pcs MOQ"
+                        className="w-full px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-sm text-sm text-white focus:outline-none focus:border-white transition-colors"
+                      />
+                    </div>
+
+                    <div>
+                      <label className="block font-syncopate text-[9px] tracking-[0.2em] uppercase text-neutral-400 mb-1">
+                        Website / Portfolio / Instagram
+                      </label>
+                      <input
+                        type="text"
+                        value={partnerForm.portfolioUrl}
+                        onChange={(e) => setPartnerForm({ ...partnerForm, portfolioUrl: e.target.value })}
+                        placeholder="Link or handle"
+                        className="w-full px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-sm text-sm text-white focus:outline-none focus:border-white transition-colors"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block font-syncopate text-[9px] tracking-[0.2em] uppercase text-neutral-400 mb-1">
+                      Contact Details (Email / Phone)
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={partnerForm.contactDetails}
+                      onChange={(e) => setPartnerForm({ ...partnerForm, contactDetails: e.target.value })}
+                      placeholder="Email and phone number"
                       className="w-full px-4 py-3 bg-neutral-950 border border-neutral-800 rounded-sm text-sm text-white focus:outline-none focus:border-white transition-colors"
                     />
                   </div>
@@ -153,7 +227,7 @@ export const PartnersSection: React.FC = () => {
                     type="submit"
                     className="w-full py-4 mt-2 bg-white text-black font-cinzel text-xs tracking-[0.25em] uppercase font-bold text-center hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2"
                   >
-                    <span>SUBMIT DETAILS</span>
+                    <span>SUBMIT PARTNERSHIP REQUEST</span>
                     <Send className="w-3.5 h-3.5" />
                   </button>
                 </form>

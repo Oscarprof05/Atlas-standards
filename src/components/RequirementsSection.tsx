@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'motion/react';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 interface RequirementsSectionProps {
   onStartProject: () => void;
@@ -10,45 +10,26 @@ export const RequirementsSection: React.FC<RequirementsSectionProps> = ({ onStar
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.15 });
 
-  const tiers = [
+  const segments = [
     {
-      id: 'brands',
-      label: 'PRIMARY FOCUS // BRANDS, STARTUPS & FOUNDERS',
-      title: 'BUILDING A BRAND?\nSTART WITH THE RIGHT PRODUCT.',
+      id: 'brands-startups',
+      tag: '07 — WHAT WE DO / BRANDS & STARTUPS',
+      title: 'FOR BRANDS & STARTUPS',
+      subtitle: 'BUILD THE PRODUCT.\nPROTECT THE BRAND.',
       description:
-        'Your brand identity is defined by the feel of the fabric, the drape of the silhouette, and the durability of the construction. We guide emerging and scaling labels through yarn formulation, tech pack creation, and production with accessible starting quantities.',
-      metrics: [
-        { label: 'Initial Production Batches', value: 'From ~50 Units*' },
-        { label: 'Digital Fit & Tech Review', value: 'Included' },
-        { label: 'Physical Sampling (On Request)', value: 'Chargeable' },
-      ],
+        'For emerging and established brands, we help with sourcing, product development, sampling, manufacturing coordination and product finishing. Whether you’re developing a new product or looking for a more reliable production partner, Atlas helps bring structure to the process.',
+      cta: 'BUILD WITH ATLAS',
       image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200&auto=format&fit=crop',
     },
     {
-      id: 'institutions',
-      label: 'ORGANIZATIONAL APPAREL // INSTITUTIONS & TEAMS',
-      title: 'CONSISTENT MERCHANDISE\nFOR TEAMS & INSTITUTIONS.',
+      id: 'institutions-organizations',
+      tag: '06 — WHAT WE DO / INSTITUTIONAL & ORGANIZATION MERCHANDISE',
+      title: 'INSTITUTIONAL & ORGANIZATION MERCHANDISE',
+      subtitle: 'PRACTICAL PRODUCTS.\nWELL EXECUTED.',
       description:
-        'We support universities, corporate teams, student bodies, and community organizations with durable merchandise. We provide both premium and budget-conscious solutions tailored to your allocation, with centralized delivery coordination.',
-      metrics: [
-        { label: 'Batch Scalability', value: '50 to 10,000+ Units' },
-        { label: 'Budget-Conscious Tiers', value: 'Available' },
-        { label: 'Quality Verification', value: 'Standardized' },
-      ],
+        'We work with colleges, student organizations, events, corporate teams, clubs, NGOs and other institutions on merchandise across different quantities and budgets. From straightforward event merchandise to more customized products, we help identify the right balance between product, quantity, customization and cost.',
+      cta: 'PLAN YOUR MERCHANDISE',
       image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop',
-    },
-    {
-      id: 'custom-development',
-      label: 'CUSTOM APPAREL // NON-STANDARD REQUIREMENTS',
-      title: 'SPECIFIC FABRICATIONS.\nCUSTOM PATTERNS & EMBELLISHMENTS.',
-      description:
-        'Need a specific yarn blend, custom color dye lot, heavy outerwear construction, or specialized trim? Minimum quantities generally start from around 50 pieces, but specialized custom developments or proprietary fabrications may require higher minimum quantities depending on manufacturing feasibility.',
-      metrics: [
-        { label: 'Color Matching', value: 'Pantone Reference' },
-        { label: 'Pattern Engineering', value: 'Custom Fit Blocks' },
-        { label: 'Embellishment Options', value: 'Print, Puff, Embroidery' },
-      ],
-      image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=1200&auto=format&fit=crop',
     },
   ];
 
@@ -68,22 +49,19 @@ export const RequirementsSection: React.FC<RequirementsSectionProps> = ({ onStar
         >
           <span className="font-syncopate text-[10px] sm:text-xs tracking-[0.35em] text-neutral-500 uppercase flex items-center gap-3">
             <span className="w-6 h-[1px] bg-neutral-600" />
-            SECTION 03 — WHO WE WORK WITH
+            SECTION 03 — CLIENT CATEGORIES
           </span>
-          <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-medium tracking-[0.06em] uppercase text-white mt-4">
-            CALIBRATED FOR YOUR GOALS.
+          <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-medium tracking-[0.06em] uppercase text-white mt-4 leading-tight">
+            SERVING BOTH ELEVATED & PRACTICAL REQUIREMENTS.
           </h2>
-          <p className="mt-4 text-xs sm:text-sm md:text-base text-neutral-400 font-light max-w-2xl leading-relaxed">
-            Whether you are launching your first apparel release, developing proprietary silhouettes, or outfitting an entire organization, our sourcing process adapts to your requirements.
-          </p>
         </motion.div>
 
-        {/* Alternating Tiers */}
+        {/* Segments */}
         <div className="space-y-32">
-          {tiers.map((tier, idx) => {
+          {segments.map((seg, idx) => {
             const isEven = idx % 2 === 0;
             return (
-              <div key={tier.id} className="relative">
+              <div key={seg.id} className="relative">
                 <div
                   className={`grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center ${
                     isEven ? '' : 'lg:flex-row-reverse'
@@ -97,38 +75,24 @@ export const RequirementsSection: React.FC<RequirementsSectionProps> = ({ onStar
                     className={`lg:col-span-6 space-y-6 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}
                   >
                     <span className="font-syncopate text-[9px] sm:text-[10px] tracking-[0.3em] text-neutral-400 uppercase">
-                      {tier.label}
+                      {seg.title}
                     </span>
 
                     <h3 className="font-cinzel text-2xl sm:text-3xl md:text-4xl font-light tracking-[0.05em] uppercase text-white whitespace-pre-line leading-tight">
-                      {tier.title}
+                      {seg.subtitle}
                     </h3>
 
-                    <p className="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">
-                      {tier.description}
+                    <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed">
+                      {seg.description}
                     </p>
 
-                    {/* Metrics row */}
-                    <div className="grid grid-cols-3 gap-4 pt-4 border-t border-neutral-900">
-                      {tier.metrics.map((m) => (
-                        <div key={m.label}>
-                          <p className="font-cinzel text-sm sm:text-base text-white font-medium">
-                            {m.value}
-                          </p>
-                          <p className="font-syncopate text-[8px] sm:text-[9px] tracking-[0.2em] text-neutral-500 uppercase mt-0.5">
-                            {m.label}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-
-                    <div className="pt-2">
+                    <div className="pt-4">
                       <button
                         onClick={onStartProject}
-                        className="group inline-flex items-center gap-2 font-cinzel text-xs tracking-[0.25em] uppercase text-white border-b border-white pb-1 hover:text-neutral-300 hover:border-neutral-400 transition-all"
+                        className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black font-cinzel text-xs tracking-[0.2em] uppercase font-semibold hover:bg-neutral-200 transition-all"
                       >
-                        <span>Initiate Project Inquiry</span>
-                        <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                        <span>{seg.cta}</span>
+                        <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                       </button>
                     </div>
                   </motion.div>
@@ -142,8 +106,8 @@ export const RequirementsSection: React.FC<RequirementsSectionProps> = ({ onStar
                   >
                     <div className="relative w-full aspect-[4/3] rounded-sm overflow-hidden bg-neutral-950 border border-neutral-900 group">
                       <img
-                        src={tier.image}
-                        alt={tier.label}
+                        src={seg.image}
+                        alt={seg.title}
                         referrerPolicy="no-referrer"
                         className="w-full h-full object-cover grayscale brightness-90 contrast-110 group-hover:scale-102 transition-transform duration-700"
                       />
@@ -152,20 +116,12 @@ export const RequirementsSection: React.FC<RequirementsSectionProps> = ({ onStar
                   </motion.div>
                 </div>
 
-                {/* Soft Gradient Divider between sections */}
-                {idx < tiers.length - 1 && (
+                {idx < segments.length - 1 && (
                   <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-neutral-800 to-transparent mt-28 sm:mt-36" />
                 )}
               </div>
             );
           })}
-        </div>
-
-        {/* MOQ Policy Note */}
-        <div className="mt-20 p-4 bg-neutral-950/60 border border-neutral-900 rounded-sm text-center max-w-3xl mx-auto">
-          <p className="text-xs text-neutral-400 font-light leading-relaxed">
-            *Projects generally begin from around 50 units. Certain products, materials or manufacturing methods may require higher minimum quantities depending on production feasibility.
-          </p>
         </div>
       </div>
     </section>

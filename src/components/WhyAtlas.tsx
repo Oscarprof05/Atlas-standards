@@ -1,47 +1,40 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'motion/react';
-import { Check, MessageSquare, ShieldCheck, Layers, Users } from 'lucide-react';
 
 export const WhyAtlas: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: false, amount: 0.15 });
 
-  const principles = [
+  const points = [
     {
       num: '01',
-      title: 'CLEAR COMMUNICATION & GUIDANCE',
-      subtitle: 'One single point of contact. Zero endless email chains.',
-      description:
-        'You never have to navigate multiple factories, dye mills, and print shops on your own. A dedicated technical lead coordinates every detail, providing regular progress updates, clear timelines, and transparent pricing.',
-      points: ['Single dedicated point of contact', 'Clear milestone updates', 'Itemized cost transparency'],
-      image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200&auto=format&fit=crop',
+      title: 'ONE POINT OF CONTACT',
+      description: 'Work through Atlas instead of coordinating multiple disconnected suppliers yourself.',
     },
     {
       num: '02',
-      title: 'STANDARDIZED QUALITY INSPECTION',
-      subtitle: 'Consistent tolerances from the first sample to the final batch.',
-      description:
-        'We enforce disciplined inspection standards across every production run. Fabric density, color fastness, seam strength, and dimensional shrinkage are verified before garments are approved for dispatch.',
-      points: ['Standardized inline inspection', 'Color fastness & wash tests', 'Dimensional shrinkage verification'],
-      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?q=80&w=1200&auto=format&fit=crop',
+      title: 'SOURCING AROUND THE REQUIREMENT',
+      description: 'We look at the product first and identify the appropriate manufacturing route.',
     },
     {
       num: '03',
-      title: 'PRODUCT DEVELOPMENT LAB',
-      subtitle: 'Bridging ideas and manufacturing reality.',
-      description:
-        'Whether starting from a rough concept sketch or an exact CAD drawing, we help refine your tech pack, choose suitable fabric weights, select proper trims, and calibrate fit blocks before mass cutting.',
-      points: ['Pattern grading & CAD tech packs', 'Pantone color calibration', 'Fabric weight & yarn consultation'],
-      image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=1200&auto=format&fit=crop',
+      title: 'PRODUCT UNDERSTANDING',
+      description: 'We can work from specifications, references, samples, designs or early-stage ideas.',
     },
     {
       num: '04',
-      title: 'FLEXIBLE SCALE & INSTITUTIONAL SUPPORT',
-      subtitle: 'Solutions for emerging brands and large-scale organizations.',
-      description:
-        'We support emerging brands and creators with accessible initial runs, while also managing large-scale bulk orders for companies, universities, and institutions with budget-conscious options where needed.',
-      points: ['Accessible minimum batch options', 'Scale support for large organizations', 'Budget-conscious institutional solutions'],
-      image: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=1200&auto=format&fit=crop',
+      title: 'CLEAR COMMUNICATION',
+      description: 'Requirements, approvals, changes and next steps should remain clear throughout the process.',
+    },
+    {
+      num: '05',
+      title: 'QUALITY CONSIDERATION',
+      description: 'Products are reviewed against the agreed requirements before completion and delivery.',
+    },
+    {
+      num: '06',
+      title: 'FLEXIBLE APPROACH',
+      description: 'Different clients have different products, quantities, budgets and expectations. The approach is built around the project.',
     },
   ];
 
@@ -52,71 +45,69 @@ export const WhyAtlas: React.FC = () => {
       className="relative w-full bg-black/40 text-white py-28 sm:py-36 px-6 sm:px-12 border-t border-neutral-900 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
+        {/* Section Header: 09 WHY ATLAS */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6 }}
-          className="mb-20 sm:mb-24"
+          className="mb-16 sm:mb-20"
         >
           <span className="font-syncopate text-[10px] sm:text-xs tracking-[0.35em] text-neutral-500 uppercase flex items-center gap-3">
             <span className="w-6 h-[1px] bg-neutral-600" />
-            SECTION 07 — WHY ATLAS STANDARDS
+            09 — WHY ATLAS
           </span>
           <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-medium tracking-[0.06em] uppercase text-white mt-4 leading-tight">
-            WE REMOVE COMPLEXITY.
-            <span className="block font-light text-neutral-400">YOU GAIN PEACE OF MIND.</span>
+            LESS COMPLEXITY.
+            <span className="block font-light text-neutral-400">MORE CONFIDENCE.</span>
           </h2>
-          <p className="mt-4 text-xs sm:text-sm md:text-base text-neutral-400 font-light max-w-2xl leading-relaxed">
-            Finding reliable apparel manufacturing shouldn’t feel like guesswork. While we might not always be the cheapest option on paper, our clients choose us for reliability, honest guidance, and a smoother process from start to finish.
-          </p>
         </motion.div>
 
-        {/* Core Principles Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
-          {principles.map((p, idx) => (
+        {/* Practical Reasons Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {points.map((p) => (
             <motion.div
               key={p.num}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ duration: 0.7, delay: idx * 0.1 }}
-              className="bg-neutral-950 border border-neutral-900 rounded-sm overflow-hidden flex flex-col justify-between group hover:border-neutral-700 transition-all duration-500"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6 }}
+              className="bg-neutral-950 border border-neutral-900 rounded-sm p-8 flex flex-col justify-between group hover:border-neutral-700 transition-all duration-300"
             >
-              <div className="relative aspect-[16/9] overflow-hidden bg-neutral-900">
-                <img
-                  src={p.image}
-                  alt={p.title}
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover grayscale brightness-90 contrast-110 group-hover:scale-102 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent" />
-                <div className="absolute top-4 left-4 font-syncopate text-[10px] tracking-widest text-white/90 bg-black/80 backdrop-blur-md px-3 py-1 rounded-full border border-neutral-800">
-                  STANDARD {p.num}
-                </div>
-              </div>
-
-              <div className="p-8 sm:p-10 space-y-4">
-                <h3 className="font-cinzel text-xl sm:text-2xl tracking-[0.04em] text-white">
+              <div className="space-y-4">
+                <span className="font-syncopate text-xs text-neutral-500 font-mono">
+                  [{p.num}]
+                </span>
+                <h3 className="font-cinzel text-base sm:text-lg font-semibold tracking-wide text-white">
                   {p.title}
                 </h3>
-                <p className="font-cinzel text-xs sm:text-sm text-neutral-300 font-light italic">
-                  {p.subtitle}
-                </p>
-                <p className="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">
+                <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed">
                   {p.description}
                 </p>
-
-                <div className="pt-4 border-t border-neutral-900 space-y-2">
-                  {p.points.map((pt) => (
-                    <div key={pt} className="flex items-center gap-2 text-xs text-neutral-300 font-light">
-                      <Check className="w-3.5 h-3.5 text-neutral-400 flex-shrink-0" />
-                      <span>{pt}</span>
-                    </div>
-                  ))}
-                </div>
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* 13 — ABOUT ATLAS SHORT STATEMENT */}
+        <div className="mt-28 p-8 sm:p-12 bg-neutral-950/80 border border-neutral-900 rounded-sm">
+          <div className="max-w-3xl space-y-4">
+            <span className="font-syncopate text-[10px] tracking-[0.35em] text-neutral-500 uppercase">
+              13 — ABOUT ATLAS
+            </span>
+            <h3 className="font-cinzel text-2xl sm:text-4xl font-medium uppercase text-white">
+              BUILT TO MAKE SOURCING SIMPLER.
+            </h3>
+            <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed">
+              Atlas Standards is a merchandise, product development and sourcing partner working with brands, startups, institutions and organizations.
+            </p>
+            <p className="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">
+              We connect requirements with manufacturing capabilities, help develop products where needed, coordinate the production process and stay involved through delivery.
+            </p>
+            <div className="pt-2 border-t border-neutral-900">
+              <p className="font-cinzel text-xs sm:text-sm text-white tracking-wide uppercase font-medium">
+                Our goal is straightforward: To make the process of getting the right product made clearer, more reliable and easier to manage.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

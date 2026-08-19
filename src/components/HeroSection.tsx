@@ -35,24 +35,22 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         )}
       </div>
 
-      {/* Main Luxury Editorial Stage — Balanced & Expansive */}
+      {/* Main Editorial Stage */}
       <div className="my-auto py-16 text-center max-w-5xl mx-auto space-y-8 pointer-events-none">
-        {/* Massive Luxury Editorial Typography */}
         <div className="space-y-4">
           <h1 className="font-cinzel text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light tracking-[0.06em] uppercase text-white leading-[1.04]">
             YOU HAVE THE IDEA.
             <span className="block font-medium text-steel-gradient mt-2 sm:mt-3">
-              WE BUILD THE PRODUCT.
+              WE HELP BUILD IT.
             </span>
           </h1>
         </div>
 
-        {/* Focused Audience & Value Proposition */}
         <p className="text-sm sm:text-base md:text-lg text-neutral-300 font-light max-w-2xl mx-auto tracking-wide leading-relaxed">
-          Guiding brands, startups, and product creators from initial concept and fabric formulation to finished apparel and reliable manufacturing.
+          Premium merchandise, product development and sourcing for brands, startups, institutions and organizations.
         </p>
 
-        {/* Primary Interactive CTAs */}
+        {/* Primary Interactive CTA */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6 pointer-events-auto">
           <button
             onClick={onStartProject}
@@ -75,9 +73,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       {/* Bottom Subtle Navigation & Scroll Hint */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-8 border-t border-neutral-900/80 text-[11px] font-light text-neutral-500">
         <div className="flex items-center gap-6">
-          <span>For Brands & Startups</span>
+          <span>Brands & Startups</span>
           <span className="text-neutral-700">•</span>
-          <span>Merchandise & Apparel</span>
+          <span>Merchandise & Sourcing</span>
           <span className="text-neutral-700">•</span>
           <span>Institutions & Organizations</span>
         </div>

@@ -22,8 +22,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   const navLinks = [
     { id: 'problem', label: 'The Problem', href: '#problem' },
     { id: 'what-we-do', label: 'What We Do', href: '#what-we-do' },
-    { id: 'requirements', label: 'Capabilities', href: '#requirements' },
-    { id: 'approach', label: 'The Approach', href: '#approach' },
+    { id: 'requirements', label: 'For Brands', href: '#requirements' },
+    { id: 'approach', label: 'How We Work', href: '#approach' },
     { id: 'brand-desk', label: 'Brand Desk', href: '#brand-desk' },
     { id: 'network', label: 'Our Network', href: '#network' },
     { id: 'why-atlas', label: 'Why Atlas', href: '#why-atlas' },
