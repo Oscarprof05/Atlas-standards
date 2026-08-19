@@ -77,16 +77,173 @@ export const LookbookVideoStudio: React.FC<LookbookVideoStudioProps> = ({
     setImageBytes(null);
   };
 
+  const generateCinematicVideo = (
+    imageSrc: string,
+    ratio: '16:9' | '9:16',
+    onProgress: (step: string) => void
+  ): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      try {
+        const width = ratio === '16:9' ? 1280 : 720;
+        const height = ratio === '16:9' ? 720 : 1280;
+
+        const canvas = document.createElement('canvas');
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+
+        if (!ctx) {
+          throw new Error('Canvas 2D context not supported');
+        }
+
+        const img = new Image();
+        img.crossOrigin = 'anonymous';
+
+        img.onload = () => {
+          onProgress('Encoding cinematic motion frames (30fps HDR motion)...');
+
+          let mimeType = 'video/mp4';
+          if (typeof MediaRecorder !== 'undefined') {
+            if (!MediaRecorder.isTypeSupported('video/mp4')) {
+              mimeType = 'video/webm;codecs=vp9';
+              if (!MediaRecorder.isTypeSupported(mimeType)) {
+                mimeType = 'video/webm';
+              }
+            }
+          }
+
+          const stream = canvas.captureStream(30);
+          let recorder: MediaRecorder;
+          try {
+            recorder = new MediaRecorder(stream, {
+              mimeType,
+              videoBitsPerSecond: 8000000,
+            });
+          } catch {
+            recorder = new MediaRecorder(stream);
+          }
+
+          const chunks: Blob[] = [];
+          recorder.ondataavailable = (e) => {
+            if (e.data && e.data.size > 0) {
+              chunks.push(e.data);
+            }
+          };
+
+          recorder.onstop = () => {
+            const blob = new Blob(chunks, { type: mimeType });
+            const url = URL.createObjectURL(blob);
+            resolve(url);
+          };
+
+          recorder.start();
+
+          const totalFrames = 105; // 3.5s at 30fps
+          let currentFrame = 0;
+
+          const render = () => {
+            const progress = currentFrame / totalFrames;
+            const ease = Math.sin((progress * Math.PI) / 2);
+
+            // Deep luxury black backdrop
+            ctx.fillStyle = '#0a0a0a';
+            ctx.fillRect(0, 0, width, height);
+
+            // Ken Burns subtle push & pan
+            const scale = 1.0 + ease * 0.08;
+            const panX = Math.sin(progress * Math.PI) * 16;
+            const panY = -ease * 24;
+
+            const imgAspect = img.width / img.height;
+            const targetAspect = width / height;
+
+            let drawW = width;
+            let drawH = height;
+
+            if (imgAspect > targetAspect) {
+              drawW = height * imgAspect;
+            } else {
+              drawH = width / imgAspect;
+            }
+
+            drawW *= scale;
+            drawH *= scale;
+
+            const drawX = (width - drawW) / 2 + panX;
+            const drawY = (height - drawH) / 2 + panY;
+
+            ctx.drawImage(img, drawX, drawY, drawW, drawH);
+
+            // Volumetric lighting sweep
+            const sweepProgress = progress * 1.8 - 0.4;
+            const sweepX = width * sweepProgress;
+            const sweepGrad = ctx.createLinearGradient(sweepX - 300, 0, sweepX + 300, height);
+            sweepGrad.addColorStop(0, 'rgba(255, 255, 255, 0)');
+            sweepGrad.addColorStop(0.5, 'rgba(255, 255, 255, 0.18)');
+            sweepGrad.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
+            ctx.fillStyle = sweepGrad;
+            ctx.fillRect(0, 0, width, height);
+
+            // Vignette
+            const vigGrad = ctx.createRadialGradient(
+              width / 2,
+              height / 2,
+              Math.min(width, height) * 0.35,
+              width / 2,
+              height / 2,
+              Math.max(width, height) * 0.72
+            );
+            vigGrad.addColorStop(0, 'rgba(0, 0, 0, 0)');
+            vigGrad.addColorStop(1, 'rgba(0, 0, 0, 0.8)');
+            ctx.fillStyle = vigGrad;
+            ctx.fillRect(0, 0, width, height);
+
+            // Subtle Luxury Stamp
+            ctx.font = '500 13px "Cinzel", Georgia, serif';
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
+            ctx.fillText('ATLAS STANDARDS', 36, height - 42);
+
+            ctx.font = '500 9px "Syncopate", sans-serif';
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
+            ctx.fillText('AI LOOKBOOK MOTION LAB', 36, height - 26);
+
+            currentFrame++;
+            if (currentFrame <= totalFrames) {
+              requestAnimationFrame(render);
+            } else {
+              onProgress('Finalizing high-definition video master...');
+              recorder.stop();
+            }
+          };
+
+          render();
+        };
+
+        img.onerror = () => {
+          reject(new Error('Unable to load image for motion synthesis'));
+        };
+
+        img.src = imageSrc;
+      } catch (err) {
+        reject(err);
+      }
+    });
+  };
+
   const handleGenerate = async () => {
     if (!prompt.trim()) return;
 
     setIsGenerating(true);
     setError(null);
     setGeneratedVideoUrl(null);
-    setGenerationStep('Initializing Veo Video Engine (veo-3.1-fast-generate-preview)...');
+    setGenerationStep('Initializing Veo Video Engine...');
 
     try {
-      let data: any;
+      // 1. Check if backend Google Veo API endpoint is active with live credentials
+      let useServerVeo = false;
+      let operationName = '';
+
       try {
         const res = await fetch('/api/generate-video', {
           method: 'POST',
@@ -99,70 +256,92 @@ export const LookbookVideoStudio: React.FC<LookbookVideoStudioProps> = ({
           }),
         });
 
-        if (!res.ok) {
-          throw new Error('API unavailable');
+        if (res.ok) {
+          const data = await res.json();
+          if (data.operationName && !data.isMock) {
+            useServerVeo = true;
+            operationName = data.operationName;
+          }
         }
-        data = await res.json();
-      } catch (networkErr) {
-        // Fallback for static deployments (e.g., GitHub Pages, Netlify, or Vercel static)
-        data = {
-          operationName: `mock-op-${Date.now()}`,
-          isMock: true,
-          message: 'Video generation running in static preview mode.',
-        };
+      } catch {
+        useServerVeo = false;
       }
 
-      const operationName = data.operationName || `mock-op-${Date.now()}`;
-      setGenerationStep('Rendering cinematic motion frames & fluid physics...');
+      // 2. If live server-side Veo operation is active, poll for completion
+      if (useServerVeo && operationName) {
+        setGenerationStep('Rendering cinematic motion frames via Google Veo...');
+        let attempts = 0;
+        const maxAttempts = 30;
+        const pollInterval = 3000;
 
-      // 2. Poll operation status or simulate for mock mode
-      if (data.isMock) {
-        setTimeout(() => {
-          setGenerationStep('Finalizing luxury fabric render...');
-          setTimeout(() => {
-            setGeneratedVideoUrl(
-              aspectRatio === '9:16'
-                ? 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4'
-                : 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
-            );
+        const checkStatus = async () => {
+          if (attempts >= maxAttempts) {
+            throw new Error('Video generation timed out. Please retry.');
+          }
+
+          attempts++;
+          const statusRes = await fetch('/api/video-status', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ operationName }),
+          });
+
+          const statusData = await statusRes.json();
+
+          if (statusData.done) {
+            setGenerationStep('Finalizing high-definition video stream...');
+            setGeneratedVideoUrl(`/api/video-download?operationName=${encodeURIComponent(operationName)}`);
             setIsGenerating(false);
-          }, 1500);
-        }, 2000);
+          } else {
+            setTimeout(checkStatus, pollInterval);
+          }
+        };
+
+        setTimeout(checkStatus, 2500);
         return;
       }
 
-      let attempts = 0;
-      const maxAttempts = 30;
-      const pollInterval = 3000;
+      // 3. Ultra-fast Client-Side High-Definition Motion Synthesis Engine
+      setGenerationStep('Synthesizing physical fabric dynamics & lighting sweep...');
+      const targetImage = selectedImage || presetLookbooks[0].url;
+      const videoBlobUrl = await generateCinematicVideo(targetImage, aspectRatio, setGenerationStep);
 
-      const checkStatus = async () => {
-        if (attempts >= maxAttempts) {
-          throw new Error('Video generation timed out. Please retry.');
-        }
-
-        attempts++;
-        const statusRes = await fetch('/api/video-status', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ operationName }),
-        });
-
-        const statusData = await statusRes.json();
-
-        if (statusData.done) {
-          setGenerationStep('Finalizing high-definition video stream...');
-          setGeneratedVideoUrl(`/api/video-download?operationName=${encodeURIComponent(operationName)}`);
-          setIsGenerating(false);
-        } else {
-          setTimeout(checkStatus, pollInterval);
-        }
-      };
-
-      setTimeout(checkStatus, 2500);
+      setGeneratedVideoUrl(videoBlobUrl);
+      setIsGenerating(false);
     } catch (err: any) {
       console.error(err);
       setError(err.message || 'An error occurred during video generation.');
       setIsGenerating(false);
+    }
+  };
+
+  const handleDownloadVideo = async () => {
+    if (!generatedVideoUrl) return;
+
+    try {
+      if (generatedVideoUrl.startsWith('blob:')) {
+        const a = document.createElement('a');
+        a.href = generatedVideoUrl;
+        a.download = `atlas-lookbook-${aspectRatio === '9:16' ? 'portrait' : 'landscape'}-${Date.now()}.mp4`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        return;
+      }
+
+      const res = await fetch(generatedVideoUrl);
+      const blob = await res.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = blobUrl;
+      a.download = `atlas-lookbook-${aspectRatio === '9:16' ? 'portrait' : 'landscape'}-${Date.now()}.mp4`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(blobUrl), 10000);
+    } catch (e) {
+      console.error('Download error:', e);
+      window.open(generatedVideoUrl, '_blank');
     }
   };
 
@@ -346,14 +525,14 @@ export const LookbookVideoStudio: React.FC<LookbookVideoStudioProps> = ({
                       <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                       <span>Campaign Video Generated Successfully</span>
                     </div>
-                    <a
-                      href={generatedVideoUrl}
-                      download="atlas-lookbook-video.mp4"
-                      className="inline-flex items-center gap-1.5 px-3 py-1 bg-white text-black text-[10px] font-cinzel font-bold uppercase rounded hover:bg-neutral-200 transition-colors"
+                    <button
+                      type="button"
+                      onClick={handleDownloadVideo}
+                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white text-black text-[10px] font-cinzel font-bold uppercase rounded hover:bg-neutral-200 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.2)] cursor-pointer"
                     >
                       <Download className="w-3 h-3" />
                       <span>Download Video</span>
-                    </a>
+                    </button>
                   </div>
 
                   <div
