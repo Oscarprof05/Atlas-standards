@@ -37,9 +37,38 @@ export const PartnersSection: React.FC = () => {
     },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+
+    try {
+      await fetch('https://formsubmit.co/ajax/atlasstandards@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          _subject: `New Atlas Standards Partner Application: ${partnerForm.companyName || partnerForm.contactPerson}`,
+          Company_or_Unit_Name: partnerForm.companyName || 'N/A',
+          Contact_Person: partnerForm.contactPerson || 'N/A',
+          Location: partnerForm.location || 'N/A',
+          What_Do_You_Manufacture: partnerForm.whatDoYouManufacture || 'N/A',
+          Key_Capabilities: partnerForm.keyCapabilities || 'N/A',
+          Typical_MOQ_or_Capacity: partnerForm.typicalMoqCapacity || 'N/A',
+          Website_Portfolio: partnerForm.portfolioUrl || 'N/A',
+          Contact_Details: partnerForm.contactDetails || 'N/A',
+        }),
+      });
+      setSubmitted(true);
+    } catch {
+      window.location.href = `mailto:atlasstandards@gmail.com?subject=Partner Application - ${encodeURIComponent(partnerForm.companyName)}&body=${encodeURIComponent(`Company: ${partnerForm.companyName}\nContact: ${partnerForm.contactPerson}\nLocation: ${partnerForm.location}\nProducts: ${partnerForm.whatDoYouManufacture}\nCapabilities: ${partnerForm.keyCapabilities}\nMOQ/Capacity: ${partnerForm.typicalMoqCapacity}\nContact: ${partnerForm.contactDetails}`)}`;
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -225,9 +254,10 @@ export const PartnersSection: React.FC = () => {
 
                   <button
                     type="submit"
-                    className="w-full py-4 mt-2 bg-white text-black font-cinzel text-xs tracking-[0.25em] uppercase font-bold text-center hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="w-full py-4 mt-2 bg-white text-black font-cinzel text-xs tracking-[0.25em] uppercase font-bold text-center hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
                   >
-                    <span>SUBMIT PARTNERSHIP REQUEST</span>
+                    <span>{isSubmitting ? 'SUBMITTING REQUEST...' : 'SUBMIT PARTNERSHIP REQUEST'}</span>
                     <Send className="w-3.5 h-3.5" />
                   </button>
                 </form>

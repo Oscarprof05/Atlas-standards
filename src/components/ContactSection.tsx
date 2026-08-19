@@ -5,12 +5,13 @@ import { ArrowRight, CheckCircle2, Mail, Phone, Instagram, Linkedin } from 'luci
 
 export const ContactSection: React.FC = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<ProjectInquiry>({
     name: '',
     company: '',
     email: '',
     phone: '',
-    productType: 'T-Shirts & Apparel',
+    productType: 'Heavyweight & Oversized T-Shirts',
     estimatedQuantity: 'Around 50 units',
     targetDate: 'Flexible',
     details: '',
@@ -35,9 +36,35 @@ export const ContactSection: React.FC = () => {
     'Exploring Feasibility',
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+
+    try {
+      await fetch('https://formsubmit.co/ajax/atlasstandards@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          _subject: `New Atlas Standards Project Inquiry: ${formData.name} (${formData.productType})`,
+          Name: formData.name,
+          Brand_or_Organization: formData.company || 'N/A',
+          Email: formData.email,
+          Phone_or_WhatsApp: formData.phone || 'N/A',
+          Product_Category: formData.productType,
+          Target_Quantity: formData.estimatedQuantity,
+          Details: formData.details || 'N/A',
+        }),
+      });
+      setSubmitted(true);
+    } catch {
+      window.location.href = `mailto:atlasstandards@gmail.com?subject=Project Inquiry - ${encodeURIComponent(formData.productType)}&body=${encodeURIComponent(`Name: ${formData.name}\nBrand: ${formData.company}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nQuantity: ${formData.estimatedQuantity}\n\nDetails:\n${formData.details}`)}`;
+      setSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -78,31 +105,33 @@ export const ContactSection: React.FC = () => {
 
         {/* Direct Contact Channels Box */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-          <div className="p-4 bg-neutral-950 border border-neutral-900 rounded-sm space-y-1">
-            <span className="font-syncopate text-[8.5px] tracking-[0.2em] uppercase text-neutral-500 flex items-center gap-1.5">
-              <Mail className="w-3 h-3 text-neutral-400" />
+          <a
+            href="mailto:atlasstandards@gmail.com"
+            className="p-4 bg-neutral-950 border border-neutral-900 rounded-sm space-y-1 hover:border-neutral-700 transition-colors group block"
+          >
+            <span className="font-syncopate text-[8.5px] tracking-[0.2em] uppercase text-neutral-500 flex items-center gap-1.5 group-hover:text-white transition-colors">
+              <Mail className="w-3 h-3 text-neutral-400 group-hover:text-white transition-colors" />
               EMAIL US
             </span>
-            <a
-              href="mailto:atlasstandards@gmail.com"
-              className="text-xs text-white hover:text-neutral-300 block truncate"
-            >
+            <span className="text-xs text-white group-hover:text-neutral-200 block truncate">
               atlasstandards@gmail.com
-            </a>
-          </div>
+            </span>
+          </a>
 
-          <div className="p-4 bg-neutral-950 border border-neutral-900 rounded-sm space-y-1">
-            <span className="font-syncopate text-[8.5px] tracking-[0.2em] uppercase text-neutral-500 flex items-center gap-1.5">
-              <Phone className="w-3 h-3 text-neutral-400" />
+          <a
+            href="https://wa.me/917550080450"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-4 bg-neutral-950 border border-neutral-900 rounded-sm space-y-1 hover:border-neutral-700 transition-colors group block"
+          >
+            <span className="font-syncopate text-[8.5px] tracking-[0.2em] uppercase text-neutral-500 flex items-center gap-1.5 group-hover:text-white transition-colors">
+              <Phone className="w-3 h-3 text-neutral-400 group-hover:text-white transition-colors" />
               CALL / WHATSAPP
             </span>
-            <a
-              href="tel:+917550080450"
-              className="text-xs text-white hover:text-neutral-300 block"
-            >
+            <span className="text-xs text-white group-hover:text-neutral-200 block">
               +91 75500 80450
-            </a>
-          </div>
+            </span>
+          </a>
 
           <div className="p-4 bg-neutral-950 border border-neutral-900 rounded-sm space-y-1">
             <span className="font-syncopate text-[8.5px] tracking-[0.2em] uppercase text-neutral-500 flex items-center gap-1.5">
@@ -110,19 +139,24 @@ export const ContactSection: React.FC = () => {
               INSTAGRAM
             </span>
             <span className="text-xs text-neutral-400 block">
-              [ADD INSTAGRAM LINK]
+              @atlasstandards
             </span>
           </div>
 
-          <div className="p-4 bg-neutral-950 border border-neutral-900 rounded-sm space-y-1">
-            <span className="font-syncopate text-[8.5px] tracking-[0.2em] uppercase text-neutral-500 flex items-center gap-1.5">
-              <Linkedin className="w-3 h-3 text-neutral-400" />
+          <a
+            href="https://www.linkedin.com/company/atlas-standards/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-4 bg-neutral-950 border border-neutral-900 rounded-sm space-y-1 hover:border-neutral-700 transition-colors group block"
+          >
+            <span className="font-syncopate text-[8.5px] tracking-[0.2em] uppercase text-neutral-500 flex items-center gap-1.5 group-hover:text-white transition-colors">
+              <Linkedin className="w-3 h-3 text-neutral-400 group-hover:text-white transition-colors" />
               LINKEDIN
             </span>
-            <span className="text-xs text-neutral-400 block">
-              [ADD LINKEDIN LINK]
+            <span className="text-xs text-white group-hover:text-neutral-200 block truncate">
+              Atlas Standards ↗
             </span>
-          </div>
+          </a>
         </div>
 
         {/* Form */}
@@ -259,9 +293,10 @@ export const ContactSection: React.FC = () => {
               <div className="pt-2 flex justify-end">
                 <button
                   type="submit"
-                  className="px-9 py-4 rounded-full bg-white text-black font-cinzel text-xs tracking-[0.22em] uppercase font-bold hover:bg-neutral-200 transition-all flex items-center gap-3 w-full sm:w-auto justify-center"
+                  disabled={isSubmitting}
+                  className="px-9 py-4 rounded-full bg-white text-black font-cinzel text-xs tracking-[0.22em] uppercase font-bold hover:bg-neutral-200 transition-all flex items-center gap-3 w-full sm:w-auto justify-center disabled:opacity-50"
                 >
-                  <span>START A PROJECT</span>
+                  <span>{isSubmitting ? 'SENDING INQUIRY...' : 'START A PROJECT'}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
