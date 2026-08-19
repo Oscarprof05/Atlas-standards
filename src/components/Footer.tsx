@@ -58,11 +58,11 @@ export const Footer: React.FC = () => {
                 <span>+91 75500 80450</span>
               </a>
               <a
-                href="mailto:atlasstandards@gmail.com"
+                href="mailto:hello@atlasstandards.com"
                 className="flex items-center justify-center sm:justify-start gap-2 hover:text-white transition-colors"
               >
                 <Mail className="w-3 h-3 text-neutral-500" />
-                <span>atlasstandards@gmail.com</span>
+                <span>hello@atlasstandards.com</span>
               </a>
             </div>
           </div>

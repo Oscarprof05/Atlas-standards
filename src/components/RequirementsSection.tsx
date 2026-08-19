@@ -13,7 +13,7 @@ export const RequirementsSection: React.FC<RequirementsSectionProps> = ({ onStar
   const segments = [
     {
       id: 'brands-startups',
-      tag: '07 — WHAT WE DO / BRANDS & STARTUPS',
+      tag: '01 — CLIENT CATEGORY',
       title: 'FOR BRANDS & STARTUPS',
       subtitle: 'BUILD THE PRODUCT.\nPROTECT THE BRAND.',
       description:
@@ -23,11 +23,11 @@ export const RequirementsSection: React.FC<RequirementsSectionProps> = ({ onStar
     },
     {
       id: 'institutions-organizations',
-      tag: '06 — WHAT WE DO / INSTITUTIONAL & ORGANIZATION MERCHANDISE',
-      title: 'INSTITUTIONAL & ORGANIZATION MERCHANDISE',
+      tag: '02 — CLIENT CATEGORY',
+      title: 'INSTITUTIONAL & CORPORATE ORDERS',
       subtitle: 'PRACTICAL PRODUCTS.\nWELL EXECUTED.',
       description:
-        'We work with colleges, student organizations, events, corporate teams, clubs, NGOs and other institutions on merchandise across different quantities and budgets. From straightforward event merchandise to more customized products, we help identify the right balance between product, quantity, customization and cost.',
+        'We work with corporate teams, colleges, student organizations, events, clubs, NGOs and other institutions on merchandise across different quantities and budgets. From straightforward event merchandise to customized corporate apparel, we help identify the right balance between product, quantity, customization and cost.',
       cta: 'PLAN YOUR MERCHANDISE',
       image: '/products/hoodies-sweatshirts.jpg',
     },
@@ -47,7 +47,7 @@ export const RequirementsSection: React.FC<RequirementsSectionProps> = ({ onStar
           transition={{ duration: 0.6 }}
           className="mb-20"
         >
-          <span className="font-syncopate text-[10px] sm:text-xs tracking-[0.35em] text-neutral-500 uppercase flex items-center gap-3">
+          <span className="font-syncopate text-[10px] sm:text-xs tracking-[0.35em] text-neutral-400 uppercase flex items-center gap-3">
             <span className="w-6 h-[1px] bg-neutral-600" />
             SECTION 03 — CLIENT CATEGORIES
           </span>
@@ -74,22 +74,36 @@ export const RequirementsSection: React.FC<RequirementsSectionProps> = ({ onStar
                     transition={{ duration: 0.8, delay: idx * 0.15 }}
                     className={`lg:col-span-6 space-y-6 ${isEven ? 'lg:order-1' : 'lg:order-2'}`}
                   >
-                    <span className="font-syncopate text-[9px] sm:text-[10px] tracking-[0.3em] text-neutral-400 uppercase">
-                      {seg.title}
-                    </span>
+                    {/* Glowing Category Pill Tag */}
+                    <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.07] border border-white/20 backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.08)]">
+                      <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_#FFFFFF] animate-pulse" />
+                      <span className="font-syncopate text-[9px] sm:text-[10px] tracking-[0.28em] text-white uppercase font-semibold">
+                        {seg.tag}
+                      </span>
+                    </div>
 
-                    <h3 className="font-cinzel text-2xl sm:text-3xl md:text-4xl font-light tracking-[0.05em] uppercase text-white whitespace-pre-line leading-tight">
-                      {seg.subtitle}
-                    </h3>
+                    {/* Primary Highlighted Title */}
+                    <div className="space-y-3">
+                      <h3 className="font-cinzel text-3xl sm:text-4xl md:text-5xl font-medium tracking-[0.05em] uppercase text-white leading-tight drop-shadow-[0_0_25px_rgba(255,255,255,0.2)]">
+                        {seg.title}
+                      </h3>
+
+                      <div className="flex items-center gap-3 pt-1">
+                        <span className="w-6 h-[1px] bg-neutral-600" />
+                        <h4 className="font-syncopate text-xs sm:text-sm tracking-[0.2em] uppercase text-neutral-300 font-medium whitespace-pre-line">
+                          {seg.subtitle}
+                        </h4>
+                      </div>
+                    </div>
 
                     <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed">
                       {seg.description}
                     </p>
 
-                    <div className="pt-4">
+                    <div className="pt-2">
                       <button
                         onClick={onStartProject}
-                        className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black font-cinzel text-xs tracking-[0.2em] uppercase font-semibold hover:bg-neutral-200 transition-all"
+                        className="group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-white text-black font-cinzel text-xs tracking-[0.2em] uppercase font-semibold hover:bg-neutral-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.12)] hover:shadow-[0_0_30px_rgba(255,255,255,0.25)]"
                       >
                         <span>{seg.cta}</span>
                         <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -104,12 +118,12 @@ export const RequirementsSection: React.FC<RequirementsSectionProps> = ({ onStar
                     transition={{ duration: 0.8, delay: idx * 0.15 }}
                     className={`lg:col-span-6 ${isEven ? 'lg:order-2' : 'lg:order-1'}`}
                   >
-                    <div className="relative w-full aspect-[4/3] rounded-sm overflow-hidden bg-neutral-950 border border-neutral-900 group">
+                    <div className="relative w-full aspect-[4/3] rounded-sm overflow-hidden bg-neutral-950 border border-neutral-800 group shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
                       <img
                         src={seg.image}
                         alt={seg.title}
                         referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover grayscale brightness-90 contrast-110 group-hover:scale-102 transition-transform duration-700"
+                        className="w-full h-full object-cover grayscale brightness-95 contrast-110 group-hover:scale-103 group-hover:grayscale-0 transition-all duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
                     </div>

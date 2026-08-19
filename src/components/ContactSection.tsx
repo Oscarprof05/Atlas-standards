@@ -41,7 +41,7 @@ export const ContactSection: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      await fetch('https://formsubmit.co/ajax/atlasstandards@gmail.com', {
+      await fetch('https://formsubmit.co/ajax/hello@atlasstandards.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ export const ContactSection: React.FC = () => {
       });
       setSubmitted(true);
     } catch {
-      window.location.href = `mailto:atlasstandards@gmail.com?subject=Project Inquiry - ${encodeURIComponent(formData.productType)}&body=${encodeURIComponent(`Name: ${formData.name}\nBrand: ${formData.company}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nQuantity: ${formData.estimatedQuantity}\n\nDetails:\n${formData.details}`)}`;
+      window.location.href = `mailto:hello@atlasstandards.com?subject=Project Inquiry - ${encodeURIComponent(formData.productType)}&body=${encodeURIComponent(`Name: ${formData.name}\nBrand: ${formData.company}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nQuantity: ${formData.estimatedQuantity}\n\nDetails:\n${formData.details}`)}`;
       setSubmitted(true);
     } finally {
       setIsSubmitting(false);
@@ -106,7 +106,7 @@ export const ContactSection: React.FC = () => {
         {/* Direct Contact Channels Box */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-12">
           <a
-            href="mailto:atlasstandards@gmail.com"
+            href="mailto:hello@atlasstandards.com"
             className="p-4 bg-neutral-950 border border-neutral-900 rounded-sm space-y-1 hover:border-neutral-700 transition-colors group block"
           >
             <span className="font-syncopate text-[8.5px] tracking-[0.2em] uppercase text-neutral-500 flex items-center gap-1.5 group-hover:text-white transition-colors">
@@ -114,7 +114,7 @@ export const ContactSection: React.FC = () => {
               EMAIL US
             </span>
             <span className="text-xs text-white group-hover:text-neutral-200 block truncate">
-              atlasstandards@gmail.com
+              hello@atlasstandards.com
             </span>
           </a>
 

@@ -44,7 +44,7 @@ export const PartnersSection: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      await fetch('https://formsubmit.co/ajax/atlasstandards@gmail.com', {
+      await fetch('https://formsubmit.co/ajax/hello@atlasstandards.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ export const PartnersSection: React.FC = () => {
       });
       setSubmitted(true);
     } catch {
-      window.location.href = `mailto:atlasstandards@gmail.com?subject=Partner Application - ${encodeURIComponent(partnerForm.companyName)}&body=${encodeURIComponent(`Company: ${partnerForm.companyName}\nContact: ${partnerForm.contactPerson}\nLocation: ${partnerForm.location}\nProducts: ${partnerForm.whatDoYouManufacture}\nCapabilities: ${partnerForm.keyCapabilities}\nMOQ/Capacity: ${partnerForm.typicalMoqCapacity}\nContact: ${partnerForm.contactDetails}`)}`;
+      window.location.href = `mailto:hello@atlasstandards.com?subject=Partner Application - ${encodeURIComponent(partnerForm.companyName)}&body=${encodeURIComponent(`Company: ${partnerForm.companyName}\nContact: ${partnerForm.contactPerson}\nLocation: ${partnerForm.location}\nProducts: ${partnerForm.whatDoYouManufacture}\nCapabilities: ${partnerForm.keyCapabilities}\nMOQ/Capacity: ${partnerForm.typicalMoqCapacity}\nContact: ${partnerForm.contactDetails}`)}`;
       setSubmitted(true);
     } finally {
       setIsSubmitting(false);
