@@ -94,13 +94,13 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Brand Logo */}
         <a
           href="#"
-          className="flex items-center gap-3 transition-opacity duration-300 hover:opacity-80 group"
+          className="flex items-center gap-2.5 transition-opacity duration-300 hover:opacity-80 group"
           id="navbar-brand-logo"
         >
           <img
-            src="/favicon.svg"
-            alt="Atlas Standards"
-            className="w-8 h-8 sm:w-9 sm:h-9 object-contain rounded-md shrink-0 transition-transform duration-300 group-hover:scale-105"
+            src="/atlas-symbol.png"
+            alt="Atlas Standards Symbol"
+            className="h-[20px] sm:h-[22px] w-auto object-contain shrink-0 select-none"
           />
           <AtlasLogo size="sm" showTagline={false} withLightSweep={false} />
         </a>
