@@ -141,16 +141,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
 
         {/* Right CTAs */}
-        <div className="hidden lg:flex items-center gap-2 xl:gap-3 shrink-0">
-          {onOpenLookbookStudio && (
-            <button
-              onClick={onOpenLookbookStudio}
-              className="hidden 2xl:inline-block px-3.5 py-1.5 rounded-full border border-neutral-800 bg-neutral-950/60 text-neutral-300 text-[10px] font-syncopate tracking-[0.18em] uppercase hover:text-white hover:border-neutral-600 transition-colors whitespace-nowrap"
-            >
-              Lookbook Studio
-            </button>
-          )}
-
+        <div className="hidden sm:flex items-center gap-2.5 xl:gap-3 shrink-0">
           {onToggleSound && (
             <button
               onClick={onToggleSound}
