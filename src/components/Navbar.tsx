@@ -94,19 +94,19 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Brand Logo */}
         <a
           href="#"
-          className="flex items-center gap-2.5 transition-opacity duration-300 hover:opacity-80 group"
+          className="flex items-center gap-2.5 shrink-0 transition-opacity duration-300 hover:opacity-80 group"
           id="navbar-brand-logo"
         >
           <img
             src="/atlas-symbol.png"
             alt="Atlas Standards Symbol"
-            className="h-[20px] sm:h-[22px] w-auto object-contain shrink-0 select-none"
+            className="h-[18px] sm:h-[20px] w-auto object-contain shrink-0 select-none"
           />
           <AtlasLogo size="sm" showTagline={false} withLightSweep={false} />
         </a>
 
         {/* Desktop Navigation Links (Apple Product Chapter Style with Radiant Highlight) */}
-        <nav className="hidden lg:flex items-center gap-7 text-[10.5px] font-syncopate uppercase tracking-[0.22em]">
+        <nav className="hidden xl:flex items-center gap-4 2xl:gap-6 text-[10px] 2xl:text-[10.5px] font-syncopate uppercase tracking-[0.18em] 2xl:tracking-[0.22em] whitespace-nowrap">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
             return (
@@ -117,9 +117,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                   e.preventDefault();
                   handleLinkClick(link.href);
                 }}
-                className={`relative py-1.5 px-2 transition-all duration-300 group select-none ${
+                className={`relative py-1.5 px-1.5 2xl:px-2 transition-all duration-300 group select-none ${
                   isActive
-                    ? 'text-white font-bold drop-shadow-[0_0_14px_rgba(255,255,255,1)] tracking-[0.24em]'
+                    ? 'text-white font-bold drop-shadow-[0_0_14px_rgba(255,255,255,1)] tracking-[0.2em] 2xl:tracking-[0.24em]'
                     : 'text-neutral-300 hover:text-white'
                 }`}
               >
@@ -133,7 +133,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </>
                 )}
                 {!isActive && (
-                  <span className="absolute -bottom-1 left-2 w-0 h-[1px] bg-neutral-600 transition-all duration-300 group-hover:w-[calc(100%-16px)]" />
+                  <span className="absolute -bottom-1 left-1.5 w-0 h-[1px] bg-neutral-600 transition-all duration-300 group-hover:w-[calc(100%-12px)]" />
                 )}
               </a>
             );
@@ -141,11 +141,11 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
 
         {/* Right CTAs */}
-        <div className="hidden sm:flex items-center gap-4">
+        <div className="hidden sm:flex items-center gap-3 xl:gap-4 shrink-0">
           {onOpenLookbookStudio && (
             <button
               onClick={onOpenLookbookStudio}
-              className="px-3.5 py-1.5 rounded-full border border-neutral-800 bg-neutral-950/60 text-neutral-300 text-[10px] font-syncopate tracking-[0.2em] uppercase hover:text-white hover:border-neutral-600 transition-colors"
+              className="px-3.5 py-1.5 rounded-full border border-neutral-800 bg-neutral-950/60 text-neutral-300 text-[10px] font-syncopate tracking-[0.2em] uppercase hover:text-white hover:border-neutral-600 transition-colors whitespace-nowrap"
             >
               Lookbook Studio
             </button>
@@ -165,15 +165,15 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={onStartProject}
             id="nav-start-project-btn"
-            className="group px-5 py-2 rounded-full border border-neutral-700 bg-neutral-950 text-white font-cinzel text-[11px] tracking-[0.2em] uppercase transition-all duration-500 hover:border-white hover:bg-white hover:text-black flex items-center gap-2"
+            className="group px-5 py-2 rounded-full border border-neutral-700 bg-neutral-950 text-white font-cinzel text-[11px] tracking-[0.2em] uppercase transition-all duration-500 hover:border-white hover:bg-white hover:text-black flex items-center gap-2 whitespace-nowrap"
           >
             <span>Start Project</span>
             <ArrowUpRight className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </button>
         </div>
 
-        {/* Mobile Menu Trigger */}
-        <div className="flex items-center gap-2 lg:hidden">
+        {/* Mobile / Tablet Menu Trigger */}
+        <div className="flex items-center gap-2 xl:hidden">
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="p-2 text-neutral-300 hover:text-white focus:outline-none"
