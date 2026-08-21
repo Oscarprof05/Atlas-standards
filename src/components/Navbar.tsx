@@ -120,7 +120,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 className={`relative py-1.5 px-2 transition-all duration-300 group select-none ${
                   isActive
                     ? 'text-white font-bold drop-shadow-[0_0_14px_rgba(255,255,255,1)] tracking-[0.24em]'
-                    : 'text-neutral-500 opacity-60 hover:text-neutral-200 hover:opacity-90'
+                    : 'text-neutral-300 hover:text-white'
                 }`}
               >
                 <span className={isActive ? 'text-white' : ''}>{link.label}</span>
@@ -199,7 +199,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     handleLinkClick(link.href);
                   }}
                   className={`font-cinzel text-xl tracking-[0.2em] uppercase transition-all ${
-                    isActive ? 'text-white font-semibold drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]' : 'text-neutral-400 hover:text-white'
+                    isActive ? 'text-white font-semibold drop-shadow-[0_0_8px_rgba(255,255,255,0.7)]' : 'text-neutral-300 hover:text-white'
                   }`}
                 >
                   {link.label}
