@@ -106,7 +106,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </a>
 
         {/* Desktop Navigation Links (Apple Product Chapter Style with Radiant Highlight) */}
-        <nav className="hidden lg:flex items-center gap-2.5 xl:gap-3.5 2xl:gap-5 text-[9px] xl:text-[9.5px] 2xl:text-[10px] font-syncopate uppercase tracking-[0.14em] xl:tracking-[0.18em] 2xl:tracking-[0.22em] whitespace-nowrap">
+        <nav className="hidden lg:flex items-center gap-2 xl:gap-3 2xl:gap-4 text-[8.5px] xl:text-[9.5px] 2xl:text-[10px] font-syncopate uppercase tracking-[0.12em] xl:tracking-[0.16em] 2xl:tracking-[0.2em] whitespace-nowrap">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
             return (
@@ -117,9 +117,9 @@ export const Navbar: React.FC<NavbarProps> = ({
                   e.preventDefault();
                   handleLinkClick(link.href);
                 }}
-                className={`relative py-1.5 px-1 xl:px-1.5 transition-all duration-300 group select-none ${
+                className={`relative py-1 px-1 xl:px-1.5 transition-all duration-300 group select-none ${
                   isActive
-                    ? 'text-white font-bold drop-shadow-[0_0_14px_rgba(255,255,255,1)] tracking-[0.16em] xl:tracking-[0.2em] 2xl:tracking-[0.24em]'
+                    ? 'text-white font-bold drop-shadow-[0_0_14px_rgba(255,255,255,1)] tracking-[0.14em] xl:tracking-[0.18em] 2xl:tracking-[0.22em]'
                     : 'text-neutral-300 hover:text-white'
                 }`}
               >
@@ -141,11 +141,11 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
 
         {/* Right CTAs */}
-        <div className="hidden lg:flex items-center gap-2.5 xl:gap-3 shrink-0">
+        <div className="hidden lg:flex items-center gap-2 xl:gap-3 shrink-0">
           {onOpenLookbookStudio && (
             <button
               onClick={onOpenLookbookStudio}
-              className="px-3 py-1.5 xl:px-3.5 xl:py-1.5 rounded-full border border-neutral-800 bg-neutral-950/60 text-neutral-300 text-[9.5px] xl:text-[10px] font-syncopate tracking-[0.16em] xl:tracking-[0.2em] uppercase hover:text-white hover:border-neutral-600 transition-colors whitespace-nowrap"
+              className="hidden 2xl:inline-block px-3.5 py-1.5 rounded-full border border-neutral-800 bg-neutral-950/60 text-neutral-300 text-[10px] font-syncopate tracking-[0.18em] uppercase hover:text-white hover:border-neutral-600 transition-colors whitespace-nowrap"
             >
               Lookbook Studio
             </button>
