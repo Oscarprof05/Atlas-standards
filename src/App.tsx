@@ -13,9 +13,8 @@ import { ApproachTimeline } from './components/ApproachTimeline';
 import { BrandDesk } from './components/BrandDesk';
 import { NetworkMap } from './components/NetworkMap';
 import { WhyAtlas } from './components/WhyAtlas';
-import { PartnersSection } from './components/PartnersSection';
-import { ContactSection } from './components/ContactSection';
 import { PhilosophySection } from './components/PhilosophySection';
+import { ConnectSection } from './components/ConnectSection';
 import { Footer } from './components/Footer';
 import { AudioAmbience } from './components/AudioAmbience';
 import { LookbookVideoStudio } from './components/LookbookVideoStudio';
@@ -52,9 +51,9 @@ export default function App() {
 
   const handleStartProject = () => {
     if ((window as any).__lenis) {
-      (window as any).__lenis.scrollTo('#contact');
+      (window as any).__lenis.scrollTo('#connect');
     } else {
-      const contactElem = document.getElementById('contact');
+      const contactElem = document.getElementById('connect') || document.getElementById('contact');
       if (contactElem) {
         contactElem.scrollIntoView({ behavior: 'smooth' });
       }
@@ -126,14 +125,11 @@ export default function App() {
         {/* SECTION 07 — WHY ATLAS STANDARDS COMPARISON */}
         <WhyAtlas />
 
-        {/* SECTION 08 — MANUFACTURING PARTNERS PORTAL */}
-        <PartnersSection />
-
         {/* ⭐ FINAL TRUST / PHILOSOPHY STATEMENT */}
         <PhilosophySection />
 
-        {/* SECTION 09 — INITIATE PROJECT (CONTACT FORM) */}
-        <ContactSection />
+        {/* SECTION 08 — CONNECT WITH US: PROJECT INQUIRY & MANUFACTURING PARTNERS */}
+        <ConnectSection />
       </main>
 
       {/* FOOTER */}

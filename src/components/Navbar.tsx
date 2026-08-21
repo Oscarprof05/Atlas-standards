@@ -27,6 +27,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     { id: 'brand-desk', label: 'Brand Desk', href: '#brand-desk' },
     { id: 'network', label: 'Our Network', href: '#network' },
     { id: 'why-atlas', label: 'Why Atlas', href: '#why-atlas' },
+    { id: 'connect', label: 'Connect With Us', href: '#connect' },
   ];
 
   // Apple-style scroll-driven active section highlight
@@ -55,9 +56,9 @@ export const Navbar: React.FC<NavbarProps> = ({
       }
 
       // If past the last section or near bottom
-      const contactEl = document.getElementById('contact');
-      if (contactEl && scrollY + window.innerHeight >= document.documentElement.scrollHeight - 200) {
-        current = '';
+      const connectEl = document.getElementById('connect') || document.getElementById('contact');
+      if (connectEl && scrollY + window.innerHeight >= document.documentElement.scrollHeight - 200) {
+        current = 'connect';
       }
 
       setActiveSection(current);
