@@ -102,7 +102,7 @@ export const FounderSection: React.FC = () => {
             {/* LinkedIn CTA Button */}
             <div className="pt-4">
               <a
-                href="https://www.linkedin.com/company/atlas-standards/"
+                href="https://www.linkedin.com/in/nithish5"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full border border-neutral-700 bg-neutral-950 text-white font-cinzel text-xs tracking-[0.2em] uppercase transition-all duration-500 hover:border-white hover:bg-white hover:text-black"
