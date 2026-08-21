@@ -45,10 +45,10 @@ export const FounderSection: React.FC = () => {
               <img
                 src="/founder.jpg"
                 alt="Nithish S — Founder, Atlas Standards"
-                className="w-full h-full object-cover object-top grayscale brightness-105 contrast-105 transition-transform duration-700 ease-out group-hover:scale-102"
+                className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-102"
               />
-              {/* Subtle Luxury Vignette & Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none" />
+              {/* Subtle Luxury Vignette */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
               <div className="absolute bottom-5 left-5 font-syncopate text-[9px] tracking-[0.3em] text-neutral-400 uppercase">
                 FOUNDER // NITHISH S
               </div>
