@@ -14,6 +14,7 @@ import { BrandDesk } from './components/BrandDesk';
 import { NetworkMap } from './components/NetworkMap';
 import { WhyAtlas } from './components/WhyAtlas';
 import { PhilosophySection } from './components/PhilosophySection';
+import { FounderSection } from './components/FounderSection';
 import { ConnectSection } from './components/ConnectSection';
 import { Footer } from './components/Footer';
 import { AudioAmbience } from './components/AudioAmbience';
@@ -128,7 +129,10 @@ export default function App() {
         {/* ⭐ FINAL TRUST / PHILOSOPHY STATEMENT */}
         <PhilosophySection />
 
-        {/* SECTION 08 — CONNECT WITH US: PROJECT INQUIRY & MANUFACTURING PARTNERS */}
+        {/* SECTION 08 — MEET THE FOUNDER */}
+        <FounderSection />
+
+        {/* SECTION 09 — CONNECT WITH US: PROJECT INQUIRY & MANUFACTURING PARTNERS */}
         <ConnectSection />
       </main>
 
