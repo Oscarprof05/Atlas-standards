@@ -93,9 +93,14 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Brand Logo */}
         <a
           href="#"
-          className="flex items-center gap-3 transition-opacity duration-300 hover:opacity-80"
+          className="flex items-center gap-3 transition-opacity duration-300 hover:opacity-80 group"
           id="navbar-brand-logo"
         >
+          <img
+            src="/favicon.svg"
+            alt="Atlas Standards"
+            className="w-8 h-8 sm:w-9 sm:h-9 object-contain rounded-md shrink-0 transition-transform duration-300 group-hover:scale-105"
+          />
           <AtlasLogo size="sm" showTagline={false} withLightSweep={false} />
         </a>
 
@@ -213,7 +218,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               START A PROJECT
             </button>
             <p className="font-cinzel text-[10px] tracking-[0.3em] text-neutral-500 text-center uppercase">
-              INFINITE STANDARDS. ENDLESS COMMITMENT.
+              INFINITE STANDARDS. ENDLESS COMMITMENT
             </p>
           </div>
         </div>

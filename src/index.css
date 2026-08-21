@@ -47,15 +47,15 @@
   font-family: 'Syncopate', sans-serif;
 }
 
-/* Custom Brushed Steel Gradient */
+/* Custom Brushed Steel Gradient - Bright White Metallic */
 .text-steel-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #d1d5db 30%, #9ca3af 60%, #ffffff 85%, #6b7280 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 35%, #f1f5f9 65%, #ffffff 85%, #cbd5e1 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-steel-subtle {
-  background: linear-gradient(180deg, #ffffff 0%, #a3a3a3 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

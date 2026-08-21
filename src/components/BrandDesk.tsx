@@ -119,7 +119,7 @@ export const BrandDesk: React.FC = () => {
             12 — THE ATLAS BRAND DESK
           </span>
           <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-medium tracking-[0.06em] uppercase text-white mt-4 leading-tight">
-            KNOW WHAT YOU’RE BUILDING.
+            KNOW WHAT YOU’RE BUILDING
           </h2>
           <p className="mt-4 text-xs sm:text-sm md:text-base text-neutral-300 font-light max-w-2xl mx-auto leading-relaxed">
             Starting a product or merchandise line involves decisions around fabric, construction, sampling, customization, costing and manufacturing.

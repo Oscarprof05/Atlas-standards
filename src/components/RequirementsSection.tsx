@@ -15,7 +15,7 @@ export const RequirementsSection: React.FC<RequirementsSectionProps> = ({ onStar
       id: 'brands-startups',
       tag: '01 — CLIENT CATEGORY',
       title: 'FOR BRANDS & STARTUPS',
-      subtitle: 'BUILD THE PRODUCT.\nPROTECT THE BRAND.',
+      subtitle: 'BUILD THE PRODUCT\nPROTECT THE BRAND',
       description:
         'For emerging and established brands, we help with sourcing, product development, sampling, manufacturing coordination and product finishing. Whether you’re developing a new product or looking for a more reliable production partner, Atlas helps bring structure to the process.',
       cta: 'BUILD WITH ATLAS',
@@ -25,7 +25,7 @@ export const RequirementsSection: React.FC<RequirementsSectionProps> = ({ onStar
       id: 'institutions-organizations',
       tag: '02 — CLIENT CATEGORY',
       title: 'INSTITUTIONAL & CORPORATE ORDERS',
-      subtitle: 'PRACTICAL PRODUCTS.\nWELL EXECUTED.',
+      subtitle: 'PRACTICAL PRODUCTS\nWELL EXECUTED',
       description:
         'We work with corporate teams, colleges, student organizations, events, clubs, NGOs and other institutions on merchandise across different quantities and budgets. From straightforward event merchandise to customized corporate apparel, we help identify the right balance between product, quantity, customization and cost.',
       cta: 'PLAN YOUR MERCHANDISE',
@@ -52,7 +52,7 @@ export const RequirementsSection: React.FC<RequirementsSectionProps> = ({ onStar
             SECTION 03 — CLIENT CATEGORIES
           </span>
           <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-medium tracking-[0.06em] uppercase text-white mt-4 leading-tight">
-            SERVING BOTH ELEVATED & PRACTICAL REQUIREMENTS.
+            SERVING BOTH ELEVATED & PRACTICAL REQUIREMENTS
           </h2>
         </motion.div>
 
@@ -123,7 +123,7 @@ export const RequirementsSection: React.FC<RequirementsSectionProps> = ({ onStar
                         src={seg.image}
                         alt={seg.title}
                         referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover grayscale brightness-95 contrast-110 group-hover:scale-103 group-hover:grayscale-0 transition-all duration-700"
+                        className="w-full h-full object-cover grayscale brightness-105 contrast-105 group-hover:scale-103 group-hover:grayscale-0 transition-all duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
                     </div>

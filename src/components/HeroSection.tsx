@@ -39,9 +39,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
       <div className="my-auto py-16 text-center max-w-5xl mx-auto space-y-8 pointer-events-none">
         <div className="space-y-4">
           <h1 className="font-cinzel text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-light tracking-[0.06em] uppercase text-white leading-[1.04]">
-            YOU HAVE THE IDEA.
+            YOU HAVE THE IDEA
             <span className="block font-medium text-steel-gradient mt-2 sm:mt-3">
-              WE HELP BUILD IT.
+              WE HELP BUILD IT
             </span>
           </h1>
         </div>

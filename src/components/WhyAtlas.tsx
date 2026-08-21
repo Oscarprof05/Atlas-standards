@@ -57,8 +57,8 @@ export const WhyAtlas: React.FC = () => {
             09 — WHY ATLAS
           </span>
           <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-medium tracking-[0.06em] uppercase text-white mt-4 leading-tight">
-            LESS COMPLEXITY.
-            <span className="block font-light text-neutral-400">MORE CONFIDENCE.</span>
+            LESS COMPLEXITY
+            <span className="block font-light text-neutral-400">MORE CONFIDENCE</span>
           </h2>
         </motion.div>
 
@@ -94,7 +94,7 @@ export const WhyAtlas: React.FC = () => {
               13 — ABOUT ATLAS
             </span>
             <h3 className="font-cinzel text-2xl sm:text-4xl font-medium uppercase text-white">
-              BUILT TO MAKE SOURCING SIMPLER.
+              BUILT TO MAKE SOURCING SIMPLER
             </h3>
             <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed">
               Atlas Standards is a merchandise, product development and sourcing partner working with brands, startups, institutions and organizations.

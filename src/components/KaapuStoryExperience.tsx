@@ -592,9 +592,9 @@ export const KaapuStoryExperience: React.FC<KaapuStoryExperienceProps> = ({
           {/* Central Hero Typography */}
           <div className="text-center max-w-4xl mx-auto space-y-4">
             <h1 className="font-cinzel text-3xl sm:text-5xl md:text-7xl font-light tracking-[0.12em] uppercase text-white leading-tight">
-              YOU HAVE THE IDEA.
+              YOU HAVE THE IDEA
               <span className="block font-medium text-steel-gradient mt-1 sm:mt-2">
-                WE'LL FIGURE OUT HOW TO BUILD IT.
+                WE'LL FIGURE OUT HOW TO BUILD IT
               </span>
             </h1>
             <p className="text-xs sm:text-sm md:text-base text-neutral-400 font-light max-w-xl mx-auto tracking-wide leading-relaxed">
@@ -648,7 +648,7 @@ export const KaapuStoryExperience: React.FC<KaapuStoryExperienceProps> = ({
             </div>
             <h2 className="font-cinzel text-3xl sm:text-5xl font-light tracking-[0.08em] uppercase text-white leading-tight">
               BUILDING A BRAND?
-              <span className="block font-medium text-steel-gradient">START WITH THE PRODUCT.</span>
+              <span className="block font-medium text-steel-gradient">START WITH THE PRODUCT</span>
             </h2>
             <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed">
               Don't let supply chain gatekeepers dilute your vision. Atlas gives emerging brands, independent founders, and creator labels direct institutional factory access without the punishing enterprise minimums.
@@ -691,7 +691,7 @@ export const KaapuStoryExperience: React.FC<KaapuStoryExperienceProps> = ({
             </div>
             <h2 className="font-cinzel text-3xl sm:text-5xl font-light tracking-[0.08em] uppercase text-white leading-tight">
               FROM RAW CONCEPT
-              <span className="block font-medium text-steel-gradient">TO PACKAGED BULK.</span>
+              <span className="block font-medium text-steel-gradient">TO PACKAGED BULK</span>
             </h2>
             <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed">
               Every detail is engineered with mathematical rigor. We translate your moodboards into production-grade CAD tech packs, sample iterations, and seamless factory execution.
@@ -741,8 +741,8 @@ export const KaapuStoryExperience: React.FC<KaapuStoryExperienceProps> = ({
               03 / TECHNICAL SPECIFICATIONS
             </span>
             <h2 className="font-cinzel text-3xl sm:text-5xl font-light tracking-[0.08em] uppercase text-white leading-tight">
-              280 TO 520 GSM.
-              <span className="block font-medium text-steel-gradient">ZERO COMPROMISE.</span>
+              280 TO 520 GSM
+              <span className="block font-medium text-steel-gradient">ZERO COMPROMISE</span>
             </h2>
           </div>
 
@@ -837,8 +837,8 @@ export const KaapuStoryExperience: React.FC<KaapuStoryExperienceProps> = ({
               </span>
             </div>
             <h2 className="font-cinzel text-3xl sm:text-5xl font-light tracking-[0.08em] uppercase text-white leading-tight">
-              AQL 1.5 AUDIT PROTOCOLS.
-              <span className="block font-medium text-steel-gradient">ZERO CUT CORNERS.</span>
+              AQL 1.5 AUDIT PROTOCOLS
+              <span className="block font-medium text-steel-gradient">ZERO CUT CORNERS</span>
             </h2>
             <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed">
               We operate proprietary in-line inspection gates at every stage of production. From raw yarn lot testing to final carton audits, your garments undergo strict institutional scrutiny before dispatch.
@@ -892,7 +892,7 @@ export const KaapuStoryExperience: React.FC<KaapuStoryExperienceProps> = ({
             </div>
             <h2 className="font-cinzel text-3xl sm:text-5xl font-light tracking-[0.08em] uppercase text-white leading-tight">
               FOUR SPECIALIZED
-              <span className="block font-medium text-steel-gradient">PRODUCTION CLUSTERS.</span>
+              <span className="block font-medium text-steel-gradient">PRODUCTION CLUSTERS</span>
             </h2>
             <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed">
               We route each garment to its optimal geographic manufacturing cluster in India, matching specialized machinery with artisan craftsmanship.

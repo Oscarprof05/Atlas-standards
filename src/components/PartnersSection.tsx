@@ -86,7 +86,7 @@ export const PartnersSection: React.FC = () => {
               </span>
               <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-medium tracking-[0.08em] uppercase text-white mt-4 leading-tight">
                 GOOD PRODUCTION
-                <span className="block font-light text-neutral-400">DESERVES GOOD PARTNERS.</span>
+                <span className="block font-light text-neutral-400">DESERVES GOOD PARTNERS</span>
               </h2>
               <p className="mt-4 text-sm sm:text-base text-neutral-300 font-light leading-relaxed">
                 Atlas is continuously building relationships with capable manufacturers and production partners.
@@ -114,7 +114,7 @@ export const PartnersSection: React.FC = () => {
 
             <div className="pt-6 border-t border-neutral-900">
               <p className="font-cinzel text-xs sm:text-sm text-white tracking-wide uppercase font-medium">
-                IF YOUR CAPABILITY FITS THE KIND OF WORK WE HANDLE, LET'S TALK.
+                IF YOUR CAPABILITY FITS THE KIND OF WORK WE HANDLE, LET'S TALK
               </p>
             </div>
           </div>

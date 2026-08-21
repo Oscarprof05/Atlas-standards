@@ -96,7 +96,7 @@ export const ApproachTimeline: React.FC = () => {
             <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-light tracking-[0.08em] uppercase text-white leading-tight">
               FROM REQUIREMENT
               <span className="block font-medium text-steel-gradient mt-1">
-                TO DELIVERY.
+                TO DELIVERY
               </span>
             </h2>
           </motion.div>
@@ -214,7 +214,7 @@ export const ApproachTimeline: React.FC = () => {
                           src={p.image}
                           alt={p.title}
                           referrerPolicy="no-referrer"
-                          className="w-full h-full object-cover grayscale brightness-90 contrast-110 group-hover:scale-103 transition-transform duration-700"
+                          className="w-full h-full object-cover grayscale brightness-105 contrast-105 group-hover:scale-103 transition-transform duration-700"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
                         <div className="absolute bottom-4 left-4 font-syncopate text-[9px] tracking-[0.25em] text-neutral-400">

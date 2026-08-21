@@ -47,10 +47,10 @@ export const AtlasLogo: React.FC<AtlasLogoProps> = ({
         <h1
           className={`font-cinzel font-medium text-white uppercase text-center ${sizeClasses.atlas} pl-[0.55em] transition-colors duration-500`}
           style={{
-            background: 'linear-gradient(180deg, #FFFFFF 0%, #E2E8F0 45%, #94A3B8 75%, #FFFFFF 100%)',
+            background: 'linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 40%, #E2E8F0 75%, #FFFFFF 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            filter: 'drop-shadow(0 2px 14px rgba(255,255,255,0.15))',
+            filter: 'drop-shadow(0 2px 14px rgba(255,255,255,0.25))',
           }}
         >
           ATLAS
@@ -85,12 +85,12 @@ export const AtlasLogo: React.FC<AtlasLogoProps> = ({
         />
       </div>
 
-      {/* Optional Tagline: INFINITE STANDARDS. ENDLESS COMMITMENT. */}
+      {/* Optional Tagline: INFINITE STANDARDS. ENDLESS COMMITMENT */}
       {showTagline && (
         <p
           className={`font-cinzel uppercase font-normal text-neutral-400/90 text-center ${sizeClasses.tagline}`}
         >
-          INFINITE STANDARDS. ENDLESS COMMITMENT.
+          INFINITE STANDARDS. ENDLESS COMMITMENT
         </p>
       )}
     </div>

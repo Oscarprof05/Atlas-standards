@@ -398,8 +398,8 @@ export const HeroKaapu3D: React.FC<HeroKaapu3DProps> = ({
         }}
       >
         <h2 className="font-cinzel text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-[0.2em] text-white leading-tight uppercase">
-          <span className="block mb-2 text-steel-gradient">YOU HAVE THE IDEA.</span>
-          <span className="block text-neutral-300 font-light">WE'LL FIGURE OUT HOW TO BUILD IT.</span>
+          <span className="block mb-2 text-steel-gradient">YOU HAVE THE IDEA</span>
+          <span className="block text-neutral-300 font-light">WE'LL FIGURE OUT HOW TO BUILD IT</span>
         </h2>
 
         <p

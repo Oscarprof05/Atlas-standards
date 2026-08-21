@@ -82,15 +82,15 @@ export const ContactSection: React.FC = () => {
           <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-light tracking-[0.06em] uppercase text-white leading-tight">
             START WITH WHATEVER
             <span className="block font-medium text-steel-gradient mt-1">
-              YOU HAVE.
+              YOU HAVE
             </span>
           </h2>
 
           <div className="pt-2 text-neutral-300 font-light text-sm sm:text-base tracking-wide space-y-1">
-            <p>A thought.</p>
-            <p>A reference.</p>
-            <p>A product you saw.</p>
-            <p>A sketch on your phone.</p>
+            <p>A thought</p>
+            <p>A reference</p>
+            <p>A product you saw</p>
+            <p>A sketch on your phone</p>
           </div>
 
           <div className="pt-4 max-w-md mx-auto space-y-1.5">

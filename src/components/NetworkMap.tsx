@@ -52,9 +52,9 @@ export const NetworkMap: React.FC<{ onStartProject: () => void }> = ({ onStartPr
             08 — MANUFACTURING NETWORK
           </span>
           <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-medium tracking-[0.06em] uppercase text-white mt-4 leading-tight">
-            THE NETWORK BEHIND THE PRODUCT.
+            THE NETWORK BEHIND THE PRODUCT
             <span className="block font-light text-neutral-400">
-              THE RIGHT REQUIREMENT NEEDS THE RIGHT PRODUCTION PARTNER.
+              THE RIGHT REQUIREMENT NEEDS THE RIGHT PRODUCTION PARTNER
             </span>
           </h2>
           <p className="mt-4 text-xs sm:text-sm md:text-base text-neutral-300 font-light max-w-3xl leading-relaxed">
@@ -379,7 +379,7 @@ export const NetworkMap: React.FC<{ onStartProject: () => void }> = ({ onStartPr
               {/* Connected Network Graphic Box */}
               <div className="pt-4 border-t border-neutral-900 space-y-2">
                 <h4 className="font-cinzel text-sm font-semibold text-white tracking-wide uppercase">
-                  A CONNECTED MANUFACTURING NETWORK.
+                  A CONNECTED MANUFACTURING NETWORK
                 </h4>
                 <p className="text-xs text-neutral-400 font-light leading-relaxed">
                   Different requirements. Different capabilities. One coordinated approach.

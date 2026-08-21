@@ -159,7 +159,7 @@ export const WhatWeDoSection: React.FC<WhatWeDoSectionProps> = ({ onStartProject
             MERCHANDISE & APPAREL
           </span>
           <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-medium tracking-[0.06em] uppercase text-white mt-2">
-            PRODUCTS BUILT AROUND THE REQUIREMENT.
+            PRODUCTS BUILT AROUND THE REQUIREMENT
           </h2>
           <p className="mt-4 text-sm sm:text-base text-neutral-300 font-light max-w-3xl leading-relaxed">
             We source and develop apparel and merchandise for brands, startups, institutions, events, teams and organizations.
@@ -193,7 +193,7 @@ export const WhatWeDoSection: React.FC<WhatWeDoSectionProps> = ({ onStartProject
                   src={item.image}
                   alt={item.name}
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover grayscale brightness-90 contrast-110 transition-transform duration-700 ease-out group-hover:scale-105 group-hover:grayscale-0"
+                  className="w-full h-full object-cover grayscale brightness-105 contrast-105 transition-transform duration-700 ease-out group-hover:scale-105 group-hover:grayscale-0"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
 
@@ -274,7 +274,7 @@ export const WhatWeDoSection: React.FC<WhatWeDoSectionProps> = ({ onStartProject
 
                 <h4 className="font-cinzel text-2xl sm:text-3xl font-medium tracking-[0.06em] uppercase text-white leading-tight">
                   FROM REFERENCE
-                  <span className="block font-light text-neutral-400">TO A PRODUCT THAT CAN BE MADE.</span>
+                  <span className="block font-light text-neutral-400">TO A PRODUCT THAT CAN BE MADE</span>
                 </h4>
 
                 <p className="font-sans text-sm text-neutral-300 font-light leading-relaxed">
@@ -304,7 +304,7 @@ export const WhatWeDoSection: React.FC<WhatWeDoSectionProps> = ({ onStartProject
               CUSTOMIZATION & FINISHING
             </span>
             <h3 className="font-cinzel text-3xl sm:text-4xl font-medium tracking-[0.06em] uppercase text-white mt-2">
-              THE DETAILS MAKE THE PRODUCT YOURS.
+              THE DETAILS MAKE THE PRODUCT YOURS
             </h3>
             <p className="mt-3 text-xs sm:text-sm text-neutral-400 font-light max-w-2xl mx-auto leading-relaxed">
               From branding and artwork to the finishing details around the garment, we coordinate the customization required for the project.
@@ -334,7 +334,7 @@ export const WhatWeDoSection: React.FC<WhatWeDoSectionProps> = ({ onStartProject
               The appropriate method depends on the product, design, quantity and desired result.
             </p>
             <p className="font-cinzel text-xs tracking-[0.2em] text-white uppercase font-medium">
-              BUILT AROUND THE PRODUCT. FINISHED AROUND THE BRAND.
+              BUILT AROUND THE PRODUCT. FINISHED AROUND THE BRAND
             </p>
           </div>
         </div>
@@ -356,7 +356,7 @@ export const WhatWeDoSection: React.FC<WhatWeDoSectionProps> = ({ onStartProject
                 <img
                   src={selectedProduct.image}
                   alt={selectedProduct.name}
-                  className="w-full h-full object-cover grayscale brightness-90 contrast-110"
+                  className="w-full h-full object-cover grayscale brightness-105 contrast-105"
                 />
               </div>
 

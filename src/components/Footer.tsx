@@ -129,7 +129,7 @@ export const Footer: React.FC = () => {
         {/* Scroll To Top & Legal */}
         <div className="w-full pt-8 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] text-neutral-500 font-syncopate tracking-[0.2em]">
           <div>
-            © {new Date().getFullYear()} ATLAS STANDARDS. INFINITE STANDARDS. ENDLESS COMMITMENT.
+            © {new Date().getFullYear()} ATLAS STANDARDS. INFINITE STANDARDS. ENDLESS COMMITMENT
           </div>
           <button
             onClick={scrollToTop}

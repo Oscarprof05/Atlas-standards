@@ -11,32 +11,32 @@ export const ProblemSection: React.FC = () => {
 
   const problemPoints = [
     {
-      code: 'DECISION_01',
+      code: 'DECISION 01',
       title: 'The Right Fabric',
       detail: 'Finding materials that deliver the right weight, drape, hand-feel, and longevity without endless trial and error.',
     },
     {
-      code: 'DECISION_02',
+      code: 'DECISION 02',
       title: 'The Right Construction',
       detail: 'Establishing balanced proportions, durable stitching, and clean collar construction so the garment holds its shape.',
     },
     {
-      code: 'DECISION_03',
+      code: 'DECISION 03',
       title: 'The Right Manufacturer',
       detail: 'Connecting with specialized facilities suited to your exact product category rather than generic workshops.',
     },
     {
-      code: 'DECISION_04',
+      code: 'DECISION 04',
       title: 'The Right Finish',
       detail: 'Executing dyeing, washing, printing, embroidery, and trims with clean detail and dependable consistency.',
     },
     {
-      code: 'DECISION_05',
+      code: 'DECISION 05',
       title: 'The Right Budget',
       detail: 'Balancing quality expectations, order quantities, and production costs with transparent commercial clarity.',
     },
     {
-      code: 'DECISION_06',
+      code: 'DECISION 06',
       title: 'The Right Timeline',
       detail: 'Navigating development, reviews, production runs, and delivery schedules smoothly and predictably.',
     },
@@ -119,14 +119,14 @@ export const ProblemSection: React.FC = () => {
           <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-light tracking-[0.06em] uppercase text-white leading-tight">
             GETTING A PRODUCT MADE
             <span className="block font-medium text-steel-gradient mt-1">
-              SHOULDN’T FEEL LIKE A SECOND JOB.
+              SHOULDN’T FEEL LIKE A SECOND JOB
             </span>
           </h2>
           <p className="mt-4 text-xs sm:text-sm md:text-base text-neutral-300 font-light max-w-2xl leading-relaxed">
             Finding the right product, supplier and production route can become complicated quickly. Atlas brings those moving parts together — helping you move from requirement to product with greater clarity and confidence.
           </p>
           <div className="mt-4 inline-block font-syncopate text-[10px] sm:text-xs tracking-[0.3em] uppercase text-neutral-400 border-l-2 border-white pl-3 py-0.5">
-            ONE REQUIREMENT. ONE PARTNER TO WORK THROUGH IT WITH.
+            ONE REQUIREMENT. ONE PARTNER TO WORK THROUGH IT WITH
           </div>
         </motion.div>
 
@@ -159,7 +159,7 @@ export const ProblemSection: React.FC = () => {
                   <div className="flex items-start justify-between gap-4">
                     <div className="space-y-1.5">
                       <div className="flex items-center gap-3">
-                        <span className="font-syncopate text-[9px] tracking-[0.25em] text-neutral-500 font-mono">
+                        <span className="font-syncopate text-[9px] tracking-[0.25em] text-neutral-200 group-hover:text-white font-medium transition-colors drop-shadow-[0_0_8px_rgba(255,255,255,0.15)] font-mono">
                           [{p.code}]
                         </span>
                         <h3 className="font-cinzel text-sm sm:text-base font-medium tracking-[0.05em] uppercase text-white group-hover:text-neutral-200">
@@ -202,7 +202,7 @@ export const ProblemSection: React.FC = () => {
                   src={storyMedia[activeMediaIndex].src}
                   alt={storyMedia[activeMediaIndex].title}
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover grayscale brightness-90 contrast-125 transition-all duration-700 hover:scale-105"
+                  className="w-full h-full object-cover grayscale brightness-105 contrast-110 transition-all duration-700 hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 

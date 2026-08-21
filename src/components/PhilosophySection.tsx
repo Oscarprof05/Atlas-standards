@@ -23,7 +23,7 @@ export const PhilosophySection: React.FC = () => {
             OUR PHILOSOPHY
           </span>
           <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-medium tracking-[0.06em] uppercase text-white leading-[1.15] max-w-3xl mx-auto">
-            PAYING MORE IS CHEAPER THAN GETTING IT WRONG.
+            PAYING MORE IS CHEAPER THAN GETTING IT WRONG
           </h2>
         </motion.div>
 
