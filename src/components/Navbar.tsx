@@ -100,7 +100,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <img
             src="/atlas-symbol.png"
             alt="Atlas Standards Symbol"
-            className="h-[16px] sm:h-[18px] w-auto object-contain shrink-0 select-none"
+            className="h-[20px] sm:h-[18px] w-auto object-contain shrink-0 select-none"
           />
           <AtlasLogo size="sm" showTagline={false} withLightSweep={false} />
         </a>
