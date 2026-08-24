@@ -90,23 +90,23 @@ export const Navbar: React.FC<NavbarProps> = ({
           : 'bg-transparent py-6'
       }`}
     >
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 xl:px-8 flex items-center justify-between">
+      <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 flex items-center justify-between gap-4">
         {/* Brand Logo */}
         <a
           href="#"
-          className="flex items-center gap-2.5 shrink-0 transition-opacity duration-300 hover:opacity-80 group"
+          className="flex items-center gap-3 sm:gap-3.5 shrink-0 transition-opacity duration-300 hover:opacity-80 group"
           id="navbar-brand-logo"
         >
           <img
             src="/atlas-symbol.png"
             alt="Atlas Standards Symbol"
-            className="h-[23px] sm:h-[21px] w-auto object-contain shrink-0 select-none"
+            className="h-[34px] sm:h-[40px] md:h-[44px] w-auto object-contain shrink-0 select-none drop-shadow-[0_0_15px_rgba(255,255,255,0.25)]"
           />
           <AtlasLogo size="sm" showTagline={false} withLightSweep={false} />
         </a>
 
         {/* Desktop Navigation Links (Apple Product Chapter Style with Radiant Highlight) */}
-        <nav className="hidden xl:flex items-center gap-2 xl:gap-2.5 2xl:gap-3.5 text-[8px] xl:text-[8.5px] 2xl:text-[9.5px] font-syncopate uppercase tracking-[0.1em] xl:tracking-[0.12em] 2xl:tracking-[0.16em] whitespace-nowrap mx-2 xl:mx-3">
+        <nav className="hidden xl:flex items-center gap-1.5 xl:gap-2 2xl:gap-3 text-[7.5px] xl:text-[8px] 2xl:text-[9px] font-syncopate uppercase tracking-[0.06em] xl:tracking-[0.1em] 2xl:tracking-[0.14em] whitespace-nowrap mx-1 xl:mx-2">
           {navLinks.map((link) => {
             const isActive = activeSection === link.id;
             return (
@@ -119,7 +119,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 }}
                 className={`relative py-1 px-1 xl:px-1.5 transition-all duration-300 group select-none ${
                   isActive
-                    ? 'text-white font-bold drop-shadow-[0_0_14px_rgba(255,255,255,1)] tracking-[0.12em] xl:tracking-[0.14em] 2xl:tracking-[0.18em]'
+                    ? 'text-white font-bold drop-shadow-[0_0_14px_rgba(255,255,255,1)] tracking-[0.08em] xl:tracking-[0.12em] 2xl:tracking-[0.16em]'
                     : 'text-neutral-300 hover:text-white'
                 }`}
               >
@@ -141,11 +141,11 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
 
         {/* Right CTAs */}
-        <div className="hidden sm:flex items-center gap-2 xl:gap-2.5 shrink-0">
+        <div className="hidden sm:flex items-center gap-2 xl:gap-3 shrink-0">
           {onToggleSound && (
             <button
               onClick={onToggleSound}
-              className="p-1.5 rounded-full border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-600 transition-all duration-300"
+              className="p-1.5 rounded-full border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-600 transition-all duration-300 shrink-0"
               title={isMuted ? 'Enable Ambient Studio Audio' : 'Mute Ambient Audio'}
               aria-label="Toggle sound"
             >
@@ -156,7 +156,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             onClick={onStartProject}
             id="nav-start-project-btn"
-            className="group px-3.5 py-1.5 xl:px-4 xl:py-1.5 rounded-full border border-neutral-700 bg-neutral-950 text-white font-cinzel text-[9.5px] xl:text-[10px] tracking-[0.16em] uppercase transition-all duration-500 hover:border-white hover:bg-white hover:text-black flex items-center gap-1.5 whitespace-nowrap"
+            className="group px-3.5 py-1.5 xl:px-4 xl:py-2 rounded-full border border-neutral-700 bg-neutral-950 text-white font-cinzel text-[9.5px] xl:text-[10px] tracking-[0.16em] uppercase transition-all duration-500 hover:border-white hover:bg-white hover:text-black flex items-center gap-1.5 whitespace-nowrap shrink-0"
           >
             <span>Start Project</span>
             <ArrowUpRight className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

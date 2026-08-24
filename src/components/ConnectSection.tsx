@@ -151,11 +151,14 @@ export const ConnectSection: React.FC = () => {
         {/* PART 1: GET IN TOUCH & DIRECT SOURCING DESK */}
         {/* ================================================================= */}
         <div className="max-w-4xl mx-auto">
-          {/* Section Heading: GET IN TOUCH // DIRECT SOURCING DESK */}
+          {/* Section Heading: CONNECT WITH US */}
           <div className="text-center mb-16 sm:mb-20 space-y-6">
-            <span className="font-syncopate text-[9px] sm:text-[10px] tracking-[0.4em] text-neutral-500 uppercase block">
-              CONNECT WITH US
-            </span>
+            <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white/[0.08] border border-white/20 backdrop-blur-md shadow-[0_0_35px_rgba(255,255,255,0.18)] mx-auto">
+              <span className="w-2 h-2 rounded-full bg-white shadow-[0_0_12px_#FFFFFF] animate-pulse" />
+              <span className="font-syncopate text-xs sm:text-sm tracking-[0.35em] text-white uppercase font-bold drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]">
+                CONNECT WITH US
+              </span>
+            </div>
 
             <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-light tracking-[0.06em] uppercase text-white leading-tight">
               START WITH WHATEVER
