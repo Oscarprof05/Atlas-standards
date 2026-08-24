@@ -74,28 +74,38 @@ export const FounderSection: React.FC = () => {
 
             {/* Biography Paragraphs */}
             <div className="space-y-4 text-sm sm:text-base text-neutral-300 font-light leading-relaxed font-sans">
+              <div className="space-y-1">
+                <p>I build businesses around one question:</p>
+                <p className="text-white font-medium text-base sm:text-lg">
+                  How do we turn capability into opportunity?
+                </p>
+              </div>
+
               <p>
-                I build businesses around <strong className="text-white font-medium">products, sourcing, and manufacturing</strong>.
+                My entrepreneurial journey began with Drip Syndicate, where I learned the realities of building around products, sourcing, and manufacturing.
               </p>
 
               <p>
-                My journey began with Drip Syndicate, giving me hands-on experience across the apparel value chain.
+                With a background in Economics and Data Science, I became increasingly interested in how businesses, markets, and systems create value.
               </p>
 
               <p>
-                Today, I'm building Atlas Standards across <strong className="text-white font-medium">product development, B2B merchandise, and manufacturing</strong>.
+                Today, through <strong className="text-white font-medium">ATLAS STANDARDS</strong>, I’m building at the intersection of manufacturing, commerce, and entrepreneurship.
               </p>
 
-              <p>
-                I'm focused on understanding products from <strong className="text-white font-medium">concept to production and market</strong>.
-              </p>
+              <div className="space-y-2 pt-1">
+                <p className="text-white font-medium">
+                  The ambition is larger than any single company.
+                </p>
+                <div className="space-y-1.5 text-neutral-400 pl-4 border-l border-neutral-800">
+                  <p>To build businesses that create capability.</p>
+                  <p>To build systems that create opportunity.</p>
+                  <p>And eventually, to build an ecosystem that helps more people build.</p>
+                </div>
+              </div>
 
-              <p>
-                The long-term vision is to connect <strong className="text-white font-medium">Indian manufacturing with global demand</strong>.
-              </p>
-
-              <p>
-                Starting with apparel, with the ambition to expand across <strong className="text-white font-medium">multiple products, markets, and international trade</strong>.
+              <p className="text-white font-medium tracking-wide pt-2">
+                Starting in India. Building for the world.
               </p>
             </div>
 

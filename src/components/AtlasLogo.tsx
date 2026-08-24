@@ -15,9 +15,9 @@ export const AtlasLogo: React.FC<AtlasLogoProps> = ({
 }) => {
   const sizeClasses = {
     sm: {
-      atlas: 'text-xl tracking-[0.35em]',
-      standards: 'text-[9px] tracking-[0.4em]',
-      line: 'w-4',
+      atlas: 'text-[23px] tracking-[0.35em]',
+      standards: 'text-[10px] tracking-[0.4em]',
+      line: 'w-5',
       tagline: 'text-[7px] tracking-[0.3em] mt-2',
     },
     md: {

@@ -406,7 +406,7 @@ export const HeroKaapu3D: React.FC<HeroKaapu3DProps> = ({
           className="mt-6 font-normal text-sm sm:text-base text-neutral-400 max-w-2xl mx-auto leading-relaxed tracking-wide transition-opacity duration-700"
           style={{ opacity: subtextOpacity }}
         >
-          Atlas Standards is a premium merchandise sourcing, product development, apparel manufacturing and supply chain partner for visionary brands and institutions.
+          <strong className="text-white font-medium">ATLAS STANDARDS</strong> is a premium merchandise sourcing, product development, apparel manufacturing and supply chain partner for visionary brands and institutions.
         </p>
       </div>
 

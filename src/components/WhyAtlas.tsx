@@ -97,7 +97,7 @@ export const WhyAtlas: React.FC = () => {
               BUILT TO MAKE SOURCING SIMPLER
             </h3>
             <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed">
-              Atlas Standards is a merchandise, product development and sourcing partner working with brands, startups, institutions and organizations.
+              <strong className="text-white font-medium">ATLAS STANDARDS</strong> is a merchandise, product development and sourcing partner working with brands, startups, institutions and organizations.
             </p>
             <p className="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">
               We connect requirements with manufacturing capabilities, help develop products where needed, coordinate the production process and stay involved through delivery.

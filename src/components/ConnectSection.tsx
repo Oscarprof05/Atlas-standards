@@ -154,7 +154,7 @@ export const ConnectSection: React.FC = () => {
           {/* Section Heading: GET IN TOUCH // DIRECT SOURCING DESK */}
           <div className="text-center mb-16 sm:mb-20 space-y-6">
             <span className="font-syncopate text-[9px] sm:text-[10px] tracking-[0.4em] text-neutral-500 uppercase block">
-              GET IN TOUCH // DIRECT SOURCING DESK
+              CONNECT WITH US
             </span>
 
             <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-light tracking-[0.06em] uppercase text-white leading-tight">
@@ -393,9 +393,12 @@ export const ConnectSection: React.FC = () => {
           {/* Left Column: Heading & Criteria (14 Manufacturer Partners) */}
           <div className="lg:col-span-6 space-y-8">
             <div>
-              <span className="font-syncopate text-[10px] sm:text-xs tracking-[0.35em] text-neutral-500 uppercase">
-                14 — MANUFACTURING PARTNERS
-              </span>
+              <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.07] border border-white/20 backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.08)] mb-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_#FFFFFF] animate-pulse" />
+                <span className="font-syncopate text-[9px] sm:text-[10px] tracking-[0.28em] text-white uppercase font-semibold">
+                  14 — MANUFACTURING PARTNERS
+                </span>
+              </div>
               <h2 className="font-cinzel text-3xl sm:text-5xl md:text-6xl font-medium tracking-[0.08em] uppercase text-white mt-4 leading-tight">
                 GOOD PRODUCTION
                 <span className="block font-light text-neutral-400">DESERVES GOOD PARTNERS</span>
@@ -414,7 +417,7 @@ export const ConnectSection: React.FC = () => {
               </span>
               {criteria.map((c) => (
                 <div key={c.title} className="border-l border-neutral-800 pl-6 space-y-1">
-                  <h3 className="font-cinzel text-sm sm:text-base font-semibold text-white tracking-[0.05em]">
+                  <h3 className="font-cinzel text-sm sm:text-base font-semibold text-white tracking-[0.05em] drop-shadow-[0_0_15px_rgba(255,255,255,0.25)]">
                     {c.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">

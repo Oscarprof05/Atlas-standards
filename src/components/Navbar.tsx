@@ -20,7 +20,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [activeSection, setActiveSection] = useState<string>('');
 
   const navLinks = [
-    { id: 'problem', label: 'The Problem', href: '#problem' },
+    { id: 'problem', label: 'The Positioning', href: '#problem' },
     { id: 'what-we-do', label: 'What We Do', href: '#what-we-do' },
     { id: 'requirements', label: 'For Brands', href: '#requirements' },
     { id: 'approach', label: 'How We Work', href: '#approach' },
@@ -94,13 +94,13 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Brand Logo */}
         <a
           href="#"
-          className="flex items-center gap-2 shrink-0 transition-opacity duration-300 hover:opacity-80 group"
+          className="flex items-center gap-2.5 shrink-0 transition-opacity duration-300 hover:opacity-80 group"
           id="navbar-brand-logo"
         >
           <img
             src="/atlas-symbol.png"
             alt="Atlas Standards Symbol"
-            className="h-[20px] sm:h-[18px] w-auto object-contain shrink-0 select-none"
+            className="h-[23px] sm:h-[21px] w-auto object-contain shrink-0 select-none"
           />
           <AtlasLogo size="sm" showTagline={false} withLightSweep={false} />
         </a>

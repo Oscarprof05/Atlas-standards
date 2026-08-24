@@ -11,10 +11,10 @@ interface NetworkHub {
 export const NetworkMap: React.FC<{ onStartProject: () => void }> = ({ onStartProject }) => {
   const hubs: NetworkHub[] = [
     {
-      id: 'tiruppur',
-      city: 'Tiruppur',
+      id: 'chennai',
+      city: 'Chennai',
       state: 'Tamil Nadu',
-      description: 'A major apparel manufacturing ecosystem and an important part of our sourcing network.',
+      description: 'An important location within our operational and sourcing network.',
     },
     {
       id: 'bengaluru',
@@ -23,20 +23,27 @@ export const NetworkMap: React.FC<{ onStartProject: () => void }> = ({ onStartPr
       description: 'Part of our wider manufacturing and sourcing network for selected products and requirements.',
     },
     {
-      id: 'chennai',
-      city: 'Chennai',
+      id: 'tiruppur',
+      city: 'Tiruppur',
       state: 'Tamil Nadu',
-      description: 'An important location within our operational and sourcing network.',
+      description: 'A major apparel manufacturing ecosystem and an important part of our sourcing network.',
+    },
+    {
+      id: 'nagpur',
+      city: 'Nagpur',
+      state: 'Maharashtra',
+      description: 'A central manufacturing and logistics corridor supporting scalable production and distribution across India.',
     },
   ];
 
-  const [activeHubId, setActiveHubId] = useState<string>('tiruppur');
+  const [activeHubId, setActiveHubId] = useState<string>('chennai');
   const activeHub = hubs.find((h) => h.id === activeHubId) || hubs[0];
 
   const mapCoordinates: Record<string, { x: number; y: number }> = {
-    tiruppur: { x: 42, y: 78 },
-    bengaluru: { x: 46, y: 70 },
     chennai: { x: 54, y: 72 },
+    bengaluru: { x: 46, y: 70 },
+    tiruppur: { x: 42, y: 78 },
+    nagpur: { x: 51, y: 35 },
   };
 
   return (
@@ -63,6 +70,9 @@ export const NetworkMap: React.FC<{ onStartProject: () => void }> = ({ onStartPr
           <p className="mt-2 text-xs sm:text-sm text-neutral-400 font-light max-w-3xl leading-relaxed">
             We consider the requirements of each project — including product, quality expectations, quantity, customization, timeline and commercial considerations — when identifying the appropriate manufacturing route.
           </p>
+          <div className="mt-5 inline-flex items-center gap-2 font-syncopate text-[10px] sm:text-xs tracking-[0.25em] text-neutral-300 uppercase">
+            CHENNAI · BENGALURU · TIRUPPUR · NAGPUR
+          </div>
         </div>
 
         {/* Interactive Hub Selector & Map Layout */}
@@ -75,10 +85,10 @@ export const NetworkMap: React.FC<{ onStartProject: () => void }> = ({ onStartPr
               
               {/* Latitude / Longitude luxury markings */}
               <div className="absolute top-4 left-4 font-mono text-[8px] text-neutral-600 tracking-widest uppercase">
-                LAT 11°–13°N // LON 77°–80°E
+                LAT 11°–21°N // LON 77°–80°E
               </div>
               <div className="absolute top-4 right-4 font-mono text-[8px] text-neutral-600 tracking-widest uppercase">
-                SOUTH INDIA CORRIDOR
+                INDIAN PRODUCTION CORRIDOR
               </div>
 
               <svg
@@ -106,7 +116,7 @@ export const NetworkMap: React.FC<{ onStartProject: () => void }> = ({ onStartPr
                 <line x1="200" y1="50" x2="200" y2="350" stroke="#222" strokeWidth="0.5" strokeDasharray="3 3" />
                 <line x1="280" y1="50" x2="280" y2="350" stroke="#222" strokeWidth="0.5" strokeDasharray="3 3" />
 
-                {/* South India Peninsula Landmass Contour */}
+                {/* South & Central India Landmass Contour */}
                 <path
                   d="M 90 70 
                      C 115 120, 110 170, 115 220 
@@ -140,7 +150,6 @@ export const NetworkMap: React.FC<{ onStartProject: () => void }> = ({ onStartPr
                   strokeWidth="1"
                   strokeDasharray="4 4"
                 />
-                {/* Animated moving pulse */}
                 <circle r="2.5" fill="#ffffff" filter="url(#mapGlow)">
                   <animateMotion
                     path="M 175 130 Q 230 135 285 150"
@@ -157,7 +166,6 @@ export const NetworkMap: React.FC<{ onStartProject: () => void }> = ({ onStartPr
                   strokeWidth="1"
                   strokeDasharray="4 4"
                 />
-                {/* Animated moving pulse */}
                 <circle r="2.5" fill="#ffffff" filter="url(#mapGlow)">
                   <animateMotion
                     path="M 175 130 Q 155 190 145 255"
@@ -173,7 +181,6 @@ export const NetworkMap: React.FC<{ onStartProject: () => void }> = ({ onStartPr
                   stroke="rgba(255,255,255,0.3)"
                   strokeWidth="1.2"
                 />
-                {/* Animated moving pulse */}
                 <circle r="3" fill="#ffffff" filter="url(#mapGlow)">
                   <animateMotion
                     path="M 145 255 Q 220 215 285 150"
@@ -182,7 +189,87 @@ export const NetworkMap: React.FC<{ onStartProject: () => void }> = ({ onStartPr
                   />
                 </circle>
 
+                {/* 4. Nagpur (205, 55) to Bengaluru (175, 130) */}
+                <path
+                  d="M 205 55 Q 185 90 175 130"
+                  fill="none"
+                  stroke="rgba(255,255,255,0.25)"
+                  strokeWidth="1"
+                  strokeDasharray="4 4"
+                />
+                <circle r="2.5" fill="#ffffff" filter="url(#mapGlow)">
+                  <animateMotion
+                    path="M 205 55 Q 185 90 175 130"
+                    dur="3.4s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+
+                {/* 5. Nagpur (205, 55) to Chennai (285, 150) */}
+                <path
+                  d="M 205 55 Q 250 100 285 150"
+                  fill="none"
+                  stroke="rgba(255,255,255,0.25)"
+                  strokeWidth="1"
+                  strokeDasharray="4 4"
+                />
+                <circle r="2.5" fill="#ffffff" filter="url(#mapGlow)">
+                  <animateMotion
+                    path="M 205 55 Q 250 100 285 150"
+                    dur="3.8s"
+                    repeatCount="indefinite"
+                  />
+                </circle>
+
                 {/* CITY NODES & LABELS */}
+
+                {/* NAGPUR NODE (205, 55) */}
+                <g
+                  className="cursor-pointer group"
+                  onClick={() => setActiveHubId('nagpur')}
+                >
+                  {activeHubId === 'nagpur' && (
+                    <>
+                      <circle cx="205" cy="55" r="16" fill="none" stroke="rgba(255,255,255,0.4)" strokeWidth="0.8" className="animate-ping origin-center" />
+                      <circle cx="205" cy="55" r="10" fill="none" stroke="rgba(255,255,255,0.7)" strokeWidth="1" />
+                    </>
+                  )}
+                  <circle
+                    cx="205"
+                    cy="55"
+                    r={activeHubId === 'nagpur' ? 5.5 : 4}
+                    fill={activeHubId === 'nagpur' ? '#ffffff' : '#888888'}
+                    stroke="#000"
+                    strokeWidth="1.5"
+                    className="transition-all duration-300"
+                  />
+                  {/* Leader line & Tag */}
+                  <line x1="205" y1="55" x2="245" y2="35" stroke={activeHubId === 'nagpur' ? '#ffffff' : '#555555'} strokeWidth="0.8" />
+                  <line x1="245" y1="35" x2="310" y2="35" stroke={activeHubId === 'nagpur' ? '#ffffff' : '#555555'} strokeWidth="0.8" />
+
+                  <text
+                    x="248"
+                    y="30"
+                    fill={activeHubId === 'nagpur' ? '#ffffff' : '#999999'}
+                    fontSize="11"
+                    fontFamily="Cinzel, serif"
+                    letterSpacing="0.1em"
+                    className="font-bold uppercase select-none transition-colors duration-300"
+                  >
+                    NAGPUR
+                  </text>
+                  <text
+                    x="248"
+                    y="46"
+                    fill="#666666"
+                    fontSize="7.5"
+                    fontFamily="Syncopate, sans-serif"
+                    letterSpacing="0.15em"
+                    className="uppercase select-none"
+                  >
+                    CENTRAL LOGISTICS & PROD
+                  </text>
+                </g>
 
                 {/* TIRUPPUR NODE (145, 255) */}
                 <g
